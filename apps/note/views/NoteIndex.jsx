@@ -1,4 +1,4 @@
 
 export function NoteIndex() {
-    return <section>noteeeee app</section>
+    return <section>daniel!</section>
 }
