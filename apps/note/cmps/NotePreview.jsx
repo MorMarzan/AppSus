@@ -5,7 +5,11 @@ import { NoteVideo } from "./NoteVideo.jsx"
 
 export function NotePreview({note}) {
   return (
+    <article 
+    style={note.style ? { backgroundColor: note.style.backgroundColor } : {}}
+    className="note-preview">
     <DynamicRating note={note} />
+    </article>
   )
 }
 

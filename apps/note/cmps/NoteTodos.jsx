@@ -3,7 +3,7 @@ export function NoteTodos({note}) {
     return (
       <article 
       className="note-todos"
-      style={note.style ? { backgroundColor: note.style.backgroundColor } : {}}
+      
       >
         {note.info.title && <h2>{note.info.title}</h2>}
 

@@ -1,0 +1,12 @@
+.note-img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: fit-content;
+  width: 95%;
+}
+
+.note-img img {
+  height: fit-content;
+  width: 95%;
+}
