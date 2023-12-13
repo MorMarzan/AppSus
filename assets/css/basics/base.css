@@ -1,5 +1,8 @@
 body {
   margin: 0;
+  box-sizing: border-box;
+  /* font-family: google-sans-regular, Arial, sans-serif; */
+  font-family: roboto-regular, Arial, sans-serif;
 }
 
 h1,
@@ -9,6 +12,7 @@ h4,
 h5,
 h6 {
   margin: 0;
+  /* font-family: roboto-regular, Arial, sans-serif; */
 }
 
 a {
@@ -22,7 +26,14 @@ img {
 }
 
 button {
+  font-family: google-sans-regular, Arial, sans-serif;
+
   cursor: pointer;
   border: 0;
   background-color: unset;
 }
+
+.page {
+  padding-block: 85px, 10px;
+}
+
