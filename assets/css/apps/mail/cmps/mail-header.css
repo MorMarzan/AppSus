@@ -3,4 +3,10 @@
     border-top-right-radius: var(--border-radius);
     border-top-left-radius: var(--border-radius);
     text-align: center;
+    top: auto;
+}
+
+.mail-header {
+    position: sticky;
+    top: 0;
 }

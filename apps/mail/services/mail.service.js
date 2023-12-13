@@ -64,7 +64,57 @@ const gDemoMails = [
       removedAt: null,
       from: 'momo@momo.com',
       to: 'user6@appsus.com'
-    }
+    },
+    {
+        id: 'e107',
+        subject: 'Coffee Meeting?',
+        body: 'Hey, would you like to grab coffee sometime this week? I found a cozy place downtown that we haven\'t tried yet. Let me know your availability!',
+        isRead: false,
+        sentAt: Date.now() - 86400000 * 2, // 2 days ago
+        removedAt: null,
+        from: 'friend1@appsus.com',
+        to: 'momo@momo.com',
+      },
+      {
+        id: 'e108',
+        subject: 'Important Update - Project XYZ',
+        body: 'Dear team, I wanted to share some important updates regarding Project XYZ. Please find the attached document for a detailed overview. Your prompt review and feedback are highly appreciated.',
+        isRead: true,
+        sentAt: Date.now() - 86400000 * 5, // 5 days ago
+        removedAt: null,
+        from: 'pm@appsus.com',
+        to: 'momo@momo.com',
+      },
+      {
+        id: 'e109',
+        subject: 'Happy Birthday!',
+        body: 'Wishing you a fantastic birthday filled with joy and happiness! May this year bring you success and fulfillment in all your endeavors. Enjoy your special day!',
+        isRead: false,
+        sentAt: Date.now() - 2592000000 * 2, // 60 days ago
+        removedAt: null,
+        from: 'birthdaygreetings@appsus.com',
+        to: 'momo@momo.com',
+      },
+      {
+        id: 'e110',
+        subject: 'New Recipe Alert!',
+        body: 'Check out our latest recipe for a delicious and healthy smoothie. It\'s quick to make and packed with nutrients. Let us know what you think!',
+        isRead: true,
+        sentAt: Date.now() - 1728000000, // 20 days ago
+        removedAt: null,
+        from: 'recipes@appsus.com',
+        to: 'momo@momo.com',
+      },
+      {
+        id: 'e111',
+        subject: 'Questionnaire for Feedback',
+        body: 'Dear user, we value your opinion. Please take a moment to complete our questionnaire and share your thoughts. Your feedback is crucial for improving our services.',
+        isRead: false,
+        sentAt: Date.now() - 604800000 * 3, // 21 days ago
+        removedAt: null,
+        from: 'feedback@appsus.com',
+        to: 'momo@momo.com',
+      },
   ];
   
 
