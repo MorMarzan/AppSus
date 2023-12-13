@@ -1,0 +1,14 @@
+.mail-sidebar {
+    display: grid;
+    align-content: start;
+    gap: 20px;
+    justify-items: start;
+    padding-inline-start: 10px;
+}
+
+.mail-sidebar button {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 15px;
+    text-align: start;
+}

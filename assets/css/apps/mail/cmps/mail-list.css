@@ -1,5 +1,6 @@
 .mail-list {
-    padding-block-start: 20px;
+    /* padding-block-start: 20px; */
+    padding-inline: 0;
     margin: 0;
     list-style: none;
     display: grid;

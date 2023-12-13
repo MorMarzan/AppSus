@@ -4,7 +4,6 @@
 const { Fragment, useState } = React
 
 import { MailPreview } from "../cmps/MailPreview.jsx";
-import { MailHeader } from "./MailHeader.jsx";
 // const { Link } = ReactRouterDOM
 // export function MailList({ mails, onRemoveMail }) {
 export function MailList({ mails }) {
@@ -14,8 +13,6 @@ export function MailList({ mails }) {
     //     title:'CARLISTTTTTTTTTTTT'
     // }
     return (
-        <Fragment>
-            {/* <MailHeader /> */}
             <ul className="mail-list">
                 {mails.map(mail =>
                     <li key={mail.id}>
@@ -28,6 +25,5 @@ export function MailList({ mails }) {
                     </li>
                 )}
             </ul>
-        </Fragment>
     )
 }

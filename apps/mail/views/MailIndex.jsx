@@ -10,6 +10,8 @@ import { MailList } from "../cmps/MailList.jsx"
 // import { DataTable } from "../cmps/data-table/DataTable.jsx"
 import { mailService } from "../../mail/services/mail.service.js"
 import { MailHeader } from "../cmps/MailHeader.jsx"
+import { MailFooter } from "../cmps/MailFooter.jsx"
+import { MailSidebar } from "../cmps/MailSidebar.jsx"
 // import { mailService } from "../services/mail.service.js"
 // import { showSuccessMsg } from "../services/event-bus.service.js"
 
@@ -59,6 +61,7 @@ export function MailIndex() {
     if (!mails) return <div>Loading...</div>
     return (
         <section className="mail-index page main-layout full">
+            <MailSidebar />
             <div>
             <MailHeader />
             {/* <div>Mister Email</div> */}
@@ -66,6 +69,7 @@ export function MailIndex() {
             <MailList mails={mails}/>
             {/* <MailList mails={mails} onRemoveMail={onRemoveMail} /> */}
             {/* <DataTable mails={mails}/> */}
+            <MailFooter />
             </div>
         </section>
     )
