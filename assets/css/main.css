@@ -39,3 +39,4 @@
 
 /* Mail Cmps */
 @import './apps/mail/cmps/MailList.css';
+@import './apps/mail/cmps/MailPreview.css';
