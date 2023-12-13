@@ -12,7 +12,7 @@ export function MailList({ mails }) {
     //     title:'CARLISTTTTTTTTTTTT'
     // }
     return (
-        <ul >
+        <ul className="mail-list">
         {/* <ul {...ulProps} > */}
             {mails.map(mail =>
                 <li key={mail.id}>
