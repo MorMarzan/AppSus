@@ -3,6 +3,8 @@ import { storageService } from '../../../services/async-storage.service.js'
 
 export const noteService = {
   query,
+  getEmptyNote,
+  save,
 }
 
 const NOTES_KEY = 'notesDB'
@@ -51,6 +53,25 @@ function query() {
   return storageService.query(NOTES_KEY)
 }
 
+function save(note) {
+  if (note.id) {
+    return storageService.put(NOTES_KEY, note)
+  } else {
+    return storageService.post(NOTES_KEY, note)
+  }
+}
+
+function getEmptyNote() {
+  return {
+    id: '',
+    info: { title: '', txt: '' },
+    isPinned: false,
+    style: {},
+    type: 'NoteTxt',
+  }
+}
+
+// PRIVET
 function _initNotes() {
   const notes = JSON.parse(localStorage.getItem(NOTES_KEY))
   if (notes && notes.length) return

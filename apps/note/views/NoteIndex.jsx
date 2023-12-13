@@ -24,7 +24,7 @@ export function NoteIndex() {
     return (
         <section className="note-index">
         Notes App
-        <AddNote />
+        <AddNote onAdd={loadNotes} />
         <NoteList notes={notes} />
         </section>
     )

@@ -1,0 +1,19 @@
+.add-note {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin-block-end: 30px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--grey-outline);
+}
+
+.add-note-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-note .add-note-form input {
+  border: unset;
+  padding: 5px 10px;
+}
