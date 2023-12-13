@@ -1,4 +1,5 @@
 import { storageService } from '../../../services/async-storage.service.js'
+import { AddNote } from '../cmps/AddNote.jsx'
 import { NoteList } from '../cmps/NoteList.jsx'
 import { noteService } from '../services/note.service.js'
 
@@ -8,6 +9,7 @@ const { useState, useEffect } = React
 export function NoteIndex() {
     const [notes, setNotes] = useState(null)
     const [filterBy, setFilterBy] = useState(null)
+    
 
     useEffect(()=>{
         loadNotes()
@@ -22,6 +24,7 @@ export function NoteIndex() {
     return (
         <section className="note-index">
         Notes App
+        <AddNote />
         <NoteList notes={notes} />
         </section>
     )
