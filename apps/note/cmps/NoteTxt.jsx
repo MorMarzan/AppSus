@@ -1,5 +1,4 @@
 
-
 export function NoteTxt({note}) {
   return (
     <article 
