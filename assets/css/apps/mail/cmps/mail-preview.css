@@ -7,12 +7,25 @@
     gap: 10px;
 }
 
-.mail-preview .mail-body {
+.mail-preview {
+    background-color: var(--clrPrimary-1);
+}
+
+.mail-preview .mail-content {
     grid-area: 2 / 1 / span 1 / span 2;
 }
 
 .mail-preview .date {
     justify-self: end;
+}
+
+.mail-preview.unread{
+    background-color: unset;
+}
+
+.mail-preview.unread .from,
+.mail-preview.unread .subject {
+    font-weight: bold;
 }
 
 /* Tablet */
@@ -28,7 +41,7 @@
         gap: 20px;
     }
 
-    .mail-preview .mail-body {
+    .mail-preview .mail-content {
         grid-area: unset;
     }
 

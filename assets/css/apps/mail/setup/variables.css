@@ -1,6 +1,20 @@
 :root {
-    /* gmail ***********/
-    /* gmail ***********/
+    /* gmail */
+    
+    --clr-font-Primary1: #5f6368; /* mail content */
+    --clr-font-PrimaryBase: #262627;/* all fonts */
+
+    --clrPrimary2: #c2e7ff; /* add mail btn bg */
+    --clrPrimary1: #d3e3fd; /* side bar active */
+    --clrPrimaryBase: #f6f8fc;/*sidebar & header bg */
+    --clrPrimary-1: #f2f6fc; /* already read mail bg */
+    --clrPrimary-2: #eaf1fb;/* search box bg */
+
+
+    
+    
+    
+
     --gm3-sys-color-background: #fff;
     --gm3-sys-color-background-rgb: 255,255,255;
     --gm3-sys-color-error: #b3261e;
