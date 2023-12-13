@@ -55,13 +55,14 @@ export function MailIndex() {
 
     // const { txt, minSpeed, maxPrice } = filterBy
 
-    // if (!mails) return <div>Loading...</div>
+    if (!mails) return <div>Loading...</div>
     return (
         <section className="mail-index main-layout full">
             <div>Mister Email</div>
-            {/* <MailFilter filterBy={{ txt, minSpeed }} onSetFilter={onSetFilter} />
-            <MailList mails={mails} onRemoveMail={onRemoveMail} />
-            <DataTable mails={mails}/> */}
+            {/* <MailFilter filterBy={{ txt, minSpeed }} onSetFilter={onSetFilter} /> */}
+            <MailList mails={mails}/>
+            {/* <MailList mails={mails} onRemoveMail={onRemoveMail} /> */}
+            {/* <DataTable mails={mails}/> */}
         </section>
     )
 }
