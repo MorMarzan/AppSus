@@ -1,2 +1,11 @@
 :root {
+    --mq-m: 768px;
+    --mq-l: 992px;
 }
+
+
+/* Tablet */
+/* @media (width >=var(--mq-m)) {} */
+
+/* desktop */
+/* @media (width >=var(--mq-l)) {} */

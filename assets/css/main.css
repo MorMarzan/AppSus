@@ -1,6 +1,6 @@
 /* Setup */
 @import './setup/variables.css';
-/* @import './setup/fonts.css'; */
+@import './setup/typography.css';
 
 /* Notes Setup */
 @import './apps/note/setup/variables.css';

@@ -57,7 +57,7 @@ export function MailIndex() {
 
     if (!mails) return <div>Loading...</div>
     return (
-        <section className="mail-index main-layout full">
+        <section className="mail-index page main-layout full">
             <div>Mister Email</div>
             {/* <MailFilter filterBy={{ txt, minSpeed }} onSetFilter={onSetFilter} /> */}
             <MailList mails={mails}/>

@@ -10,6 +10,18 @@
     src: url(../../../assets/fonts/Roboto-Bold.ttf);
 }
 
+/* Google Sans */
+
+@font-face {
+    font-family: google-sans-regular;
+    src: url(../../../assets/fonts/Google-Sans-regular.ttf);
+}
+
+@font-face {
+    font-family: google-sans-bold;
+    src: url(../../../assets/fonts/Google-Sans-Bold.ttf);
+}
+
 /* gmail fonts: */
 /* 
 HEADINGS
