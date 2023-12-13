@@ -1,19 +1,8 @@
 import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/async-storage.service.js'
+import { localStorageService } from '../../../services/storage.service.js'
 
 const MAIL_KEY = 'mailDB'
-_createMails()
-
-export const mailService = {
-    query,
-    get,
-    remove,
-    save,
-    getEmptyMail,
-    // getDefaultFilter,
-    // getFilterFromQueryString
-}
-
 const gDemoMails = [
     {
       id: 'e101',
@@ -76,7 +65,20 @@ const gDemoMails = [
       to: 'user6@appsus.com'
     }
   ]
-  
+
+_createMails()
+
+console.log('hi from mail service!')
+
+export const mailService = {
+    query,
+    get,
+    remove,
+    save,
+    getEmptyMail,
+    // getDefaultFilter,
+    // getFilterFromQueryString
+}
 
 function query(filterBy) {
     return storageService.query(MAIL_KEY)
@@ -137,21 +139,21 @@ function getFilterFromQueryString(searchParams) {
 }
 
 function _createMails() {
-    let mails = utilService.loadFromStorage(MAIL_KEY)
+    let mails = localStorageService.loadFromStorage(MAIL_KEY)
     if (!mails || !mails.length) {
-        utilService.saveToStorage(MAIL_KEY, gDemoMails)
+        localStorageService.saveToStorage(MAIL_KEY, gDemoMails)
     }
 }
 
 // function _createMails() {
-//     let mails = utilService.loadFromStorage(MAIL_KEY)
+//     let mails = localStorageService.loadFromStorage(MAIL_KEY)
 //     if (!mails || !mails.length) {
 //         mails = []
 //         mails.push(_createMail('audu', 300))
 //         mails.push(_createMail('fiak', 120))
 //         mails.push(_createMail('subali', 50))
 //         mails.push(_createMail('mitsu', 150))
-//         utilService.saveToStorage(MAIL_KEY, mails)
+//         localStorageService.saveToStorage(MAIL_KEY, mails)
 //     }
 // }
 
