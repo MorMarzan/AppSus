@@ -78,7 +78,16 @@ export function AddNote({onAdd}) {
          </Fragment>
          }
         <input value={note.info.txt} onChange={handleNoteChange} onClick={onOpenAdd} name='txt' type="text" placeholder="Take a note..." />
-        {isAddOpen && <button disabled={!note.info.txt} onClick={onAddNote}>Add</button>}
+        {isAddOpen && 
+        <div className="tool-bar">
+          <div className="edit-btns">
+            <div className="img-container">
+            <img src="../../../assets/img/color-palette.svg"/>
+            </div>
+          </div>
+        <button className='add-btn' disabled={!note.info.txt} onClick={onAddNote}>Add</button>
+        </div>
+        }
         </form>
     </section>
   )
