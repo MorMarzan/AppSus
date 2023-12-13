@@ -1,5 +1,6 @@
 .note-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  column-count: 4;
+  column-width: 250px;
+  column-gap: 5px;
+  margin-block-end: 10px;
 }

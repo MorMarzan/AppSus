@@ -23,7 +23,6 @@ export function NoteIndex() {
 
     return (
         <section className="note-index">
-        Notes App
         <AddNote onAdd={loadNotes} />
         <NoteList notes={notes} />
         </section>

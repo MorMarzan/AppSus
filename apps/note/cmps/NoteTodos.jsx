@@ -3,7 +3,6 @@ export function NoteTodos({note}) {
     return (
       <article 
       className="note-todos"
-      
       >
         {note.info.title && <h2>{note.info.title}</h2>}
 

@@ -1,5 +1,12 @@
 .note-preview {
-  padding: 10px;
+  padding: 15px;
   border-radius: 10px;
   border: 1px solid var(--grey-outline);
+  break-inside: avoid;
+  margin-block-end: 5px;
+  padding-block-end: 40px;
+}
+
+.note-preview p {
+  margin: 0;
 }
