@@ -3,13 +3,75 @@ import { storageService } from '../../../services/async-storage.service.js'
 import { localStorageService } from '../../../services/storage.service.js'
 
 const MAIL_KEY = 'mailDB'
+// const gDemoMails = [
+//     {
+//       id: 'e101',
+//       subject: 'Miss you!',
+//       body: 'Would love to catch up sometimes',
+//       isRead: false,
+//       sentAt: 1551133930594,
+//       removedAt: null,
+//       from: 'momo@momo.com',
+//       to: 'user1@appsus.com'
+//     },
+//     {
+//       id: 'e102',
+//       subject: 'Re: Miss you!',
+//       body: 'Sure, let\'s plan something!',
+//       isRead: false,
+//       sentAt: 1551133931594,
+//       removedAt: null,
+//       from: 'momo@momo.com',
+//       to: 'user2@appsus.com'
+//     },
+//     {
+//       id: 'e103',
+//       subject: 'Weekend Plans?',
+//       body: 'How about a movie on Saturday?',
+//       isRead: true,
+//       sentAt: 1551133932594,
+//       removedAt: null,
+//       from: 'momo@momo.com',
+//       to: 'user3@appsus.com'
+//     },
+//     {
+//       id: 'e104',
+//       subject: 'Meeting Tomorrow',
+//       body: 'Don\'t forget about our meeting at 10 AM',
+//       isRead: false,
+//       sentAt: 1551133933594,
+//       removedAt: null,
+//       from: 'momo@momo.com',
+//       to: 'user4@appsus.com'
+//     },
+//     {
+//       id: 'e105',
+//       subject: 'Quick Question',
+//       body: 'Can you review the document I sent earlier?',
+//       isRead: true,
+//       sentAt: 1551133934594,
+//       removedAt: null,
+//       from: 'momo@momo.com',
+//       to: 'user5@appsus.com'
+//     },
+//     {
+//       id: 'e106',
+//       subject: 'Re: Quick Question',
+//       body: 'Sure, I will take a look and get back to you.',
+//       isRead: false,
+//       sentAt: 1551133935594,
+//       removedAt: null,
+//       from: 'momo@momo.com',
+//       to: 'user6@appsus.com'
+//     }
+//   ]
 const gDemoMails = [
     {
       id: 'e101',
       subject: 'Miss you!',
       body: 'Would love to catch up sometimes',
       isRead: false,
-      sentAt: 1551133930594,
+      sentAt: Date.now() - 86400000, // 24 hours ago
       removedAt: null,
       from: 'momo@momo.com',
       to: 'user1@appsus.com'
@@ -19,7 +81,7 @@ const gDemoMails = [
       subject: 'Re: Miss you!',
       body: 'Sure, let\'s plan something!',
       isRead: false,
-      sentAt: 1551133931594,
+      sentAt: Date.now() - 3600000, // 1 hour ago
       removedAt: null,
       from: 'momo@momo.com',
       to: 'user2@appsus.com'
@@ -29,7 +91,7 @@ const gDemoMails = [
       subject: 'Weekend Plans?',
       body: 'How about a movie on Saturday?',
       isRead: true,
-      sentAt: 1551133932594,
+      sentAt: Date.now() - 172800000, // 2 days ago
       removedAt: null,
       from: 'momo@momo.com',
       to: 'user3@appsus.com'
@@ -39,7 +101,7 @@ const gDemoMails = [
       subject: 'Meeting Tomorrow',
       body: 'Don\'t forget about our meeting at 10 AM',
       isRead: false,
-      sentAt: 1551133933594,
+      sentAt: Date.now() - 604800000, // 7 days ago
       removedAt: null,
       from: 'momo@momo.com',
       to: 'user4@appsus.com'
@@ -49,7 +111,7 @@ const gDemoMails = [
       subject: 'Quick Question',
       body: 'Can you review the document I sent earlier?',
       isRead: true,
-      sentAt: 1551133934594,
+      sentAt: Date.now() - 31536000000, // More than a year ago
       removedAt: null,
       from: 'momo@momo.com',
       to: 'user5@appsus.com'
@@ -59,12 +121,13 @@ const gDemoMails = [
       subject: 'Re: Quick Question',
       body: 'Sure, I will take a look and get back to you.',
       isRead: false,
-      sentAt: 1551133935594,
+      sentAt: Date.now() - 2592000000, // 30 days ago
       removedAt: null,
       from: 'momo@momo.com',
       to: 'user6@appsus.com'
     }
-  ]
+  ];
+  
 
 _createMails()
 
