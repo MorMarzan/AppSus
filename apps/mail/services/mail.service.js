@@ -3,78 +3,17 @@ import { storageService } from '../../../services/async-storage.service.js'
 import { localStorageService } from '../../../services/storage.service.js'
 
 const MAIL_KEY = 'mailDB'
-// const gDemoMails = [
-//     {
-//       id: 'e101',
-//       subject: 'Miss you!',
-//       body: 'Would love to catch up sometimes',
-//       isRead: false,
-//       sentAt: 1551133930594,
-//       removedAt: null,
-//       from: 'momo@momo.com',
-//       to: 'user1@appsus.com'
-//     },
-//     {
-//       id: 'e102',
-//       subject: 'Re: Miss you!',
-//       body: 'Sure, let\'s plan something!',
-//       isRead: false,
-//       sentAt: 1551133931594,
-//       removedAt: null,
-//       from: 'momo@momo.com',
-//       to: 'user2@appsus.com'
-//     },
-//     {
-//       id: 'e103',
-//       subject: 'Weekend Plans?',
-//       body: 'How about a movie on Saturday?',
-//       isRead: true,
-//       sentAt: 1551133932594,
-//       removedAt: null,
-//       from: 'momo@momo.com',
-//       to: 'user3@appsus.com'
-//     },
-//     {
-//       id: 'e104',
-//       subject: 'Meeting Tomorrow',
-//       body: 'Don\'t forget about our meeting at 10 AM',
-//       isRead: false,
-//       sentAt: 1551133933594,
-//       removedAt: null,
-//       from: 'momo@momo.com',
-//       to: 'user4@appsus.com'
-//     },
-//     {
-//       id: 'e105',
-//       subject: 'Quick Question',
-//       body: 'Can you review the document I sent earlier?',
-//       isRead: true,
-//       sentAt: 1551133934594,
-//       removedAt: null,
-//       from: 'momo@momo.com',
-//       to: 'user5@appsus.com'
-//     },
-//     {
-//       id: 'e106',
-//       subject: 'Re: Quick Question',
-//       body: 'Sure, I will take a look and get back to you.',
-//       isRead: false,
-//       sentAt: 1551133935594,
-//       removedAt: null,
-//       from: 'momo@momo.com',
-//       to: 'user6@appsus.com'
-//     }
-//   ]
+
 const gDemoMails = [
     {
       id: 'e101',
-      subject: 'Miss you!',
-      body: 'Would love to catch up sometimes',
+      subject: 'Project Update!',
+      body: 'I hope this message finds you well. I wanted to provide a brief update on our ongoing project. The team has made significant progress, and we are excited about the upcoming milestones. Please review the attached document for more details. Your feedback is highly appreciated.',
       isRead: false,
       sentAt: Date.now() - 86400000, // 24 hours ago
       removedAt: null,
-      from: 'momo@momo.com',
-      to: 'user1@appsus.com'
+      from: 'user1111111111111111@appsus.com',
+      to: 'momo@momo.com',
     },
     {
       id: 'e102',
@@ -83,8 +22,8 @@ const gDemoMails = [
       isRead: false,
       sentAt: Date.now() - 3600000, // 1 hour ago
       removedAt: null,
-      from: 'momo@momo.com',
-      to: 'user2@appsus.com'
+      from: 'user2@appsus.com',
+      to: 'momo@momo.com',
     },
     {
       id: 'e103',
@@ -93,8 +32,8 @@ const gDemoMails = [
       isRead: true,
       sentAt: Date.now() - 172800000, // 2 days ago
       removedAt: null,
-      from: 'momo@momo.com',
-      to: 'user3@appsus.com'
+      from: 'user3@appsus.com',
+      to: 'momo@momo.com',
     },
     {
       id: 'e104',

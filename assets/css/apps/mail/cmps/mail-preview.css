@@ -1,0 +1,35 @@
+/* mobile */
+.mail-preview {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: repeat(2, auto);
+    width: 100%;
+    gap: 10px;
+}
+
+.mail-preview .mail-body {
+    grid-area: 2 / 1 / span 1 / span 2;
+}
+
+.mail-preview .date {
+    justify-self: end;
+}
+
+/* Tablet */
+@media (width >=768px) {}
+
+/* desktop */
+@media (width >=992px) {
+
+    .mail-preview {
+        grid-template-columns:
+            minmax(auto, 160px) 1fr minmax(auto, 75px);
+        grid-template-rows: unset;
+        gap: 20px;
+    }
+
+    .mail-preview .mail-body {
+        grid-area: unset;
+    }
+
+}

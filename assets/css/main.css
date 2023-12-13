@@ -6,6 +6,7 @@
 @import './apps/note/setup/variables.css';
 
 /* Mail Setup */
+@import './apps/mail/setup/variables.css';
 
 /* *********************************** */
 /* Basics */
@@ -40,6 +41,5 @@
 
 /* Mail Cmps */
 @import './apps/mail/cmps/mail-list.css';
-
-/* heara */
 @import './apps/mail/cmps/mail-preview.css';
+@import './apps/mail/cmps/mail-index.css';
