@@ -19,7 +19,7 @@ export function AddNote({onAdd}) {
 
         return () => {
             window.removeEventListener('click', onCloseAdd)
-            addNoteRef.current.removeEventListener('click', closeColor)
+            // addNoteRef.current.removeEventListener('click', closeColor)
         }
     }, [])
 

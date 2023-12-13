@@ -36,3 +36,7 @@ button {
 .page {
   padding-block: 75px 10px;
 }
+
+.input:-internal-autofill-selected {
+  background-color: unset !important;
+}
