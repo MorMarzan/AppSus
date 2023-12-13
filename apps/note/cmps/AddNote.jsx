@@ -1,15 +1,25 @@
 import { noteService } from '../services/note.service.js'
-const { useState, useEffect, Fragment } = React
+import { ColorPicker } from './ColorPicker.jsx'
+const { useState, useEffect, useRef, Fragment } = React
 
 export function AddNote({onAdd}) {
+  const [note, setNote] = useState(noteService.getEmptyNote())
     const [isAddOpen, setIsAddOpen] = useState(false)
-    const [note, setNote] = useState(noteService.getEmptyNote())
+    const [isColorOpen, setIsColorOpen] = useState(false)
+    const addNoteRef = useRef()
+
+    function closeColor  (ev){
+          setIsColorOpen(false)
+    }
 
     useEffect(() => {
-        window.addEventListener('click', onCloseAdd)
+      
+      window.addEventListener('click', onCloseAdd)
+      addNoteRef.current.addEventListener('click', closeColor)
 
         return () => {
             window.removeEventListener('click', onCloseAdd)
+            addNoteRef.current.removeEventListener('click', closeColor)
         }
     }, [])
 
@@ -58,6 +68,12 @@ export function AddNote({onAdd}) {
   })
   }
 
+  function handleStyleChange(val) {
+    setNote(prevNote => {
+      return ({ ...prevNote, style: {...prevNote.style, backgroundColor: val} })
+    })
+  }
+
   function onAddNote(ev){
     ev.preventDefault()
     noteService.save(note)
@@ -67,8 +83,17 @@ export function AddNote({onAdd}) {
       })
   }
 
+  function onPalletteClick(ev){
+    setIsColorOpen(colorOpen => !colorOpen)
+  }
+
+
+
+
   return (
-    <section onClick={ev => ev.stopPropagation()} className="add-note">
+      <section className="add-note">
+
+    <section ref={addNoteRef} onClick={ev => ev.stopPropagation()} >
       {isAddOpen && <i onClick={onCloseAdd} className="fa-solid fa-circle-xmark close-btn"></i>}
       <form onSubmit={onAddNote} className='add-note-form'>
         {isAddOpen && 
@@ -81,8 +106,11 @@ export function AddNote({onAdd}) {
         {isAddOpen && 
         <div className="tool-bar">
           <div className="edit-btns">
-            <div className="img-container">
+            <div   className="edit-btn-container">
+              <div onClick={onPalletteClick} className="btn-display-container">
             <img src="../../../assets/img/color-palette.svg"/>
+              </div>
+
             </div>
           </div>
         <button className='add-btn' disabled={!note.info.txt} onClick={onAddNote}>Add</button>
@@ -90,5 +118,7 @@ export function AddNote({onAdd}) {
         }
         </form>
     </section>
+        {isColorOpen && <ColorPicker  onChangeColor={handleStyleChange} />}
+        </section>
   )
 }

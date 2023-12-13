@@ -57,18 +57,22 @@
 }
 
 .add-note .add-note-form .tool-bar .edit-btns * {
-  cursor: pointer;
 }
 
-.add-note .add-note-form .tool-bar .edit-btns .img-container {
+.add-note .add-note-form .tool-bar .edit-btns .edit-btn-container {
+}
+
+.add-note .add-note-form .tool-bar .edit-btns .btn-display-container:hover {
+  background-color: #dcdcdc72;
+}
+
+.add-note .add-note-form .tool-bar .edit-btns .btn-display-container {
+  /* position: relative; */
+  cursor: pointer;
   display: flex;
   padding: 5px;
   border-radius: 50%;
   transition: 0.2s;
-}
-
-.add-note .add-note-form .tool-bar .edit-btns .img-container:hover {
-  background-color: #dcdcdc72;
 }
 
 .add-note .add-note-form .tool-bar .edit-btns img {
