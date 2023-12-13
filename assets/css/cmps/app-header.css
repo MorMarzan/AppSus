@@ -1,12 +1,9 @@
-
-
 .app-header {
   box-sizing: border-box;
   background: lightcyan;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* padding: 20px 0; */
   height: 3em;
   position: fixed;
   top: 0;

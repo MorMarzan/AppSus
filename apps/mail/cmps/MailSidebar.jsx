@@ -1,31 +1,35 @@
 const { Link, NavLink } = ReactRouterDOM
+const { useState, useEffect } = React
 
 export function MailSidebar() {
+
+    const [isFull, setIsfull] = useState(false)
+
     return (
         <section className="mail-sidebar">
             <button>
                 <i className="fa-solid fa-pencil"></i>
-                <span>Compose</span>
+                {isFull && <span>Compose</span>}
             </button>
             <button>
                 <i className="fa-solid fa-inbox"></i>
-                <span>Inbox</span>
+                {isFull && <span>Inbox</span>}
             </button>
             <button>
                 <i className="fa-regular fa-star"></i>
-                <span>Stared</span>
+                {isFull && <span>Stared</span>}
             </button>
             <button>
                 <i className="fa-regular fa-paper-plane"></i>
-                <span>Sent</span>
+                {isFull && <span>Sent</span>}
                 </button>
             <button>
                 <i className="fa-regular fa-pen-to-square"></i>
-                <span>Draft</span>
+                {isFull && <span>Draft</span>}
             </button>
             <button>
                 <i className="fa-solid fa-trash"></i>
-                <span>Trash</span>
+                {isFull && <span>Trash</span>}
             </button>
 
             {/* <nav className="app-nav">
