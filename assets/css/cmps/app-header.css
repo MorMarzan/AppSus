@@ -1,9 +1,7 @@
-header {
-  /* border-bottom: 2px solid white; */
-  /* margin-block-end: 20px; */
-}
+
 
 .app-header {
+  box-sizing: border-box;
   background: lightcyan;
   display: flex;
   justify-content: space-between;

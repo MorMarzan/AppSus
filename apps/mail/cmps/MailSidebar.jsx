@@ -4,27 +4,27 @@ export function MailSidebar() {
     return (
         <section className="mail-sidebar">
             <button>
-                <i class="fa-solid fa-pencil"></i>
+                <i className="fa-solid fa-pencil"></i>
                 <span>Compose</span>
             </button>
             <button>
-                <i class="fa-solid fa-inbox"></i>
+                <i className="fa-solid fa-inbox"></i>
                 <span>Inbox</span>
             </button>
             <button>
-                <i class="fa-regular fa-star"></i>
+                <i className="fa-regular fa-star"></i>
                 <span>Stared</span>
             </button>
             <button>
-                <i class="fa-regular fa-paper-plane"></i>
+                <i className="fa-regular fa-paper-plane"></i>
                 <span>Sent</span>
                 </button>
             <button>
-                <i class="fa-regular fa-pen-to-square"></i>
+                <i className="fa-regular fa-pen-to-square"></i>
                 <span>Draft</span>
             </button>
             <button>
-                <i class="fa-solid fa-trash"></i>
+                <i className="fa-solid fa-trash"></i>
                 <span>Trash</span>
             </button>
 

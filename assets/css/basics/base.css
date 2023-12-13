@@ -26,7 +26,7 @@ img {
 }
 
 button {
-  font-family: google-sans-regular, Arial, sans-serif;
+  font-family: roboto-regular, Arial, sans-serif;
 
   cursor: pointer;
   border: 0;
@@ -37,3 +37,6 @@ button {
   padding-block: 75px 10px;
 }
 
+.input:-internal-autofill-selected {
+  background-color: unset !important;
+}

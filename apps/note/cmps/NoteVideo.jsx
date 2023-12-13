@@ -4,7 +4,8 @@ export function NoteVideo({note}) {
       className="note-video"
       style={note.style ? { backgroundColor: note.style.backgroundColor } : {}}
       >
-          <h2>{note.type}</h2>
+        {note.info.title && <p className="note-title">{note.info.title}</p>}
+          <h2 className="note-content">{note.type}</h2>
       </article>
     )
   }

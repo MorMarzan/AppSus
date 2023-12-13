@@ -19,7 +19,7 @@ export function AddNote({onAdd}) {
 
         return () => {
             window.removeEventListener('click', onCloseAdd)
-            addNoteRef.current.removeEventListener('click', closeColor)
+            // addNoteRef.current.removeEventListener('click', closeColor)
         }
     }, [])
 
@@ -91,7 +91,10 @@ export function AddNote({onAdd}) {
 
 
   return (
-      <section className="add-note">
+      <section 
+      style={note.style ? { backgroundColor: note.style.backgroundColor } : {}}
+      className="add-note"
+      >
 
     <section ref={addNoteRef} onClick={ev => ev.stopPropagation()} >
       {isAddOpen && <i onClick={onCloseAdd} className="fa-solid fa-circle-xmark close-btn"></i>}
@@ -118,7 +121,7 @@ export function AddNote({onAdd}) {
         }
         </form>
     </section>
-        {isColorOpen && <ColorPicker  onChangeColor={handleStyleChange} />}
+        {isColorOpen && <ColorPicker pickedColor={note.style.backgroundColor} onChangeColor={handleStyleChange} />}
         </section>
   )
 }

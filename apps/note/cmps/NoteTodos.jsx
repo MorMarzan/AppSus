@@ -4,9 +4,9 @@ export function NoteTodos({note}) {
       <article 
       className="note-todos"
       >
-        {note.info.title && <h2>{note.info.title}</h2>}
+        {note.info.title && <p className="note-title">{note.info.title}</p>}
 
-        <ul className="note-todos-list">
+        <ul className="note-todos-list note-content">
           {note.info.todos.map((todo, idx) => {
             return <li key={idx} className="todo">
               

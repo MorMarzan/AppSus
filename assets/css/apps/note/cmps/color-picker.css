@@ -1,8 +1,8 @@
 .color-picker {
   position: absolute;
   display: flex;
-  top: 100px;
-  left: 0px;
+  top: 110px;
+  left: -20px;
   background-color: white;
   border-radius: 10px;
   padding: 5px 10px;
@@ -14,6 +14,7 @@
   height: 25px;
   border-radius: 50%;
   cursor: pointer;
+  outline: 1px solid var(--grey-outline);
 }
 
 .color-picker *:hover {

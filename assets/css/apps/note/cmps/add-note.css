@@ -9,6 +9,7 @@
   border-radius: 10px;
   border: 1px solid var(--grey-outline);
   box-shadow: 1px 1px 7px 1px rgb(0 0 0 / 19%);
+  transition: 0.2s;
 }
 
 .add-note .close-btn {
@@ -33,6 +34,7 @@
 .add-note .add-note-form input {
   border: unset;
   padding-block: 5px;
+  background-color: transparent;
 }
 
 .add-note .add-note-form input:focus-visible {
@@ -51,15 +53,6 @@
   justify-content: space-between;
   align-items: center;
   margin-block-start: 15px;
-}
-
-.add-note .add-note-form .tool-bar .edit-btns {
-}
-
-.add-note .add-note-form .tool-bar .edit-btns * {
-}
-
-.add-note .add-note-form .tool-bar .edit-btns .edit-btn-container {
 }
 
 .add-note .add-note-form .tool-bar .edit-btns .btn-display-container:hover {

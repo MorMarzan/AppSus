@@ -1,5 +1,5 @@
 
-export function ColorPicker({onChangeColor}) {
+export function ColorPicker({onChangeColor, pickedColor}) {
     const colors = [
         '#faafa8',
         '#f39f76',
@@ -21,13 +21,23 @@ export function ColorPicker({onChangeColor}) {
 
   return (
     <div 
-   onClick={(ev) => onColorPickerClick(ev)}
+   onClick={(ev) => {console.log('here');onColorPickerClick(ev)}}
     className="color-picker"
     >
+      <div 
+        onClick={(ev) => onColorPickerClick(ev, null)}
+        style={{
+          backgroundColor: null,
+          border: !pickedColor ? '2px solid black' : ''
+        }}
+        >
+        </div>
       {colors.map(color => {
         return <div 
-
-        style={{ backgroundColor: color }}
+        style={{
+          backgroundColor: color,
+          border: pickedColor === color ? '2px solid black' : ''
+        }}
         key={color}
         onClick={(ev) => onColorPickerClick(ev, color)}
         >
