@@ -1,5 +1,5 @@
 body {
-    margin: 0;
+  margin: 0;
 }
 
 h1,
@@ -8,17 +8,21 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0;
+  margin: 0;
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
+  width: 100%;
+  object-fit: cover;
 }
 
+button {
+  cursor: pointer;
+  border: 0;
+  background-color: unset;
+}
