@@ -1,8 +1,8 @@
 :root {
 
     /* shared */
-    --mq-m: 768px;
-    --mq-l: 992px;
+    /* --mq-m: 768px;
+    --mq-l: 992px; */
 
     /* notes */
     --grey-outline: #e0e0e0;
@@ -17,11 +17,13 @@
      --clrPrimaryBase: #f6f8fc;/*sidebar & header bg */
      --clrPrimary-1: #f2f6fc; /* already read mail bg */
      --clrPrimary-2: #eaf1fb;/* search box bg */
+     --clrPrimary-3: #ffffff; /* white */
+
+     --borader-radius: 20px;
 }
 
-
 /* Tablet */
-/* @media (width >=var(--mq-m)) {} */
+/* @media (width >= 768px) {} */
 
 /* desktop */
-/* @media (width >=var(--mq-l)) {} */
+/* @media (width >= 992px) { */
