@@ -6,8 +6,8 @@ export function NoteImg({note}) {
         {backgroundColor: note.style.backgroundColor}
       }
       >
-        {note.info.title && <h2>{note.info.title}</h2>}
-          <img src={note.info.url} />
+        {note.info.title && <p className="note-title">{note.info.title}</p>}
+          <img className="note-content" src={note.info.url} />
       </article>
     )
   }

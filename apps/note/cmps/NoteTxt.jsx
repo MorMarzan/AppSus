@@ -4,8 +4,8 @@ export function NoteTxt({note}) {
     <article 
     className="note-txt" 
     >
-      {note.info.title && <h2>{note.info.title}</h2>}
-        <p>{note.info.txt}</p>
+      {note.info.title && <p className="note-title">{note.info.title}</p>}
+        <p className="note-content">{note.info.txt}</p>
     </article>
   )
 }

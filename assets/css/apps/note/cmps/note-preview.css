@@ -10,3 +10,13 @@
 .note-preview p {
   margin: 0;
 }
+
+.note-title {
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1.5rem;
+}
+
+.note-content {
+  padding-block: 12px;
+}
