@@ -22,7 +22,7 @@ export function NoteIndex() {
       }
 
     return (
-        <section className="note-index">
+        <section className="note-index page">
         <AddNote onAdd={loadNotes} />
         <NoteList notes={notes} />
         </section>
