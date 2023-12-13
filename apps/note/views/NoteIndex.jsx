@@ -1,4 +1,10 @@
+import { storageService } from '../../../services/async-storage.service.js'
+
 
 export function NoteIndex() {
-    return <section>Note index</section>
+    return (
+        <section className="note-index">
+        note app
+        </section>
+    )
 }
