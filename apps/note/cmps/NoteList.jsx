@@ -1,3 +1,14 @@
-export function NoteList() {
-    return <div>note list</div>
+import { NotePreview } from "./NotePreview.jsx"
+
+
+export function NoteList({notes}) {
+
+    if(!notes || !notes.length) return <h2 className="loading-msg">Loading...</h2>
+    return (
+        <section className="notes-list">
+            {notes.map(note => {
+                return <NotePreview key={note.id} note={note} />
+            })}
+        </section>
+    )
 }
