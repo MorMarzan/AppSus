@@ -78,7 +78,7 @@ export function AddNote({onAdd}) {
          </Fragment>
          }
         <input value={note.info.txt} onChange={handleNoteChange} onClick={onOpenAdd} name='txt' type="text" placeholder="Take a note..." />
-        {isAddOpen && <button onClick={onAddNote}>Add</button>}
+        {isAddOpen && <button disabled={!note.info.txt} onClick={onAddNote}>Add</button>}
         </form>
     </section>
   )
