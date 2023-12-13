@@ -22,23 +22,23 @@
 @import './views/home.css';
 
 /* Notes Views */
-@import './apps/note/views/NoteIndex.css';
+@import './apps/note/views/note-index.css';
 
 /* Mail Views */
-@import './apps/mail/views/MailIndex.css';
+@import './apps/mail/views/mail-index.css';
 
 /* *********************************** */
 /* Cmps */
-@import './cmps/UserMsg.css';
-@import './cmps/AppHeader.css';
+@import './cmps/user-msg.css';
+@import './cmps/app-header.css';
 
 /* Notes Cmps */
-@import './apps/note/cmps/NoteList.css';
-@import './apps/note/cmps/NotePreview.css';
-@import './apps/note/cmps/NoteImg.css';
+@import './apps/note/cmps/note-list.css';
+@import './apps/note/cmps/note-preview.css';
+@import './apps/note/cmps/note-img.css';
 
 /* Mail Cmps */
-@import './apps/mail/cmps/MailList.css';
+@import './apps/mail/cmps/mail-list.css';
 
 /* heara */
-@import './apps/mail/cmps/MailPreview.css';
+@import './apps/mail/cmps/mail-preview.css';
