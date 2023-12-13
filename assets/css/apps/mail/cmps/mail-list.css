@@ -1,5 +1,6 @@
 .mail-list {
-    padding: 20px;
+    padding-block-start: 20px;
+    margin: 0;
     list-style: none;
     display: grid;
     align-items: center;

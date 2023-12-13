@@ -1,6 +1,8 @@
 header {
   /* border-bottom: 2px solid white; */
   /* margin-block-end: 20px; */
+  position: fixed;
+  width: 100%;
 }
 
 .app-header {
