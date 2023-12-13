@@ -1,9 +1,25 @@
+/* mobile only */
+/* @media (max-width: 768px) { */
+@media (width <=768px) {
+    .mail-sidebar {
+        position: absolute;
+        background-color: lightblue;
+        z-index: 5;
+        width: 80vw;
+        top: 0;
+        bottom: 0;
+        padding-block-start: 10px;
+    }
+}
+
+
 .mail-sidebar {
     display: grid;
     align-content: start;
     gap: 20px;
     justify-items: start;
     padding-inline-start: 10px;
+
 }
 
 .mail-sidebar button {
@@ -11,4 +27,15 @@
     grid-template-columns: 1fr 4fr;
     gap: 15px;
     text-align: start;
+}
+
+/* Tablet */
+@media (width >=768px) {}
+
+/* desktop */
+@media (width >=992px) {
+
+    .mail-sidebar {}
+
+
 }
