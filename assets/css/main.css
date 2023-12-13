@@ -2,12 +2,6 @@
 @import './setup/variables.css';
 @import './setup/typography.css';
 
-/* Notes Setup */
-@import './apps/note/setup/variables.css';
-
-/* Mail Setup */
-@import './apps/mail/setup/variables.css';
-
 /* *********************************** */
 /* Basics */
 @import './basics/base.css';
