@@ -3,6 +3,7 @@
 /* @import './setup/fonts.css'; */
 
 /* Notes Setup */
+@import './apps/note/setup/variables.css';
 
 /* Mail Setup */
 
