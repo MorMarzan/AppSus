@@ -1,5 +1,5 @@
 import { noteService } from '../services/note.service.js'
-const { useState, useEffect } = React
+const { useState, useEffect, Fragment } = React
 
 export function AddNote({onAdd}) {
     const [isAddOpen, setIsAddOpen] = useState(false)
@@ -42,9 +42,13 @@ export function AddNote({onAdd}) {
           return
         }
   
-        setNote(prevNote => {
-          return ({ ...prevNote, [field]: value })
-        })
+        refactorNote(field, value)
+  }
+
+  function refactorNote(field, val) {
+    setNote(prevNote => {
+      return ({ ...prevNote, [field]: val })
+    })
   }
 
   function handleInfoChange(field, value) {
@@ -62,12 +66,17 @@ export function AddNote({onAdd}) {
         onAdd()
       })
   }
-  
 
   return (
     <section onClick={ev => ev.stopPropagation()} className="add-note">
+      {isAddOpen && <i onClick={onCloseAdd} className="fa-solid fa-circle-xmark close-btn"></i>}
       <form onSubmit={onAddNote} className='add-note-form'>
-        {isAddOpen && <input value={note.info.title} onChange={handleNoteChange} name='title' type="text" placeholder="Title" />}
+        {isAddOpen && 
+        <Fragment>
+          <img onClick={() => refactorNote('isPinned', !note.isPinned)} className='pin-img' src={`../../../assets/img/${note.isPinned ? 'pinned' : 'unpinned'}.svg`}/>
+        <input value={note.info.title} onChange={handleNoteChange} name='title' type="text" placeholder="Title"/>
+         </Fragment>
+         }
         <input value={note.info.txt} onChange={handleNoteChange} onClick={onOpenAdd} name='txt' type="text" placeholder="Take a note..." />
         {isAddOpen && <button onClick={onAddNote}>Add</button>}
         </form>
