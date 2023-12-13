@@ -6,21 +6,6 @@ export const noteService = {
 }
 
 const NOTES_KEY = 'notesDB'
-
-_initNotes()
-
-function query() {
-  return storageService.query(NOTES_KEY)
-}
-
-function _initNotes() {
-  storageService.query(NOTES_KEY).then((notes) => {
-    if (notes && notes.length) return
-
-    localStorage.setItem(NOTES_KEY, JSON.stringify(dummyNotes))
-  })
-}
-
 const dummyNotes = [
   {
     id: 'n101',
@@ -39,7 +24,7 @@ const dummyNotes = [
     type: 'NoteImg',
     isPinned: false,
     info: {
-      url: 'http://some-img/me',
+      url: '../../../assets/img/audi.jpg',
       title: 'Bobi and Me',
     },
     style: {
@@ -59,3 +44,15 @@ const dummyNotes = [
     },
   },
 ]
+
+_initNotes()
+
+function query() {
+  return storageService.query(NOTES_KEY)
+}
+
+function _initNotes() {
+  const notes = JSON.parse(localStorage.getItem(NOTES_KEY))
+  if (notes && notes.length) return
+  localStorage.setItem(NOTES_KEY, JSON.stringify(dummyNotes))
+}
