@@ -35,6 +35,7 @@ button {
 
 .page {
   padding-block: 75px 10px;
+  min-height: 100dvh;
 }
 
 .input:-internal-autofill-selected {

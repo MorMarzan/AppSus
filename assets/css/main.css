@@ -39,7 +39,6 @@
 /* Mail Cmps */
 @import './apps/mail/cmps/mail-list.css';
 @import './apps/mail/cmps/mail-preview.css';
-@import './apps/mail/cmps/mail-index.css';
 @import './apps/mail/cmps/mail-header.css';
 @import './apps/mail/cmps/mail-footer.css';
 @import './apps/mail/cmps/mail-sidebar.css';
