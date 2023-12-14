@@ -60,7 +60,7 @@ export function NoteIndex() {
   }
 
   return (
-    <section className="note-index page">
+    <section className="note-index ">
       <DynamicHeader
         onSetIsSbFull={onSetIsSbFull}
         searchValue={searchValue}
@@ -69,7 +69,7 @@ export function NoteIndex() {
         onSetFilter={onSetFilter}
       />
 
-      <div className="page-layout">
+      <div className="page-layout page">
         <DynamicSidebar isSbFull={isSbFull} />
         <div className="page-content">
           <AddNote onAdd={loadNotes} />
