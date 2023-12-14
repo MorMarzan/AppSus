@@ -12,3 +12,8 @@
 .page-layout {
   display: flex;
 }
+
+.list-header {
+  font-weight: 600;
+  width: 90%;
+}

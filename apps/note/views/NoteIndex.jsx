@@ -6,7 +6,7 @@ import { NoteList } from '../cmps/NoteList.jsx'
 import { noteService } from '../services/note.service.js'
 
 const { Outlet } = ReactRouterDOM
-const { useState, useEffect } = React
+const { useState, useEffect, Fragment } = React
 
 export function NoteIndex() {
   const [notes, setNotes] = useState(null)
@@ -73,7 +73,26 @@ export function NoteIndex() {
         <DynamicSidebar isSbFull={isSbFull} />
         <div className="page-content">
           <AddNote onAdd={loadNotes} />
-          <NoteList onChangeNote={loadNotes} notes={notes} />
+          {notes && (
+            <Fragment>
+              {notes.some((note) => note.isPinned) ? (
+                <Fragment>
+                  <p className="list-header">PINNED</p>
+                  <NoteList
+                    onChangeNote={loadNotes}
+                    notes={notes.filter((note) => note.isPinned)}
+                  />
+                  <p className="list-header">OTHERS</p>
+                  <NoteList
+                    onChangeNote={loadNotes}
+                    notes={notes.filter((note) => !note.isPinned)}
+                  />
+                </Fragment>
+              ) : (
+                <NoteList onChangeNote={loadNotes} notes={notes} />
+              )}
+            </Fragment>
+          )}
           <Outlet />
         </div>
       </div>
