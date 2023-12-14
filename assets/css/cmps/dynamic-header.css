@@ -1,12 +1,12 @@
 .dynamic-header {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto 1fr auto;
   gap: 30px;
   align-items: center;
   position: fixed;
   top: 3em;
   width: 100%;
-  padding: 8px;
+  padding: 8px 10px;
   background-color: white;
   border-bottom: 1px solid var(--grey-outline);
   z-index: 20;
@@ -29,7 +29,6 @@
   align-items: center;
   background-color: #f1f3f4;
   border-radius: 8px;
-  width: 95%;
 }
 
 .dynamic-header .search-input {
@@ -51,4 +50,14 @@
 
 .dynamic-header .search-img {
   width: 27px;
+}
+
+.dynamic-header .fa-filter {
+  color: var(--clr-font-Primary1);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.dynamic-header .fa-filter:hover {
+  filter: brightness(80%);
 }

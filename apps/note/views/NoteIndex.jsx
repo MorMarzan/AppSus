@@ -55,12 +55,18 @@ export function NoteIndex() {
     setFilterBy((prevFilter) => ({ ...prevFilter, txt: search }))
   }
 
+  function onSetFilter(filter) {
+    setFilterBy((prevFilter) => ({ ...prevFilter, ...filter }))
+  }
+
   return (
     <section className="note-index page">
       <DynamicHeader
         onSetIsSbFull={onSetIsSbFull}
         searchValue={searchValue}
         onSearch={onSearch}
+        filter={filterBy}
+        onSetFilter={onSetFilter}
       />
 
       <div className="page-layout">

@@ -1,6 +1,16 @@
-const { Link, NavLink, useLocation } = ReactRouterDOM
+import { DynamicFilter } from './DynamicFilter.jsx'
 
-export function DynamicHeader({ onSetIsSbFull, searchValue, onSearch }) {
+const { Link, NavLink, useLocation } = ReactRouterDOM
+const { useState, useEffect } = React
+
+export function DynamicHeader({
+  onSetIsSbFull,
+  searchValue,
+  onSearch,
+  filter,
+  onSetFilter,
+}) {
+  const [isFilterOpen, setIsFilterOpen] = useState(false)
   const { pathname } = useLocation()
 
   const headerType = pathname.includes('mail') ? 'mail' : 'note'
@@ -25,6 +35,13 @@ export function DynamicHeader({ onSetIsSbFull, searchValue, onSearch }) {
           placeholder="Search"
         />
       </form>
+      <i
+        className="fa-solid fa-filter"
+        onClick={() => setIsFilterOpen((filterOpen) => !filterOpen)}
+      ></i>
+      {isFilterOpen && (
+        <DynamicFilter onSetFilter={onSetFilter} filter={filter} />
+      )}
     </header>
   )
 }
