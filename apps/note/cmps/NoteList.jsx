@@ -13,11 +13,21 @@ export function NoteList({ notes, onChangeNote }) {
       style: { ...note.style, backgroundColor: color },
     }
 
-    noteService.save(newNote).then(onChangeNote)
+    noteService
+      .save(newNote)
+      .then(onChangeNote)
+      .catch((err) => console.log('err', err))
   }
 
   function onPalletteClick(ev) {
     setIsColorOpen((colorOpen) => !colorOpen)
+  }
+
+  function onDeleteNote(noteId) {
+    noteService
+      .remove(noteId)
+      .then(onChangeNote)
+      .catch((err) => console.log('err', err))
   }
 
   if (!notes || !notes.length)
@@ -46,6 +56,7 @@ export function NoteList({ notes, onChangeNote }) {
                 handleStyleChange={handleStyleChange}
                 isColorOpen={isColorOpen}
                 onPalletteClick={onPalletteClick}
+                onDeleteNote={onDeleteNote}
               />
             )}
           </article>

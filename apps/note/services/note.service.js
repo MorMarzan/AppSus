@@ -4,8 +4,9 @@ import { storageService } from '../../../services/async-storage.service.js'
 export const noteService = {
   query,
   get,
-  getEmptyNote,
   save,
+  remove,
+  getEmptyNote,
 }
 
 const NOTES_KEY = 'notesDB'
@@ -64,6 +65,10 @@ function save(note) {
   } else {
     return storageService.post(NOTES_KEY, note)
   }
+}
+
+function remove(noteId) {
+  return storageService.remove(NOTES_KEY, noteId)
 }
 
 function getEmptyNote() {
