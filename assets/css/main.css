@@ -27,6 +27,7 @@
 /* Cmps */
 @import './cmps/user-msg.css';
 @import './cmps/app-header.css';
+@import './cmps/dynamic-header.css';
 
 /* Notes Cmps */
 @import './apps/note/cmps/note-list.css';
@@ -38,7 +39,6 @@
 @import './apps/note/cmps/note-txt.css';
 @import './apps/note/cmps/edit-note.css';
 @import './apps/note/cmps/edit-btns.css';
-@import './apps/note/cmps/note-header.css';
 
 /* Mail Cmps */
 @import './apps/mail/cmps/mail-list.css';
