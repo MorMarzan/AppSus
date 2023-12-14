@@ -1,1 +1,22 @@
- /* mail index  */
+/* mobile only */
+/* @media (max-width: 768px) { */
+.mail-index {
+  background-color: var(--clrPrimaryBase);
+  position: relative;
+}
+
+.mail-index > div {
+  margin-inline: 20px;
+}
+
+/* Tablet */
+@media (width >=768px) {
+  .mail-index {
+    display: grid;
+    grid-template-columns: auto 1fr;
+  }
+}
+
+/* desktop */
+@media (width >=992px) {
+}
