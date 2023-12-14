@@ -7,6 +7,7 @@ export const noteService = {
   save,
   remove,
   getEmptyNote,
+  getEmptyFilterBy,
 }
 
 const NOTES_KEY = 'notesDB'
@@ -54,8 +55,18 @@ const dummyNotes = [
 
 _initNotes()
 
-function query() {
-  return storageService.query(NOTES_KEY)
+function query(filterBy) {
+  return storageService.query(NOTES_KEY).then((notes) => {
+    if (filterBy.txt && filterBy.txt.length) {
+      const regex = new RegExp(filterBy.txt, 'i')
+      notes = notes.filter((note) => {
+        const titleMatch = note.info.title && regex.test(note.info.title)
+        const txtMatch = note.info.txt && regex.test(note.info.txt)
+        return titleMatch || txtMatch
+      })
+    }
+    return notes
+  })
 }
 
 function get(noteId) {
@@ -82,6 +93,10 @@ function getEmptyNote() {
     style: { backgroundColor: 'white' },
     type: 'NoteTxt',
   }
+}
+
+function getEmptyFilterBy() {
+  return { txt: '', type: '' }
 }
 
 // PRIVET

@@ -10,10 +10,11 @@ const { useState, useEffect } = React
 
 export function NoteIndex() {
   const [notes, setNotes] = useState(null)
-  const [filterBy, setFilterBy] = useState(null)
+  const [filterBy, setFilterBy] = useState(noteService.getEmptyFilterBy())
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [isSbOpen, setIsSbOpen] = useState(!(windowWidth <= 768)) //intialize sb to be closed on mobile
   const [isSbFull, setIsSbFull] = useState(true) /* desktop only */
+  const [searchValue, setSearchValue] = useState('')
 
   useEffect(() => {
     // Set initial window width
@@ -48,9 +49,19 @@ export function NoteIndex() {
     setIsSbFull((isSbFull) => !isSbFull)
   }
 
+  function onSearch({ target }) {
+    const search = target.value
+    setSearchValue(search)
+    setFilterBy((prevFilter) => ({ ...prevFilter, txt: search }))
+  }
+
   return (
     <section className="note-index page">
-      <DynamicHeader onSetIsSbFull={onSetIsSbFull} />
+      <DynamicHeader
+        onSetIsSbFull={onSetIsSbFull}
+        searchValue={searchValue}
+        onSearch={onSearch}
+      />
 
       <div className="page-layout">
         <DynamicSidebar isSbFull={isSbFull} />

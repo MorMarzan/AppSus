@@ -25,6 +25,7 @@
   gap: 15px;
   text-align: start;
   align-items: center;
+  min-height: 19px;
 }
 
 /* Tablet */

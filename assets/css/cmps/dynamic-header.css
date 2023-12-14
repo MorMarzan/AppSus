@@ -1,4 +1,8 @@
 .dynamic-header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 30px;
+  align-items: center;
   position: fixed;
   top: 3em;
   width: 100%;
@@ -6,13 +10,45 @@
   background-color: white;
   border-bottom: 1px solid var(--grey-outline);
   z-index: 20;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 30px;
+}
+
+.logo-menu-wrapper {
+  display: flex;
   align-items: center;
 }
 
 .dynamic-header .btn-menu {
   padding: 12px;
   margin: 0 4px;
+  font-size: 18px;
+  color: #5f6368;
+}
+
+.dynamic-header .search-form {
+  display: flex;
+  align-items: center;
+  background-color: #f1f3f4;
+  border-radius: 8px;
+  width: 95%;
+}
+
+.dynamic-header .search-input {
+  background-color: transparent;
+  border: 0;
+  padding-block: 11px;
+  width: 80%;
+}
+
+.dynamic-header .search-input:focus-visible {
+  outline: unset;
+}
+
+.dynamic-header button {
+  width: 46px;
+  height: 46px;
+  padding-inline: 5px;
+}
+
+.dynamic-header .search-img {
+  width: 27px;
 }
