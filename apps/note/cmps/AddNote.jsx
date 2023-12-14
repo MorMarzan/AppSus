@@ -98,7 +98,11 @@ export function AddNote({ onAdd, noteToEdit, isOpen, onClose }) {
 
   return (
     <section
-      style={note.style ? { backgroundColor: note.style.backgroundColor } : {}}
+      style={
+        note.style
+          ? { backgroundColor: note.style.backgroundColor }
+          : { backgroundColor: 'white' }
+      }
       className="add-note"
     >
       <section ref={addNoteRef} onClick={(ev) => ev.stopPropagation()}>

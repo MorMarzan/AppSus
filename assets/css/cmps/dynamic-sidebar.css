@@ -19,26 +19,26 @@
     }
 }
 
-
 .dynamic-sidebar .sidebar {
-    display: grid;
-    align-content: start;
-    gap: 20px;
-    justify-items: start;
-    padding-inline-start: 10px;
-
+  display: grid;
+  align-content: start;
+  gap: 20px;
+  justify-items: start;
+  padding-inline-start: 10px;
 }
 
 .dynamic-sidebar .sidebar .btn {
-    display: grid;
-    grid-auto-flow: column;
-    gap: 15px;
-    text-align: start;
-    align-items: center;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 15px;
+  text-align: start;
+  align-items: center;
 }
 
 /* Tablet */
-@media (width >=768px) {}
+@media (width >=768px) {
+}
 
 /* desktop */
-@media (width >=992px) {}
+@media (width >=992px) {
+}

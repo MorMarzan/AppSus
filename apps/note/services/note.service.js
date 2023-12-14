@@ -46,6 +46,9 @@ const dummyNotes = [
         { txt: 'Coding power', doneAt: 187111111 },
       ],
     },
+    style: {
+      backgroundColor: '#faafa8',
+    },
   },
 ]
 
