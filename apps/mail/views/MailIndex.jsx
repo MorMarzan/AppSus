@@ -13,6 +13,7 @@ import { MailHeader } from "../cmps/MailHeader.jsx"
 import { MailFooter } from "../cmps/MailFooter.jsx"
 import { MailSidebar } from "../cmps/MailSidebar.jsx"
 import { DynamicHeader } from "../../../cmps/DynamicHeader.jsx"
+import { DynamicSidebar } from "../../../cmps/DynamicSidebar.jsx"
 // import { mailService } from "../services/mail.service.js"
 // import { showSuccessMsg } from "../services/event-bus.service.js"
 
@@ -87,7 +88,8 @@ export function MailIndex() {
     if (!mails) return <div>Loading...</div>
     return (
         <section className="mail-index page main-layout full">
-            {isSbOpen && <MailSidebar isSbFull={isSbFull}/>}
+            {/* {isSbOpen && <MailSidebar isSbFull={isSbFull}/>} */}
+            <DynamicSidebar isSbFull={isSbFull}/>
             <div>
                 <DynamicHeader onSetIsSbFull={onSetIsSbFull}/>
                 <MailHeader />
