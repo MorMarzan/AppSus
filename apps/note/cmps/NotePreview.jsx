@@ -7,7 +7,8 @@ export function NotePreview({note}) {
   return (
     <article 
     style={note.style ? { backgroundColor: note.style.backgroundColor } : {}}
-    className="note-preview">
+    className="note-preview"
+    >
     <DynamicRating note={note} />
     </article>
   )

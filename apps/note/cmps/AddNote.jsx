@@ -2,7 +2,7 @@ import { noteService } from '../services/note.service.js'
 import { ColorPicker } from './ColorPicker.jsx'
 const { useState, useEffect, useRef, Fragment } = React
 
-export function AddNote({onAdd}) {
+export function AddNote({onAdd, noteToEdit}) {
   const [note, setNote] = useState(noteService.getEmptyNote())
     const [isAddOpen, setIsAddOpen] = useState(false)
     const [isColorOpen, setIsColorOpen] = useState(false)
@@ -16,6 +16,8 @@ export function AddNote({onAdd}) {
       
       window.addEventListener('click', onCloseAdd)
       addNoteRef.current.addEventListener('click', closeColor)
+
+      if(noteToEdit) setNote(noteToEdit)
 
         return () => {
             window.removeEventListener('click', onCloseAdd)

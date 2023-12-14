@@ -3,6 +3,7 @@ import { storageService } from '../../../services/async-storage.service.js'
 
 export const noteService = {
   query,
+  get,
   getEmptyNote,
   save,
 }
@@ -51,6 +52,10 @@ _initNotes()
 
 function query() {
   return storageService.query(NOTES_KEY)
+}
+
+function get(noteId) {
+  return storageService.get(NOTES_KEY, noteId)
 }
 
 function save(note) {
