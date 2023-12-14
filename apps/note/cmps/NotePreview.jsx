@@ -9,9 +9,9 @@ const { useState } = React
 export function NotePreview({ note, onChangeNote }) {
   return (
     <article onClick={(ev) => ev.stopPropagation()} className="note-preview">
-      {/* <Link to={`/note/edit/${note.id}`}> */}
-      <DynamicCmp note={note} onChangeNote={onChangeNote} />
-      {/* </Link> */}
+      <Link to={`/note/edit/${note.id}`}>
+        <DynamicCmp note={note} onChangeNote={onChangeNote} />
+      </Link>
     </article>
   )
 }
