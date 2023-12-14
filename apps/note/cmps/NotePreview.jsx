@@ -3,18 +3,24 @@ import { NoteTodos } from "./NoteTodos.jsx"
 import { NoteTxt } from "./NoteTxt.jsx"
 import { NoteVideo } from "./NoteVideo.jsx"
 
+const { Link } = ReactRouterDOM
+
 export function NotePreview({note}) {
   return (
+    <Link to={`/note/edit/${note.id}`}>
     <article 
+    onClick={ev => ev.stopPropagation()}
     style={note.style ? { backgroundColor: note.style.backgroundColor } : {}}
-    className="note-preview">
-    <DynamicRating note={note} />
+    className="note-preview"
+    > 
+        <DynamicCmp note={note} />
     </article>
+    </Link>
   )
 }
 
 
-function DynamicRating(props) {
+function DynamicCmp(props) {
     switch (props.note.type) {
         case 'NoteTxt':
             return <NoteTxt note={props.note} />

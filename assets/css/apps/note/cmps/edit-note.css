@@ -1,0 +1,9 @@
+.edit-note-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+.edit-note-container .add-note {
+  width: 100%;
+}

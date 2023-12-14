@@ -52,3 +52,10 @@ input, textarea {
 .input:-internal-autofill-selected {
   background-color: unset !important;
 }
+
+.main-screen {
+  position: fixed;
+  inset: 0;
+  background-color: #54545474;
+  cursor: pointer;
+}
