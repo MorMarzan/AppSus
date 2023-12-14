@@ -5,6 +5,7 @@
   break-inside: avoid;
   margin-block-end: 5px;
   padding-block-end: 40px;
+  cursor: auto;
 }
 
 .note-preview p {
