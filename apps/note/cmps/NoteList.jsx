@@ -30,8 +30,10 @@ export function NoteList({ notes, onChangeNote }) {
       .catch((err) => console.log('err', err))
   }
 
-  if (!notes || !notes.length)
-    return <h2 className="loading-msg">Loading...</h2>
+  if (!notes) return <h2 className="loading-msg">Loading...</h2>
+
+  if (!notes.length) return <h2 className="loading-msg">No notes to display</h2>
+
   return (
     <section className="note-list">
       {notes.map((note) => {
