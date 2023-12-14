@@ -1,0 +1,10 @@
+.dynamic-filter {
+  position: absolute;
+  right: 5px;
+  top: 70px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--grey-outline);
+  user-select: none;
+}

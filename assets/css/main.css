@@ -29,6 +29,7 @@
 @import './cmps/app-header.css';
 @import './cmps/dynamic-header.css';
 @import './cmps/dynamic-sidebar.css';
+@import './cmps/dynamic-filter.css';
 
 /* Notes Cmps */
 @import './apps/note/cmps/note-list.css';
