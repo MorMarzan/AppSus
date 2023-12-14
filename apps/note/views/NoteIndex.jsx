@@ -51,7 +51,7 @@ export function NoteIndex() {
   return (
     <section className="note-index page">
       <DynamicHeader onSetIsSbFull={onSetIsSbFull} />
-      
+
       <div className="page-layout">
         <DynamicSidebar isSbFull={isSbFull} />
         <div className="page-content">

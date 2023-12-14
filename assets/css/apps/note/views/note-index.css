@@ -6,8 +6,8 @@
   flex-direction: column;
   align-items: center;
   margin: auto;
-  width: 95%;
-  padding-block-start: 80px;
+  width: 85%;
+  padding-block-start: 20px;
 }
 
 .page-layout {
