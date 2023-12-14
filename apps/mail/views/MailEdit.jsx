@@ -54,20 +54,23 @@ export function MailEdit() {
 
     const { to, subject, body } = mailToEdit
     return (
-        <section className="mail-edit">
-            <h1>Add/edit Mail</h1>
+        <section className="mail-edit mail-edit-layout">
+            <header className="mail-edit-header mail-edit-layout full">
+                <div>
+                    <h4>New Messege</h4>
+                    <button>X</button>
+                </div>
+            </header>
             <form >
-            {/* <form onSubmit={onSaveMail}> */}
-                <label htmlFor="to">To</label>
-                <input onChange={handleChange} value={to} type="email" name="to" id="to" />
-
-                <label htmlFor="subject">Subject</label>
-                <input onChange={handleChange} value={subject} type="text" name="subject" id="subject" />
-
-                <label htmlFor="mail-body">Body</label>
+                {/* <form onSubmit={onSaveMail}> */}
+                {/* <label htmlFor="to">To</label> */}
+                <input onChange={handleChange} placeholder="To" value={to} type="email" name="to" id="to" />
+                {/* <label htmlFor="subject">Subject</label> */}
+                <input onChange={handleChange} placeholder="Subject" value={subject} type="text" name="subject" id="subject" />
+                {/* <label htmlFor="mail-body">Body</label> */}
                 <textarea onChange={handleChange} value={body} type="text" name="body" id="mail-body" />
 
-                <button disabled={!to}>Save</button>
+                <button className="submit" disabled={!to}>Save</button>
             </form>
 
         </section>

@@ -16,7 +16,8 @@ h4,
 h5,
 h6 {
   margin: 0;
-  /* font-family: roboto-regular, Arial, sans-serif; */
+  font-family: roboto-bold, Arial, sans-serif;
+  font-weight: unset;
 }
 
 a {
@@ -30,11 +31,17 @@ img {
 }
 
 button {
-  font-family: roboto-regular, Arial, sans-serif;
+  font-family: inherit;
+  font-size: inherit;
 
   cursor: pointer;
   border: 0;
   background-color: unset;
+}
+
+input, textarea {
+  font-family: inherit;
+  font-size: inherit;
 }
 
 .page {
