@@ -24,7 +24,7 @@
   align-content: start;
   gap: 20px;
   justify-items: start;
-  padding-inline-start: 10px;
+  /* padding-inline-start: 10px; */
 }
 
 .dynamic-sidebar .sidebar .btn {

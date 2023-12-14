@@ -1,4 +1,5 @@
 import { DynamicHeader } from "../../../cmps/DynamicHeader.jsx"
+import { utilService } from "../../../services/util.service.js"
 import { mailService } from "../services/mail.service.js"
 const { useParams, useNavigate, Link } = ReactRouterDOM
 
@@ -37,9 +38,10 @@ export function MailDetails() {
             <DynamicHeader />
             <section className="mail-details page">
                 <h1>{subject}</h1>
-                <div>
+                <div className="info">
                     <p>{from}</p>
-                    <p>{sentAt}</p>
+                    <p>{utilService.tsToDateString(sentAt)}</p>
+                    {/* <p>{sentAt}</p> */}
                     <p>{to}</p>
                 </div>
                 <p>{body}</p>

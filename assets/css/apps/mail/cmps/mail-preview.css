@@ -34,17 +34,22 @@
 }
 
 /* Tablet */
-@media (width >= 768px) {}
+@media (width >=768px) {}
 
 /* desktop */
-@media (width >= 992px) {
+@media (width >=992px) {
     .mail-preview {
         grid-template-columns:
             minmax(auto, 160px) 1fr auto;
-            /* minmax(auto, 160px) 1fr minmax(auto, 100px); */
+        /* minmax(auto, 160px) 1fr minmax(auto, 100px); */
         grid-template-rows: unset;
         gap: 20px;
     }
+
+    /* .mail-preview:hover {
+        box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgba(60, 64, 67, .3), 0 1px 3px 1px rgba(60, 64, 67, .15);
+        z-index: 2;
+    } */
 
     .mail-preview .mail-content {
         grid-area: unset;
