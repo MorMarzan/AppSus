@@ -1,0 +1,9 @@
+.note-header {
+  position: fixed;
+  top: 3em;
+  width: 100%;
+  padding: 8px;
+  background-color: white;
+  border-bottom: 1px solid var(--grey-outline);
+  z-index: 20;
+}
