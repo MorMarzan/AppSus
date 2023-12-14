@@ -17,7 +17,7 @@ const dummyNotes = [
     type: 'NoteTxt',
     isPinned: true,
     style: {
-      backgroundColor: '#00d',
+      backgroundColor: '#faafa8',
     },
     info: {
       txt: 'Fullstack Me Baby!',
@@ -32,7 +32,7 @@ const dummyNotes = [
       title: 'Bobi and Me',
     },
     style: {
-      backgroundColor: '#00d',
+      backgroundColor: '#f39f76',
     },
   },
   {
