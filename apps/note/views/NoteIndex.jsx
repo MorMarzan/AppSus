@@ -1,5 +1,6 @@
 import { eventBusService } from '../../../services/event-bus.service.js'
 import { AddNote } from '../cmps/AddNote.jsx'
+import { NoteHeader } from '../cmps/NoteHeader.jsx'
 import { NoteList } from '../cmps/NoteList.jsx'
 import { noteService } from '../services/note.service.js'
 
@@ -31,6 +32,7 @@ export function NoteIndex() {
 
   return (
     <section className="note-index page">
+      <NoteHeader />
       <AddNote onAdd={loadNotes} />
       <NoteList onChangeNote={loadNotes} notes={notes} />
       <Outlet />
