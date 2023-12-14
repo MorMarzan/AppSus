@@ -1,35 +1,30 @@
-import { NoteImg } from "./NoteImg.jsx"
-import { NoteTodos } from "./NoteTodos.jsx"
-import { NoteTxt } from "./NoteTxt.jsx"
-import { NoteVideo } from "./NoteVideo.jsx"
+import { NoteImg } from './NoteImg.jsx'
+import { NoteTodos } from './NoteTodos.jsx'
+import { NoteTxt } from './NoteTxt.jsx'
+import { NoteVideo } from './NoteVideo.jsx'
 
 const { Link } = ReactRouterDOM
+const { useState } = React
 
-export function NotePreview({note}) {
+export function NotePreview({ note, onChangeNote }) {
   return (
-    <Link to={`/note/edit/${note.id}`}>
-    <article 
-    onClick={ev => ev.stopPropagation()}
-    style={note.style ? { backgroundColor: note.style.backgroundColor } : {}}
-    className="note-preview"
-    > 
-        <DynamicCmp note={note} />
+    <article onClick={(ev) => ev.stopPropagation()} className="note-preview">
+      {/* <Link to={`/note/edit/${note.id}`}> */}
+      <DynamicCmp note={note} onChangeNote={onChangeNote} />
+      {/* </Link> */}
     </article>
-    </Link>
   )
 }
 
-
 function DynamicCmp(props) {
-    switch (props.note.type) {
-        case 'NoteTxt':
-            return <NoteTxt note={props.note} />
-        case 'NoteImg':
-            return <NoteImg note={props.note} />
-        case 'NoteVideo':
-            return <NoteVideo note={props.note} />
-        case 'NoteTodos':
-            return <NoteTodos note={props.note} />
-
-    }
+  switch (props.note.type) {
+    case 'NoteTxt':
+      return <NoteTxt note={props.note} onChangeNote={props.onChangeNote} />
+    case 'NoteImg':
+      return <NoteImg note={props.note} onChangeNote={props.onChangeNote} />
+    case 'NoteVideo':
+      return <NoteVideo note={props.note} onChangeNote={props.onChangeNote} />
+    case 'NoteTodos':
+      return <NoteTodos note={props.note} onChangeNote={props.onChangeNote} />
+  }
 }

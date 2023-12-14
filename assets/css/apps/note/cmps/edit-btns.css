@@ -1,0 +1,27 @@
+.edit-btns {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  bottom: 0;
+  z-index: 20;
+}
+
+.edit-btn-container {
+  position: relative;
+}
+
+.edit-btns .btn-display-container {
+  cursor: pointer;
+  display: flex;
+  padding: 5px;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+.edit-btns .btn-display-container:hover {
+  background-color: #dcdcdc72;
+}
+
+.edit-btns img {
+  width: 20px;
+}

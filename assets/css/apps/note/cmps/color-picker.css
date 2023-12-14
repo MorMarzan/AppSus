@@ -1,8 +1,7 @@
 .color-picker {
   position: absolute;
   display: flex;
-  top: 110px;
-  left: -20px;
+  left: -100px;
   background-color: white;
   border-radius: 10px;
   padding: 5px 10px;
@@ -25,9 +24,18 @@
   margin-inline-end: 5px;
 }
 
-@media (min-width: 800px) {
+/* Tablet */
+@media (width >= 768px) {
   .color-picker * {
     width: 30px;
     height: 30px;
   }
+
+  .color-picker {
+    left: -20px;
+  }
+}
+
+/* desktop */
+@media (width >= 992px) {
 }

@@ -4,3 +4,14 @@
   column-gap: 5px;
   margin-block-end: 10px;
 }
+
+.note-list-item {
+  position: relative;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid var(--grey-outline);
+  break-inside: avoid;
+  margin-block-end: 5px;
+  padding-block-end: 40px;
+  cursor: auto;
+}
