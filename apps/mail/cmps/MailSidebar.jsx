@@ -8,8 +8,10 @@ export function MailSidebar() {
     return (
         <section className="mail-sidebar">
             <button>
-                <i className="fa-solid fa-pencil"></i>
-                {isFull && <span>Compose</span>}
+                <Link to="/mail/edit">
+                    <i className="fa-solid fa-pencil"></i>
+                    {isFull && <span>Compose</span>}
+                </Link>
             </button>
             <button>
                 <i className="fa-solid fa-inbox"></i>
@@ -22,7 +24,7 @@ export function MailSidebar() {
             <button>
                 <i className="fa-regular fa-paper-plane"></i>
                 {isFull && <span>Sent</span>}
-                </button>
+            </button>
             <button>
                 <i className="fa-regular fa-pen-to-square"></i>
                 {isFull && <span>Draft</span>}

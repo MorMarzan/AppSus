@@ -3,7 +3,7 @@
 //     return <div>Mister Email</div>
 // }
 
-const { Link, useSearchParams } = ReactRouterDOM
+const { Outlet, Link, useSearchParams } = ReactRouterDOM
 
 // import { MailFilter } from "../cmps/MailFilter.jsx"
 import { MailList } from "../cmps/MailList.jsx"
@@ -12,6 +12,7 @@ import { mailService } from "../../mail/services/mail.service.js"
 import { MailHeader } from "../cmps/MailHeader.jsx"
 import { MailFooter } from "../cmps/MailFooter.jsx"
 import { MailSidebar } from "../cmps/MailSidebar.jsx"
+import { MailEdit } from "./MailEdit.jsx"
 // import { mailService } from "../services/mail.service.js"
 // import { showSuccessMsg } from "../services/event-bus.service.js"
 
@@ -91,6 +92,8 @@ export function MailIndex() {
                 {/* <DataTable mails={mails}/> */}
                 <MailFooter />
             </div>
+            {/* <MailEdit /> */}
+            <Outlet />
         </section>
     )
 }
