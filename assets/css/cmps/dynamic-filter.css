@@ -1,0 +1,31 @@
+.dynamic-filter {
+  position: absolute;
+  right: 5px;
+  top: 70px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--grey-outline);
+  user-select: none;
+  text-align: center;
+}
+
+.note-filter p {
+  margin: 0;
+  padding-block-end: 10px;
+  border-block-end: 1px solid var(--grey-outline);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.note-filter p:not(:first-child) {
+  padding-block: 10px;
+}
+
+.note-filter p:hover {
+  filter: brightness(80%);
+}
+
+.note-filter p.chosen {
+  filter: brightness(80%);
+}
