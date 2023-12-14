@@ -12,6 +12,8 @@ export function MailList({ mails }) {
     //     className: "mail-list",
     //     title:'CARLISTTTTTTTTTTTT'
     // }
+
+    if (!mails) return <div>Loading...</div>
     return (
             <ul className="mail-list">
                 {mails.map(mail =>
