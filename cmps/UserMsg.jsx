@@ -1,8 +1,7 @@
-import { eventBusService } from "../services/event-bus.service.js"
+import { eventBusService } from '../services/event-bus.service.js'
 const { useState, useEffect, useRef } = React
 
 export function UserMsg() {
-
   const [msg, setMsg] = useState(null)
   const timeoutIdRef = useRef()
 
@@ -14,7 +13,7 @@ export function UserMsg() {
         timeoutIdRef.current = null
         clearTimeout(timeoutIdRef.current)
       }
-      // timeoutIdRef.current = setTimeout(closeMsg, 3000)
+      timeoutIdRef.current = setTimeout(closeMsg, 3000)
     })
     return unsubscribe
   }, [])
@@ -31,4 +30,3 @@ export function UserMsg() {
     </section>
   )
 }
-
