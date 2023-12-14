@@ -40,7 +40,8 @@ button {
   padding: 0;
 }
 
-input, textarea {
+input,
+textarea {
   font-family: inherit;
   font-size: inherit;
 }
@@ -50,8 +51,12 @@ input, textarea {
   min-height: 100dvh;
 }
 
-body .input:-internal-autofill-selected {
-  background-color: unset !important;
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: black !important;
 }
 
 .main-screen {

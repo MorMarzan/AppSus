@@ -21,10 +21,23 @@ const { useState, useEffect } = React
 
 export function MailIndex() {
     const [mails, setMails] = useState(null)
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-    const [isSbOpen, setIsSbOpen] = useState(!(windowWidth <= 768)) //intialize sb to be closed on mobile
-    const [isSbFull, setIsSbFull] = useState(true) /* desktop only */
 
+    // const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
+    const [isSbOpen, setIsSbOpen] = useState(!isMobile) //intialize sb to be closed on mobile
+    const [isSbFull, setIsSbFull] = useState(true) /* desktop only */
+    useEffect(() => {
+        window.addEventListener('resize', handleResize)
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        }
+    }, [])
+    
+    function handleResize() {
+        const currIsMobile = window.innerWidth <= 768
+        setIsMobile(currIsMobile)
+
+    }
     // const [searchParams, setSearchParams] = useSearchParams()
     // const [filterBy, setFilterBy] = useState(mailService.getFilterFromQueryString(searchParams))
 
@@ -34,22 +47,7 @@ export function MailIndex() {
     }, [])
     // }, [filterBy])
 
-    useEffect(() => {
-        // Set initial window width
-        setWindowWidth(window.innerWidth)
-        // Add event listener for window resize
-        window.addEventListener('resize', handleResize)
-        // Clean up the event listener on component unmount
-        console.log('windowWidth', windowWidth)
-        console.log('isSbOpen', isSbOpen)
-        return () => {
-            window.removeEventListener('resize', handleResize)
-        }
-    }, [])
-
-    function handleResize() {
-        setWindowWidth(window.innerWidth);
-    }
+    
 
     function onSetIsSbFull() {
         setIsSbFull(isSbFull => !isSbFull)
@@ -90,7 +88,7 @@ export function MailIndex() {
         <section className="mail-index page main-layout full">
             <DynamicHeader onSetIsSbFull={onSetIsSbFull} />
             {/* {isSbOpen && <MailSidebar isSbFull={isSbFull}/>} */}
-            <DynamicSidebar isSbFull={isSbFull} />
+            <DynamicSidebar isSbFull={isSbFull}/>
             <div>
                 <MailHeader />
                 {/* <div>Mister Email</div> */}

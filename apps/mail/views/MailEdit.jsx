@@ -48,7 +48,7 @@ export function MailEdit() {
         setMailToEdit(prevMail => ({ ...prevMail, ...sentAtNow }))
         mailService.save({...mailToEdit, ...sentAtNow})
             .then((savedMail) => {
-                throw new Error('error')
+                // throw new Error('error')
                 showSuccessMsg('Mail sent successfully')
                 // console.log(savedMail)
                 navigate('/mail')

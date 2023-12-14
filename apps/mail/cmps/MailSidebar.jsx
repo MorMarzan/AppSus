@@ -6,13 +6,12 @@ export function MailSidebar({ isSbFull: isFull }) {
     // const [isFull, setIsfull] = useState(false)
 
     return (
-        <section className="mail-sidebar">
-            {/* <button> */}
+        // <section className="mail-sidebar">
+        <section className="sidebar">
             <Link className="btn" to="/mail/edit">
                 <i className="fa-solid fa-pencil"></i>
                 {isFull && <span>Compose</span>}
             </Link>
-            {/* </button> */}
             <button className="btn">
                 <i className="fa-solid fa-inbox"></i>
                 {isFull && <span>Inbox</span>}
