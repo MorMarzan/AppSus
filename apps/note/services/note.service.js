@@ -57,6 +57,10 @@ _initNotes()
 
 function query(filterBy) {
   return storageService.query(NOTES_KEY).then((notes) => {
+    if (filterBy.type && filterBy.type.length) {
+      notes = notes.filter((note) => note.type === filterBy.type)
+    }
+
     if (filterBy.txt && filterBy.txt.length) {
       const regex = new RegExp(filterBy.txt, 'i')
       notes = notes.filter((note) => {
@@ -65,6 +69,7 @@ function query(filterBy) {
         return titleMatch || txtMatch
       })
     }
+
     return notes
   })
 }

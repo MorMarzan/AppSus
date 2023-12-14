@@ -3,7 +3,7 @@
   right: 5px;
   top: 70px;
   background-color: white;
-  padding: 20px;
+  padding: 10px 20px 20px 20px;
   border-radius: 8px;
   border: 1px solid var(--grey-outline);
   user-select: none;
@@ -16,16 +16,17 @@
   border-block-end: 1px solid var(--grey-outline);
   cursor: pointer;
   transition: 0.2s;
-}
-
-.note-filter p:not(:first-child) {
   padding-block: 10px;
 }
 
-.note-filter p:hover {
-  filter: brightness(80%);
+.note-filter p:not(:first-child) {
 }
 
-.note-filter p.chosen {
-  filter: brightness(80%);
+.note-filter p:hover {
+  filter: brightness(90%);
+  background-color: #ffffff;
+}
+
+.note-filter p.active {
+  background-color: #feefc3;
 }
