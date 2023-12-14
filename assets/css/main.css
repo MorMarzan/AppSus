@@ -21,6 +21,7 @@
 
 /* Mail Views */
 @import './apps/mail/views/mail-index.css';
+@import './apps/mail/views/mail-edit.css';
 
 /* *********************************** */
 /* Cmps */
