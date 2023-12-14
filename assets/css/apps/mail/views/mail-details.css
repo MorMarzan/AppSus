@@ -1,0 +1,14 @@
+.mail-details {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+}
+
+.mail-details .info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.mail-details .info p {
+    margin: 0;
+}
