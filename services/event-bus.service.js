@@ -23,6 +23,7 @@ function createEventEmitter() {
 export const eventBusService = createEventEmitter()
 
 export function showUserMsg(msg) {
+  console.log('ev bus msg', msg)
   eventBusService.emit('show-user-msg', msg)
 }
 
@@ -55,3 +56,6 @@ export function showErrorMsg(txt) {
 //     eventBus.emit('muk', 'Buuuu!')
 //     eventBus.emit('puk', 3)
 // }, 3000)
+
+window.showSuccessMsg = showSuccessMsg
+window.showErrorMsg = showErrorMsg

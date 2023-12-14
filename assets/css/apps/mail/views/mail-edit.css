@@ -75,7 +75,6 @@
 }
 
 .mail-edit .submit:disabled {
-    /* background-color: #5f636836; */
     background-color: var(--grey-outline);
     color: var(--clr-font-Primary1);
     cursor: default;

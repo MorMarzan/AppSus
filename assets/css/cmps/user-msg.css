@@ -1,17 +1,22 @@
 .user-msg {
-    background-color: lightgray;
     padding: 1em;
-    position: absolute;
-    top: 1em;
-    right: 1em;
+    position: fixed;
+    bottom: 0;
+    left: 20px;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    font-family: 'roboto-bold';
+    color: var(--clrPrimary-3);
 }
 
 .user-msg.success {
-    background-color: lightgreen;
+    /* background-color: lightgreen; */
+    background-color: var(--clrPrimary3);
 }
 
 .user-msg.error {
-    background-color: lightpink;
+    /* background-color: lightpink; */
+    background-color: var(--clr-error);
 }
 
 

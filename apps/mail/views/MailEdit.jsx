@@ -1,4 +1,5 @@
 import { mailService } from "../../mail/services/mail.service.js"
+import { showSuccessMsg } from "../../../services/event-bus.service.js"
 
 const { useNavigate, Link, useParams } = ReactRouterDOM
 const { useState, useEffect } = React
@@ -43,13 +44,18 @@ export function MailEdit() {
 
     function onSaveMail(ev) {
         ev.preventDefault()
-        setMailToEdit(prevMail => ({ ...prevMail, [sentAt]: new Date().getTime() }))
-        mailService.save(mailToEdit)
+        const sentAtNow = {sentAt: new Date().getTime()}
+        setMailToEdit(prevMail => ({ ...prevMail, ...sentAtNow }))
+        mailService.save({...mailToEdit, ...sentAtNow})
             .then((savedMail) => {
-                console.log(savedMail)
-                // navigate('/mail')
+                showSuccessMsg('Mail sent successfully')
+                // console.log(savedMail)
+                navigate('/mail')
             })
-            .catch(err => console.log('err:', err))
+            .catch(err => {
+                console.log('err:', err)
+                showErrorMsg('Error - mail not sent')
+            })
     }
 
     const { to, subject, body } = mailToEdit
@@ -61,14 +67,11 @@ export function MailEdit() {
                     <Link className="btn" to="/mail">X</Link>
                 </div>
             </header>
-            <form >
-                {/* <form onSubmit={onSaveMail}> */}
-                {/* <label htmlFor="to">To</label> */}
-                <input onChange={handleChange} placeholder="To" value={to} type="email" name="to" id="to" />
-                {/* <label htmlFor="subject">Subject</label> */}
-                <input onChange={handleChange} placeholder="Subject" value={subject} type="text" name="subject" id="subject" />
-                {/* <label htmlFor="mail-body">Body</label> */}
-                <textarea onChange={handleChange} value={body} type="text" name="body" id="mail-body" />
+            {/* <form > */}
+                <form onSubmit={onSaveMail}>
+                <input onChange={handleChange} placeholder="To" value={to} type="email" name="to"/>
+                <input onChange={handleChange} placeholder="Subject" value={subject} type="text" name="subject"/>
+                <textarea onChange={handleChange} value={body} type="text" name="body"/>
 
                 <button className="submit" disabled={!to}>Save</button>
             </form>
