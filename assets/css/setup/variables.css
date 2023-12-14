@@ -12,6 +12,7 @@
      --clr-font-Primary1: #5f6368; /* mail content */
      --clr-font-PrimaryBase: #262627;/* all fonts */
  
+     --clrPrimary3: #0957d0; /* send btn */
      --clrPrimary2: #c2e7ff; /* add mail btn bg */
      --clrPrimary1: #d3e3fd; /* side bar active */
      --clrPrimaryBase: #f6f8fc;/*sidebar & header bg */
@@ -21,7 +22,8 @@
 
      --border-radius: 20px;
 
-     /* #f2f6fb ediy header */
+     /* #f2f6fb edit header */
+     
 }
 
 /* Tablet */

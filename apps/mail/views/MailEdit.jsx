@@ -1,7 +1,7 @@
 import { mailService } from "../../mail/services/mail.service.js"
-const { useNavigate, useParams } = ReactRouterDOM
-const { useState, useEffect } = React
 
+const { useNavigate, Link, useParams } = ReactRouterDOM
+const { useState, useEffect } = React
 
 export function MailEdit() {
     const [mailToEdit, setMailToEdit] = useState(mailService.getEmptyMail())
@@ -58,7 +58,7 @@ export function MailEdit() {
             <header className="mail-edit-header mail-edit-layout full">
                 <div>
                     <h4>New Messege</h4>
-                    <button>X</button>
+                    <Link className="btn" to="/mail">X</Link>
                 </div>
             </header>
             <form >
