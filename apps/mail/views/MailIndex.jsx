@@ -19,6 +19,9 @@ const { useState, useEffect } = React
 
 export function MailIndex() {
     const [mails, setMails] = useState(null)
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+    const [isSbOpen, setIsSbOpen] = useState(!(windowWidth <= 768)) //intialize sb to be closed on mobile
+
     // const [searchParams, setSearchParams] = useSearchParams()
     // const [filterBy, setFilterBy] = useState(mailService.getFilterFromQueryString(searchParams))
 
@@ -28,9 +31,26 @@ export function MailIndex() {
     }, [])
     // }, [filterBy])
 
+    useEffect(() => {
+        // Set initial window width
+        setWindowWidth(window.innerWidth)
+        // Add event listener for window resize
+        window.addEventListener('resize', handleResize)
+        // Clean up the event listener on component unmount
+        console.log('windowWidth',windowWidth)
+        console.log('isSbOpen',isSbOpen)
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        }
+    }, [])
+
+    function handleResize() {
+        setWindowWidth(window.innerWidth);
+    }
+
     function loadMails() {
         mailService.query()
-        // mailService.query(filterBy)
+            // mailService.query(filterBy)
             .then(setMails)
             .catch(err => console.log('err:', err))
     }
@@ -61,15 +81,15 @@ export function MailIndex() {
     if (!mails) return <div>Loading...</div>
     return (
         <section className="mail-index page main-layout full">
-            <MailSidebar />
+            {isSbOpen && <MailSidebar />}
             <div>
-            <MailHeader />
-            {/* <div>Mister Email</div> */}
-            {/* <MailFilter filterBy={{ txt, minSpeed }} onSetFilter={onSetFilter} /> */}
-            <MailList mails={mails}/>
-            {/* <MailList mails={mails} onRemoveMail={onRemoveMail} /> */}
-            {/* <DataTable mails={mails}/> */}
-            <MailFooter />
+                <MailHeader />
+                {/* <div>Mister Email</div> */}
+                {/* <MailFilter filterBy={{ txt, minSpeed }} onSetFilter={onSetFilter} /> */}
+                <MailList mails={mails} />
+                {/* <MailList mails={mails} onRemoveMail={onRemoveMail} /> */}
+                {/* <DataTable mails={mails}/> */}
+                <MailFooter />
             </div>
         </section>
     )

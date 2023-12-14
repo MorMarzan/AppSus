@@ -3,7 +3,7 @@ const { useState, useEffect } = React
 
 export function MailSidebar() {
 
-    const [isFull, setIsfull] = useState(false)
+    const [isFull, setIsfull] = useState(true)
 
     return (
         <section className="mail-sidebar">
