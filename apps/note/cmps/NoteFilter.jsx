@@ -6,6 +6,12 @@ export default function NoteFilter({ onSetFilter, filter }) {
     { display: 'Video Notes', filter: 'NoteVideo' },
   ]
 
+  function onFilterClick(filterType) {
+    filter.type === filterType
+      ? onSetFilter({ type: '' })
+      : onSetFilter({ type: filterType })
+  }
+
   return (
     <section className="note-filter">
       {filters.map((filterItem) => {
@@ -13,7 +19,7 @@ export default function NoteFilter({ onSetFilter, filter }) {
           <p
             className={filter.type === filterItem.filter ? 'active' : ''}
             key={filterItem.display}
-            onClick={() => onSetFilter({ type: filterItem.filter })}
+            onClick={() => onFilterClick(filterItem.filter)}
           >
             {filterItem.display}
           </p>
