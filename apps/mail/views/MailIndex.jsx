@@ -88,10 +88,10 @@ export function MailIndex() {
     if (!mails) return <div>Loading...</div>
     return (
         <section className="mail-index page main-layout full">
+            <DynamicHeader onSetIsSbFull={onSetIsSbFull} />
             {/* {isSbOpen && <MailSidebar isSbFull={isSbFull}/>} */}
-            <DynamicSidebar isSbFull={isSbFull}/>
+            <DynamicSidebar isSbFull={isSbFull} />
             <div>
-                <DynamicHeader onSetIsSbFull={onSetIsSbFull}/>
                 <MailHeader />
                 {/* <div>Mister Email</div> */}
                 {/* <MailFilter filterBy={{ txt, minSpeed }} onSetFilter={onSetFilter} /> */}
