@@ -1,14 +1,56 @@
-import { NotePreview } from "./NotePreview.jsx"
+const { useState, Fragment } = React
+import { EditBtns } from './EditBtns.jsx'
+import { NotePreview } from './NotePreview.jsx'
+import { noteService } from '../services/note.service.js'
 
+export function NoteList({ notes, onChangeNote }) {
+  const [noteHoverId, setNoteHoverId] = useState(null)
+  const [isColorOpen, setIsColorOpen] = useState(false)
 
-export function NoteList({notes}) {
+  function handleStyleChange(color, note) {
+    const newNote = {
+      ...note,
+      style: { ...note.style, backgroundColor: color },
+    }
 
-    if(!notes || !notes.length) return <h2 className="loading-msg">Loading...</h2>
-    return (
-        <section className="note-list">
-            {notes.map(note => {
-                return <NotePreview key={note.id} note={note} />
-            })}
-        </section>
-    )
+    noteService.save(newNote).then(onChangeNote)
+  }
+
+  function onPalletteClick(ev) {
+    setIsColorOpen((colorOpen) => !colorOpen)
+  }
+
+  if (!notes || !notes.length)
+    return <h2 className="loading-msg">Loading...</h2>
+  return (
+    <section className="note-list">
+      {notes.map((note) => {
+        return (
+          <article
+            className="note-list-item"
+            style={
+              note.style ? { backgroundColor: note.style.backgroundColor } : {}
+            }
+            onMouseEnter={() => setNoteHoverId(note.id)}
+            onMouseLeave={() => {
+              setIsColorOpen(false)
+              setNoteHoverId(null)
+            }}
+            key={note.id}
+          >
+            <NotePreview note={note} onChangeNote={onChangeNote} />
+
+            {noteHoverId === note.id && (
+              <EditBtns
+                note={note}
+                handleStyleChange={handleStyleChange}
+                isColorOpen={isColorOpen}
+                onPalletteClick={onPalletteClick}
+              />
+            )}
+          </article>
+        )
+      })}
+    </section>
+  )
 }

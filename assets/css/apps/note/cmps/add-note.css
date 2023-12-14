@@ -50,29 +50,14 @@
 
 .add-note .add-note-form .tool-bar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin-block-start: 15px;
-}
-
-.add-note .add-note-form .tool-bar .edit-btns .btn-display-container:hover {
-  background-color: #dcdcdc72;
-}
-
-.add-note .add-note-form .tool-bar .edit-btns .btn-display-container {
-  /* position: relative; */
-  cursor: pointer;
-  display: flex;
-  padding: 5px;
-  border-radius: 50%;
-  transition: 0.2s;
-}
-
-.add-note .add-note-form .tool-bar .edit-btns img {
-  width: 20px;
+  padding-block: 15px;
 }
 
 .add-note .add-note-form .add-btn {
+  position: absolute;
+  right: 0;
   padding: 10px 15px;
   border-radius: 10px;
   transition: 0.2s;
