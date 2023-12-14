@@ -49,7 +49,7 @@ input, textarea {
   min-height: 100dvh;
 }
 
-.input:-internal-autofill-selected {
+body .input:-internal-autofill-selected {
   background-color: unset !important;
 }
 
