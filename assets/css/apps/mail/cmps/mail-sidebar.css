@@ -22,11 +22,12 @@
 
 }
 
-.mail-sidebar button {
+.mail-sidebar .btn {
     display: grid;
     grid-auto-flow: column;
     gap: 15px;
     text-align: start;
+    align-items: center;
 }
 
 /* Tablet */

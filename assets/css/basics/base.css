@@ -37,6 +37,7 @@ button {
   cursor: pointer;
   border: 0;
   background-color: unset;
+  padding: 0;
 }
 
 input, textarea {

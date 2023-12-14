@@ -12,7 +12,6 @@ import { mailService } from "../../mail/services/mail.service.js"
 import { MailHeader } from "../cmps/MailHeader.jsx"
 import { MailFooter } from "../cmps/MailFooter.jsx"
 import { MailSidebar } from "../cmps/MailSidebar.jsx"
-import { MailEdit } from "./MailEdit.jsx"
 // import { mailService } from "../services/mail.service.js"
 // import { showSuccessMsg } from "../services/event-bus.service.js"
 
@@ -22,6 +21,7 @@ export function MailIndex() {
     const [mails, setMails] = useState(null)
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
     const [isSbOpen, setIsSbOpen] = useState(!(windowWidth <= 768)) //intialize sb to be closed on mobile
+    const [isSbFull, setIsSbFull] = useState(true) /* desktop only */
 
     // const [searchParams, setSearchParams] = useSearchParams()
     // const [filterBy, setFilterBy] = useState(mailService.getFilterFromQueryString(searchParams))
@@ -38,8 +38,8 @@ export function MailIndex() {
         // Add event listener for window resize
         window.addEventListener('resize', handleResize)
         // Clean up the event listener on component unmount
-        console.log('windowWidth',windowWidth)
-        console.log('isSbOpen',isSbOpen)
+        console.log('windowWidth', windowWidth)
+        console.log('isSbOpen', isSbOpen)
         return () => {
             window.removeEventListener('resize', handleResize)
         }
@@ -47,6 +47,10 @@ export function MailIndex() {
 
     function handleResize() {
         setWindowWidth(window.innerWidth);
+    }
+
+    function onSetIsSbFull() {
+        setIsSbFull(isSbFull => !isSbFull)
     }
 
     function loadMails() {
@@ -82,9 +86,9 @@ export function MailIndex() {
     if (!mails) return <div>Loading...</div>
     return (
         <section className="mail-index page main-layout full">
-            {isSbOpen && <MailSidebar />}
+            {isSbOpen && <MailSidebar isSbFull={isSbFull}/>}
             <div>
-                <MailHeader />
+                <MailHeader onSetIsSbFull={onSetIsSbFull}/>
                 {/* <div>Mister Email</div> */}
                 {/* <MailFilter filterBy={{ txt, minSpeed }} onSetFilter={onSetFilter} /> */}
                 <MailList mails={mails} />
@@ -92,8 +96,7 @@ export function MailIndex() {
                 {/* <DataTable mails={mails}/> */}
                 <MailFooter />
             </div>
-            {/* <MailEdit /> */}
-            <Outlet />
+            <Outlet /> {/*  <MailEdit />  */}
         </section>
     )
 }

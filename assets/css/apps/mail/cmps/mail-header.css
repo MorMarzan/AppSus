@@ -4,6 +4,9 @@
     border-top-left-radius: var(--border-radius);
     text-align: center;
     top: auto;
+    display: flex;
+    padding: 10px 20px;
+    justify-content: space-between;
 }
 
 .mail-header {
