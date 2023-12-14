@@ -1,8 +1,15 @@
 .note-index {
+}
+
+.page-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: auto;
   width: 95%;
-  padding-block-start: 100px;
+  padding-block-start: 80px;
+}
+
+.page-layout {
+  display: flex;
 }
