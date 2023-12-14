@@ -5,15 +5,16 @@
   position: relative;
 }
 
-.mail-index > div {
+/* .mail-index > div {
   margin-inline: 20px;
-}
+} */
 
 /* Tablet */
 @media (width >=768px) {
   .mail-index {
     display: grid;
     grid-template-columns: auto 1fr;
+    column-gap: 20px;
   }
 }
 

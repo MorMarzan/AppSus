@@ -13,10 +13,11 @@ import { DynamicSidebar } from "../../../cmps/DynamicSidebar.jsx"
 // import { showSuccessMsg } from "../services/event-bus.service.js"
 import { eventBusService } from '../../../services/event-bus.service.js'
 
-const { useState, useEffect } = React
+const { useState, useEffect, useRef } = React
 
 export function MailIndex() {
     const [mails, setMails] = useState(null)
+    let intervalIdRef = useRef()
 
     // const [windowWidth, setWindowWidth] = useState(window.innerWidth)
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
@@ -37,18 +38,30 @@ export function MailIndex() {
     // const [searchParams, setSearchParams] = useSearchParams()
     // const [filterBy, setFilterBy] = useState(mailService.getFilterFromQueryString(searchParams))
 
+
+    //intial render && when filter changes
     useEffect(() => {
         loadMails()
         // setSearchParams(filterBy)
     }, [])
     // }, [filterBy])
 
+    //render after mail edit/add
     useEffect(() => {
         const unsubscribe = eventBusService.on('load-mails', loadMails)
         return () => {
             unsubscribe()
         }
     }, [])
+
+    //render every 30 min so that the user will see the change in sentAt
+    useEffect(() => {
+        intervalIdRef.current = setInterval(loadMails, 30 * 60 * 1000)
+        
+        return () => {
+            clearInterval(intervalIdRef.current)
+        }
+    },[])
 
 
 
@@ -86,7 +99,7 @@ export function MailIndex() {
 
     // const { txt, minSpeed, maxPrice } = filterBy
 
-    if (!mails) return <div>Loading...</div>
+    // if (!mails) return <div>Loading...</div>
     return (
         <section className="mail-index page main-layout full">
             <DynamicHeader onSetIsSbFull={onSetIsSbFull} />

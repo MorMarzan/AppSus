@@ -9,6 +9,7 @@ import { NoteIndex } from "./apps/note/views/NoteIndex.jsx"
 import { MailEdit } from "./apps/mail/views/MailEdit.jsx"
 import { EditNote } from "./apps/note/cmps/EditNote.jsx"
 import { UserMsg } from "./cmps/UserMsg.jsx"
+import { MailDetails } from "./apps/mail/views/MailDetails.jsx"
 
 
 export function App() {
@@ -17,15 +18,24 @@ export function App() {
             <AppHeader />
 
             <Routes>
+                {/* shared */}
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
+
+                {/* mail */}
                 <Route path="/mail" element={<MailIndex />} >
                     <Route path="/mail/edit" element={<MailEdit />} />
                 </Route>
+                <Route path="/mail/:mailId" element={<MailDetails />} />
+                {/* <Route path="/mail/details" element={<MailDetails />} /> */}
+
+                {/* note */}
                 <Route path="/note" element={<NoteIndex />} >
                     <Route path="/note/edit/:noteId" element={<EditNote />} />
                 </Route>
+
             </Routes>
+
             <UserMsg />
         </section>
     </Router>

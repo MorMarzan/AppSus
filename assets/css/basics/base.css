@@ -33,6 +33,7 @@ img {
 button {
   font-family: inherit;
   font-size: inherit;
+  color: inherit;
 
   cursor: pointer;
   border: 0;
@@ -49,6 +50,7 @@ textarea {
 .page {
   padding-block: 120px 10px;
   min-height: 100dvh;
+  padding-inline: 20px;
 }
 
 input:-webkit-autofill,
@@ -65,3 +67,4 @@ input:-webkit-autofill:active {
   background-color: #54545474;
   cursor: pointer;
 }
+
