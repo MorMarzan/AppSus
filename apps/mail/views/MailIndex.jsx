@@ -1,8 +1,3 @@
-
-// export function MailIndex() {
-//     return <div>Mister Email</div>
-// }
-
 const { Outlet, Link, useSearchParams } = ReactRouterDOM
 
 // import { MailFilter } from "../cmps/MailFilter.jsx"
@@ -16,6 +11,7 @@ import { DynamicHeader } from "../../../cmps/DynamicHeader.jsx"
 import { DynamicSidebar } from "../../../cmps/DynamicSidebar.jsx"
 // import { mailService } from "../services/mail.service.js"
 // import { showSuccessMsg } from "../services/event-bus.service.js"
+import { eventBusService } from '../../../services/event-bus.service.js'
 
 const { useState, useEffect } = React
 
@@ -32,7 +28,7 @@ export function MailIndex() {
             window.removeEventListener('resize', handleResize)
         }
     }, [])
-    
+
     function handleResize() {
         const currIsMobile = window.innerWidth <= 768
         setIsMobile(currIsMobile)
@@ -47,7 +43,14 @@ export function MailIndex() {
     }, [])
     // }, [filterBy])
 
-    
+    useEffect(() => {
+        const unsubscribe = eventBusService.on('load-mails', loadMails)
+        return () => {
+            unsubscribe()
+        }
+    }, [])
+
+
 
     function onSetIsSbFull() {
         setIsSbFull(isSbFull => !isSbFull)
@@ -88,7 +91,7 @@ export function MailIndex() {
         <section className="mail-index page main-layout full">
             <DynamicHeader onSetIsSbFull={onSetIsSbFull} />
             {/* {isSbOpen && <MailSidebar isSbFull={isSbFull}/>} */}
-            <DynamicSidebar isSbFull={isSbFull}/>
+            <DynamicSidebar isSbFull={isSbFull} />
             <div>
                 <MailHeader />
                 {/* <div>Mister Email</div> */}

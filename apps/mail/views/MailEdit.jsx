@@ -1,5 +1,6 @@
 import { mailService } from "../../mail/services/mail.service.js"
-import { showSuccessMsg } from "../../../services/event-bus.service.js"
+// import { showSuccessMsg } from "../../../services/event-bus.service.js"
+import { eventBusService } from '../../../services/event-bus.service.js'
 
 const { useNavigate, Link, useParams } = ReactRouterDOM
 const { useState, useEffect } = React
@@ -44,12 +45,13 @@ export function MailEdit() {
 
     function onSaveMail(ev) {
         ev.preventDefault()
-        const sentAtNow = {sentAt: new Date().getTime()}
+        const sentAtNow = { sentAt: new Date().getTime() }
         setMailToEdit(prevMail => ({ ...prevMail, ...sentAtNow }))
-        mailService.save({...mailToEdit, ...sentAtNow})
+        mailService.save({ ...mailToEdit, ...sentAtNow })
             .then((savedMail) => {
                 // throw new Error('error')
                 showSuccessMsg('Mail sent successfully')
+                eventBusService.emit('load-mails')
                 // console.log(savedMail)
                 navigate('/mail')
             })
@@ -69,10 +71,10 @@ export function MailEdit() {
                 </div>
             </header>
             {/* <form > */}
-                <form onSubmit={onSaveMail}>
-                <input onChange={handleChange} placeholder="To" value={to} type="email" name="to"/>
-                <input onChange={handleChange} placeholder="Subject" value={subject} type="text" name="subject"/>
-                <textarea onChange={handleChange} value={body} type="text" name="body"/>
+            <form onSubmit={onSaveMail}>
+                <input onChange={handleChange} placeholder="To" value={to} type="email" name="to" />
+                <input onChange={handleChange} placeholder="Subject" value={subject} type="text" name="subject" />
+                <textarea onChange={handleChange} value={body} type="text" name="body" />
 
                 <button className="submit" disabled={!to}>Save</button>
             </form>

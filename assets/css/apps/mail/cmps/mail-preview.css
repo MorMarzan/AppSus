@@ -40,7 +40,8 @@
 @media (width >= 992px) {
     .mail-preview {
         grid-template-columns:
-            minmax(auto, 160px) 1fr minmax(auto, 100px);
+            minmax(auto, 160px) 1fr auto;
+            /* minmax(auto, 160px) 1fr minmax(auto, 100px); */
         grid-template-rows: unset;
         gap: 20px;
     }
