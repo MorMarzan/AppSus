@@ -14,7 +14,7 @@ export function EditBtns({
         onClick={(ev) => ev.stopPropagation()}
       >
         <div onClick={onPalletteClick} className="btn-display-container">
-          <img src="../../../assets/img/color-palette.svg" />
+          <img src="./assets/img/color-palette.svg" />
         </div>
         {isColorOpen && (
           <ColorPicker

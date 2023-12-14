@@ -114,7 +114,7 @@ export function AddNote({ onAdd, noteToEdit, isOpen, onClose }) {
               <img
                 onClick={() => refactorNote('isPinned', !note.isPinned)}
                 className="pin-img"
-                src={`../../../assets/img/${
+                src={`./assets/img/${
                   note.isPinned ? 'pinned' : 'unpinned'
                 }.svg`}
               />

@@ -28,7 +28,7 @@ const dummyNotes = [
     type: 'NoteImg',
     isPinned: false,
     info: {
-      url: '../../../assets/img/audi.jpg',
+      url: './assets/img/audi.jpg',
       title: 'Bobi and Me',
     },
     style: {
