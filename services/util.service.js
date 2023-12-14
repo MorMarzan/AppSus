@@ -80,8 +80,14 @@ function formatTimestamp(timestamp) {
         date.getFullYear() === now.getFullYear()
     ) {
         // Check if it is in the last 24 hours
-        const diffInHours = Math.floor((now - date) / (1000 * 60 * 60));
-        if (diffInHours < 24) {
+        const diffInMinutes = Math.floor((now - date) / (1000 * 60));
+        if (diffInMinutes < 1) {
+            return 'Now';
+        } else if (diffInMinutes < 60) {
+            const pluralS = diffInMinutes > 1 ? 's' : '';
+            return `${diffInMinutes} minute${pluralS} ago`;
+        } else if (diffInMinutes < 60 * 24) {
+            const diffInHours = Math.floor(diffInMinutes / 60);
             if (diffInHours === 1) {
                 return '1 hour ago';
             } else if (diffInHours < 10) {

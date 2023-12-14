@@ -1,8 +1,3 @@
-
-// export function MailIndex() {
-//     return <div>Mister Email</div>
-// }
-
 const { Outlet, Link, useSearchParams } = ReactRouterDOM
 
 // import { MailFilter } from "../cmps/MailFilter.jsx"
@@ -16,15 +11,29 @@ import { DynamicHeader } from "../../../cmps/DynamicHeader.jsx"
 import { DynamicSidebar } from "../../../cmps/DynamicSidebar.jsx"
 // import { mailService } from "../services/mail.service.js"
 // import { showSuccessMsg } from "../services/event-bus.service.js"
+import { eventBusService } from '../../../services/event-bus.service.js'
 
 const { useState, useEffect } = React
 
 export function MailIndex() {
     const [mails, setMails] = useState(null)
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-    const [isSbOpen, setIsSbOpen] = useState(!(windowWidth <= 768)) //intialize sb to be closed on mobile
-    const [isSbFull, setIsSbFull] = useState(true) /* desktop only */
 
+    // const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
+    const [isSbOpen, setIsSbOpen] = useState(!isMobile) //intialize sb to be closed on mobile
+    const [isSbFull, setIsSbFull] = useState(true) /* desktop only */
+    useEffect(() => {
+        window.addEventListener('resize', handleResize)
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        }
+    }, [])
+
+    function handleResize() {
+        const currIsMobile = window.innerWidth <= 768
+        setIsMobile(currIsMobile)
+
+    }
     // const [searchParams, setSearchParams] = useSearchParams()
     // const [filterBy, setFilterBy] = useState(mailService.getFilterFromQueryString(searchParams))
 
@@ -35,21 +44,13 @@ export function MailIndex() {
     // }, [filterBy])
 
     useEffect(() => {
-        // Set initial window width
-        setWindowWidth(window.innerWidth)
-        // Add event listener for window resize
-        window.addEventListener('resize', handleResize)
-        // Clean up the event listener on component unmount
-        console.log('windowWidth', windowWidth)
-        console.log('isSbOpen', isSbOpen)
+        const unsubscribe = eventBusService.on('load-mails', loadMails)
         return () => {
-            window.removeEventListener('resize', handleResize)
+            unsubscribe()
         }
     }, [])
 
-    function handleResize() {
-        setWindowWidth(window.innerWidth);
-    }
+
 
     function onSetIsSbFull() {
         setIsSbFull(isSbFull => !isSbFull)

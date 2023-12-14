@@ -3,10 +3,15 @@ import { NoteSidebar } from "../apps/note/cmps/NoteSidebar.jsx";
 
 const { useLocation } = ReactRouterDOM
 
-export function DynamicSidebar({ isSbFull }) {
 
+
+export function DynamicSidebar({ isSbFull}) {
+    
     const { pathname } = useLocation()
     const headerType = (pathname.includes('mail')) ? 'mail' : 'note'
+    
+    
+
 
     return (
         <section className="dynamic-sidebar">
