@@ -12,6 +12,7 @@ import { mailService } from "../../mail/services/mail.service.js"
 import { MailHeader } from "../cmps/MailHeader.jsx"
 import { MailFooter } from "../cmps/MailFooter.jsx"
 import { MailSidebar } from "../cmps/MailSidebar.jsx"
+import { DynamicHeader } from "../../../cmps/DynamicHeader.jsx"
 // import { mailService } from "../services/mail.service.js"
 // import { showSuccessMsg } from "../services/event-bus.service.js"
 
@@ -88,7 +89,8 @@ export function MailIndex() {
         <section className="mail-index page main-layout full">
             {isSbOpen && <MailSidebar isSbFull={isSbFull}/>}
             <div>
-                <MailHeader onSetIsSbFull={onSetIsSbFull}/>
+                <DynamicHeader onSetIsSbFull={onSetIsSbFull}/>
+                <MailHeader />
                 {/* <div>Mister Email</div> */}
                 {/* <MailFilter filterBy={{ txt, minSpeed }} onSetFilter={onSetFilter} /> */}
                 <MailList mails={mails} />

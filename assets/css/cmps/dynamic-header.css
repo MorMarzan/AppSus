@@ -6,4 +6,13 @@
   background-color: white;
   border-bottom: 1px solid var(--grey-outline);
   z-index: 20;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.dynamic-header .btn-menu {
+  padding: 12px;
+  margin: 0 4px;
 }
