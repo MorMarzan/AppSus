@@ -5,6 +5,7 @@
   justify-content: space-between;
   align-items: center;
   height: 3em;
+  padding-inline: 10px;
   position: fixed;
   top: 0;
   width: 100%;
