@@ -1,7 +1,7 @@
 // import { MailFilter } from "../cmps/MailFilter.jsx"
 import { MailList } from "../cmps/MailList.jsx"
 import { mailService } from "../../mail/services/mail.service.js"
-import { eventBusService } from '../../../services/event-bus.service.js'
+import { showSuccessMsg, showErrorMsg, eventBusService } from "../../../services/event-bus.service.js"
 
 const { useState, useEffect, useRef } = React
 const { useSearchParams } = ReactRouterDOM
@@ -11,7 +11,7 @@ export function MailIndex() {
     const [mails, setMails] = useState(null)
     let intervalIdRef = useRef()
 
-    
+
     // const [searchParams, setSearchParams] = useSearchParams()
     // const [filterBy, setFilterBy] = useState(mailService.getFilterFromQueryString(searchParams))
 
@@ -34,11 +34,11 @@ export function MailIndex() {
     //render every 30 min so that the user will see the change in sentAt
     useEffect(() => {
         intervalIdRef.current = setInterval(loadMails, 30 * 60 * 1000)
-        
+
         return () => {
             clearInterval(intervalIdRef.current)
         }
-    },[])
+    }, [])
 
     function loadMails() {
         mailService.query()
@@ -70,12 +70,25 @@ export function MailIndex() {
 
     // const { txt, minSpeed, maxPrice } = filterBy
 
-    
+    function onMarkAsRead(mailId) {
+        mailService.get(mailId)
+            .then(mail => mailService.save({ ...mail, isRead: true }))
+            // .then((UpdatedMail) => {
+            // console.log('UpdatedMail',UpdatedMail)
+            // throw new Error('test')
+            // })
+            .catch(err => {
+                console.log('err:', err)
+                showErrorMsg('Error - can\'t find mail details ')
+            })
+    }
+
+
     return (
         <section className="mail-index">
-                {/* <MailFilter filterBy={{ txt, minSpeed }} onSetFilter={onSetFilter} /> */}
-                <MailList mails={mails} />
-                {/* <MailList mails={mails} onRemoveMail={onRemoveMail} /> */}
+            {/* <MailFilter filterBy={{ txt, minSpeed }} onSetFilter={onSetFilter} /> */}
+            <MailList mails={mails} onMarkAsRead={onMarkAsRead} />
+            {/* <MailList mails={mails} onRemoveMail={onRemoveMail} /> */}
         </section>
     )
 }

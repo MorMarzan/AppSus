@@ -57,5 +57,5 @@ export function showErrorMsg(txt) {
 //     eventBus.emit('puk', 3)
 // }, 3000)
 
-window.showSuccessMsg = showSuccessMsg
-window.showErrorMsg = showErrorMsg
+// window.showSuccessMsg = showSuccessMsg
+// window.showErrorMsg = showErrorMsg

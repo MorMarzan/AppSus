@@ -3,18 +3,18 @@ const { useState, useEffect, Fragment } = React
 
 export function MailHeader() {
 
-    const location = useLocation()
-    const { mailId } = useParams()
+    // const location = useLocation()
+    // const { mailId } = useParams()
 
     // const isMailInboxRoute = location.pathname === '/mail/inbox/';
-    const hasMailId = !!mailId;
+    // const hasMailId = !!mailId;
     // console.log('hasMailId', hasMailId)
     // console.log('isMailInboxRoute', isMailInboxRoute)
 
     return (
-        <header className="mail-header full main-layout">
+        <header className="mail-header">
             <section>
-                {hasMailId &&
+                {/* {hasMailId &&
                     <Fragment>
                         <Link className="btn"
                             to={'/mail/inbox'}>
@@ -24,7 +24,7 @@ export function MailHeader() {
                             <i className="fa-solid fa-trash"></i>
                         </button>
                     </Fragment>
-                }
+                } */}
                 {/* <nav className="app-nav">
                     <NavLink to="/" >Home</NavLink>
                     <NavLink to="/about" >About</NavLink>
