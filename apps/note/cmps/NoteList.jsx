@@ -2,10 +2,13 @@ const { useState, Fragment } = React
 import { EditBtns } from './EditBtns.jsx'
 import { NotePreview } from './NotePreview.jsx'
 import { noteService } from '../services/note.service.js'
+const { useLocation } = ReactRouterDOM
 
 export function NoteList({ notes, onChangeNote }) {
   const [noteHoverId, setNoteHoverId] = useState(null)
   const [isColorOpen, setIsColorOpen] = useState(false)
+  const { pathname } = useLocation()
+  const pageLoc = pathname.includes('notes') ? 'notes' : 'bin'
 
   function handleStyleChange(color, note) {
     const newNote = {
@@ -68,7 +71,7 @@ export function NoteList({ notes, onChangeNote }) {
             }}
             key={note.id}
           >
-            {noteHoverId === note.id && (
+            {noteHoverId === note.id && pageLoc === 'notes' && (
               <img
                 onClick={() => handlePinClick(note)}
                 className="pin-img"
@@ -79,7 +82,7 @@ export function NoteList({ notes, onChangeNote }) {
             )}
             <NotePreview note={note} onChangeNote={onChangeNote} />
 
-            {noteHoverId === note.id && (
+            {noteHoverId === note.id && pageLoc === 'notes' && (
               <EditBtns
                 note={note}
                 handleStyleChange={handleStyleChange}
