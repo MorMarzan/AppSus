@@ -18,6 +18,7 @@ export function NoteBin() {
   }
 
   function onChangeNote(note) {
+    console.log('note', note)
     if (!note) {
       loadNotes()
       return

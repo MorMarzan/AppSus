@@ -84,16 +84,17 @@ function get(noteId) {
   return storageService.get(NOTES_KEY, noteId)
 }
 
-function save(note) {
-  if (note.id) {
+function save(note, isDeleted = false) {
+  if (note.id && !isDeleted) {
     return storageService.put(NOTES_KEY, note)
   } else {
     return storageService.post(NOTES_KEY, note)
   }
 }
 
-function remove(noteId) {
-  return storageService.remove(NOTES_KEY, noteId)
+function remove(noteId, isDeleted = false) {
+  const key = isDeleted ? DELETED_NOTES_KEY : NOTES_KEY
+  return storageService.remove(key, noteId)
 }
 
 function moveToBin(note) {
