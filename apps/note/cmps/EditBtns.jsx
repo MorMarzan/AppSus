@@ -10,6 +10,7 @@ export function EditBtns({
   return (
     <div className="edit-btns" onClick={(ev) => ev.stopPropagation()}>
       <div
+        title="Choose Color"
         className="edit-btn-container"
         onClick={(ev) => ev.stopPropagation()}
       >
@@ -25,6 +26,7 @@ export function EditBtns({
       </div>
       {note.id && (
         <div
+          title="Delete"
           className="edit-btn-container"
           onClick={(ev) => ev.stopPropagation()}
         >
