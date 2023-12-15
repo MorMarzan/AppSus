@@ -1,4 +1,5 @@
 import { ColorPicker } from './ColorPicker.jsx'
+const { useState, useEffect, Fragment } = React
 
 export function EditBtns({
   onPalletteClick,
@@ -6,6 +7,7 @@ export function EditBtns({
   handleStyleChange,
   note,
   onDeleteNote,
+  onDuplicateNote,
 }) {
   return (
     <div className="edit-btns" onClick={(ev) => ev.stopPropagation()}>
@@ -25,18 +27,33 @@ export function EditBtns({
         )}
       </div>
       {note.id && (
-        <div
-          title="Delete"
-          className="edit-btn-container"
-          onClick={(ev) => ev.stopPropagation()}
-        >
+        <Fragment>
           <div
-            onClick={() => onDeleteNote(note.id)}
-            className="btn-display-container"
+            title="Duplicate"
+            className="edit-btn-container"
+            onClick={(ev) => ev.stopPropagation()}
           >
-            <i className="fa-solid fa-trash" aria-hidden="true"></i>
+            <div
+              onClick={() => onDuplicateNote(note)}
+              className="btn-display-container"
+            >
+              <img src="./assets/img/copy.svg" />
+            </div>
           </div>
-        </div>
+
+          <div
+            title="Delete"
+            className="edit-btn-container"
+            onClick={(ev) => ev.stopPropagation()}
+          >
+            <div
+              onClick={() => onDeleteNote(note.id)}
+              className="btn-display-container"
+            >
+              <i className="fa-solid fa-trash" aria-hidden="true"></i>
+            </div>
+          </div>
+        </Fragment>
       )}
     </div>
   )
