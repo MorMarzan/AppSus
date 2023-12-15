@@ -107,6 +107,7 @@ export function AddNote({
   }
 
   function onAddTodo() {
+    if (!newTodo.txt) return
     var todos = note.info.todos
     todos.push(newTodo)
     onAdd()

@@ -92,6 +92,7 @@
 .add-todo .new-todo-container {
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .add-todo img {
