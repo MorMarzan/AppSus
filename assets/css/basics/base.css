@@ -68,6 +68,10 @@ input:-webkit-autofill:active {
   z-index: 25;
 }
 
+input[type='checkbox'] {
+  cursor: pointer;
+}
+
 /* Tablet */
 @media (width >=768px) {
   .page {

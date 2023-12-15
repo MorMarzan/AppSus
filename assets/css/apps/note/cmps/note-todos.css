@@ -1,4 +1,12 @@
-.note-todos ul {
+.note-todos-list {
   list-style-type: none;
   padding: 0;
+}
+
+.note-todos .todo {
+  cursor: pointer;
+}
+
+.todo.checked {
+  text-decoration: line-through;
 }

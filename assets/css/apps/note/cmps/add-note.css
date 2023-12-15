@@ -32,7 +32,7 @@
   flex-direction: column;
 }
 
-.add-note .add-note-form input {
+.add-note .add-note-form input:not([type='checkbox']) {
   border: unset;
   padding-block: 5px;
   background-color: transparent;
@@ -81,6 +81,21 @@
 .note-type-container .note-type-bar {
   top: -22px;
   left: -15px;
+}
+
+.add-todo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-todo img {
+  width: 25px;
+  cursor: pointer;
+}
+
+.add-todo img:hover {
+  filter: brightness(80%);
 }
 
 /* Tablet */

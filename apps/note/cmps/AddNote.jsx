@@ -12,9 +12,10 @@ export function AddNote({
   onDeleteNote,
   onDuplicateNote,
 }) {
-  const [note, setNote] = useState(noteService.getEmptyNote())
+  const [note, setNote] = useState(noteService.getEmptyNote('NoteTxt', ''))
   const [isAddOpen, setIsAddOpen] = useState(isOpen)
   const [isColorOpen, setIsColorOpen] = useState(false)
+  const [newTodo, setNewTodo] = useState(noteService.getEmptyTodo())
   const addNoteRef = useRef()
 
   // function closeColor(ev) {
@@ -104,6 +105,38 @@ export function AddNote({
     setIsColorOpen((colorOpen) => !colorOpen)
   }
 
+  function changeNoteType(type) {
+    console.log(
+      'noteService.getEmptyNote(type, note.title)',
+      noteService.getEmptyNote(type, note.title)
+    )
+    setNote((prevNote) => noteService.getEmptyNote(type, prevNote.title))
+    // refactorNote('type', type)
+  }
+
+  function onAddTodo() {
+    var todos = note.info.todos
+    todos.push(newTodo)
+    onAdd()
+    setNewTodo(noteService.getEmptyTodo())
+  }
+
+  function onChangeNewTodo(ev) {
+    setNewTodo((prevTodo) => ({ ...prevTodo, txt: ev.target.value }))
+  }
+
+  function onTodoClick(todoId) {
+    var newTodos = note.info.todos
+    const todoIdx = newTodos.findIndex((todo) => todo.id === todoId)
+    const todo = newTodos[todoIdx]
+    todo.doneAt = todo.doneAt ? null : Date.now()
+    const newNote = { ...note, info: { ...note.info, todos: newTodos } }
+    setNote(newNote)
+  }
+
+  console.log('note', note)
+  console.log('note.info.title', note.info.title)
+
   return (
     <section
       style={
@@ -170,12 +203,47 @@ export function AddNote({
                 placeholder="Enter video URL..."
               />
             )}
+            {note.type === 'NoteTodos' && (
+              <Fragment>
+                {isAddOpen && (
+                  <ul className="note-todos-list">
+                    {note.info.todos.map((todo) => {
+                      console.log('note.info.todos', note.info.todos)
+                      return (
+                        <li
+                          key={todo.id}
+                          className={`todo ${todo.doneAt && 'checked'}`}
+                        >
+                          <label>
+                            <input
+                              onChange={() => onTodoClick(todo.id)}
+                              type="checkbox"
+                              checked={todo.doneAt ? true : false}
+                            />
+                            {todo.txt}
+                          </label>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                )}
+                <div className="add-todo">
+                  <input
+                    onChange={onChangeNewTodo}
+                    value={newTodo.txt}
+                    type="text"
+                    placeholder="Add a todo"
+                    onClick={onOpenAdd}
+                  />
+                  {isAddOpen && (
+                    <img onClick={onAddTodo} src="./assets/img/add.svg" />
+                  )}
+                </div>
+              </Fragment>
+            )}
 
             {!isAddOpen && (
-              <NoteTypeBar
-                noteType={note.type}
-                onChangeType={(type) => refactorNote('type', type)}
-              />
+              <NoteTypeBar noteType={note.type} onChangeType={changeNoteType} />
             )}
           </div>
           {isAddOpen && (
@@ -191,7 +259,7 @@ export function AddNote({
               <div className="note-type-container">
                 <NoteTypeBar
                   noteType={note.type}
-                  onChangeType={(type) => refactorNote('type', type)}
+                  onChangeType={changeNoteType}
                 />
               </div>
               <button

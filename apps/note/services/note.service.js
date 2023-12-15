@@ -1,5 +1,6 @@
 // note service
 import { storageService } from '../../../services/async-storage.service.js'
+import { utilService } from '../../../services/util.service.js'
 
 export const noteService = {
   query,
@@ -8,6 +9,7 @@ export const noteService = {
   remove,
   getEmptyNote,
   getEmptyFilterBy,
+  getEmptyTodo,
 }
 
 const NOTES_KEY = 'notesDB'
@@ -43,8 +45,8 @@ const dummyNotes = [
     info: {
       title: 'Get my stuff together',
       todos: [
-        { txt: 'Driving license', doneAt: null },
-        { txt: 'Coding power', doneAt: 187111111 },
+        { txt: 'Driving license', doneAt: null, id: '1' },
+        { txt: 'Coding power', doneAt: 187111111, id: '2' },
       ],
     },
     style: {
@@ -90,18 +92,42 @@ function remove(noteId) {
   return storageService.remove(NOTES_KEY, noteId)
 }
 
-function getEmptyNote() {
-  return {
+function getEmptyNote(type, title = '') {
+  const note = {
     id: '',
-    info: { title: '', txt: '' },
+    info: { title },
     isPinned: false,
     style: { backgroundColor: 'white' },
-    type: 'NoteTxt',
+    type,
   }
+
+  switch (type) {
+    case 'NoteTxt':
+      note.info.txt = ''
+      break
+
+    case 'NoteImg':
+    case 'NoteVideo':
+      note.info.url = ''
+      break
+
+    case 'NoteTodos':
+      note.info.todos = []
+      break
+
+    default:
+      break
+  }
+
+  return note
 }
 
 function getEmptyFilterBy() {
   return { txt: '', type: '' }
+}
+
+function getEmptyTodo() {
+  return { txt: '', doneAt: null, id: utilService.makeId() }
 }
 
 // PRIVET
