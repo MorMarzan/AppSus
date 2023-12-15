@@ -60,6 +60,10 @@ export function NoteIndex() {
   }
 
   function onChangeNote(note) {
+    if (!note) {
+      loadNotes()
+      return
+    }
     noteService
       .save(note)
       .then(loadNotes)
