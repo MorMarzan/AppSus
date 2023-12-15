@@ -1,4 +1,4 @@
-const { useState, useEffect, useRef } = React
+const { useState, useEffect } = React
 import { MailSidebar } from '../apps/mail/cmps/MailSidebar.jsx'
 import { NoteSidebar } from '../apps/note/cmps/NoteSidebar.jsx'
 
@@ -12,7 +12,6 @@ export function DynamicSidebar({ isSbOpen, onSetIsSbOpen }) {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
   const [isMobileSbOpen, setIsMobileSbOpen] = useState(null)
   const [isDesktopSbOpen, setIsDesktopSbOpen] = useState(null)
-
 
 
   useEffect(() => {
@@ -40,19 +39,25 @@ export function DynamicSidebar({ isSbOpen, onSetIsSbOpen }) {
 
   }
 
+  function onHoverSbToggle() {
+    if (isMobile || isSbOpen) return
+    setIsDesktopSbOpen(isDesktopSbOpen => !isDesktopSbOpen)
+  }
+
 
   return (
-    <section className="dynamic-sidebar">
-       {isMobile && isMobileSbOpen && <div className="main-screen" onClick={onSetIsSbOpen}></div>}
-      <DynamicCmp isSbOpen={isSbOpen} sbType={sbType} isMobileSbOpen={isMobileSbOpen} isDesktopSbOpen={isDesktopSbOpen}/>
+
+    <section className="dynamic-sidebar" onMouseEnter={onHoverSbToggle} onMouseLeave={onHoverSbToggle}>
+      {isMobile && isMobileSbOpen && <div className="main-screen" onClick={onSetIsSbOpen}></div>}
+      <DynamicCmp isSbOpen={isSbOpen} sbType={sbType} isMobileSbOpen={isMobileSbOpen} isDesktopSbOpen={isDesktopSbOpen} />
     </section>
   )
 }
 
-function DynamicCmp({isSbOpen, sbType, isMobileSbOpen, isDesktopSbOpen}) {
+function DynamicCmp({ isSbOpen, sbType, isMobileSbOpen, isDesktopSbOpen }) {
   switch (sbType) {
     case 'mail':
-      return <MailSidebar isMobileSbOpen={isMobileSbOpen} isDesktopSbOpen={isDesktopSbOpen}/>
+      return <MailSidebar isMobileSbOpen={isMobileSbOpen} isDesktopSbOpen={isDesktopSbOpen} />
 
     case 'note':
       return <NoteSidebar isSbOpen={isSbOpen} />

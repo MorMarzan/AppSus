@@ -71,7 +71,7 @@ input:-webkit-autofill:active {
 /* Tablet */
 @media (width >=768px) {
   .page {
-    padding-inline: 20px;
+    padding-inline-end: 20px;
   }
 }
 
