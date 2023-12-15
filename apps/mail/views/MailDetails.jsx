@@ -9,6 +9,8 @@ const { useState, useEffect, Fragment } = React
 export function MailDetails() {
 
     const [mail, setMail] = useState(null)
+    // const [isToggleCalled, setIsToggleCalled] = useState(false);
+
     const { mailId } = useParams()
     const navigate = useNavigate()
 
@@ -17,9 +19,25 @@ export function MailDetails() {
     }, [mailId])
 
 
+    // useEffect(() => {
+    //     loadMail()
+    //         .then(() => {
+    //             if (!isToggleCalled) {
+    //                 onToggleIsReadStat(true)
+    //                 setIsToggleCalled(true)
+    //             }
+    //         })
+    //         .catch((err) => {
+    //             console.log('err:', err)
+    //             navigate('/mail')
+    //         });
+    // }, [mailId, isToggleCalled])
+
     function loadMail() {
-        mailService.get(mailId)
-            .then(mail => setMail(mail))
+        return mailService.get(mailId)
+            .then(mail => {
+                setMail(mail)
+            })
             .catch(err => {
                 console.log('err:', err)
                 navigate('/mail')
@@ -38,9 +56,9 @@ export function MailDetails() {
             })
     }
 
-    function onMarkUnread() {
-        setMail(prevMail => ({ ...prevMail, isRead: false }))
-        mailService.save({ ...mail, isRead: false })
+    function onToggleIsReadStat(isRead) {
+        setMail(prevMail => ({ ...prevMail, isRead: isRead }))
+        mailService.save({ ...mail, isRead: isRead })
             .then(() => {
                 showSuccessMsg(`Mail marked as unread! ${mailId}`)
                 navigate('/mail')
@@ -56,7 +74,7 @@ export function MailDetails() {
     const { subject, from, to, sentAt, body } = mail
     return (
         <Fragment>
-            <MailDetailsHeader onRemoveMail={onRemoveMail} onMarkUnread={onMarkUnread}/>
+            <MailDetailsHeader onRemoveMail={onRemoveMail} onToggleIsReadStat={onToggleIsReadStat} />
             <section className="mail-details">
                 <h1>{subject}</h1>
                 <div className="info">

@@ -1,7 +1,7 @@
 const { Link, NavLink, useLocation, useParams } = ReactRouterDOM
 
 
-export function MailDetailsHeader({ onRemoveMail, onMarkUnread }) {
+export function MailDetailsHeader({ onRemoveMail, onToggleIsReadStat }) {
 
 
     return (
@@ -14,7 +14,7 @@ export function MailDetailsHeader({ onRemoveMail, onMarkUnread }) {
                 <button onClick={onRemoveMail} className="btn" title="Delete">
                     <i className="fa-solid fa-trash"></i>
                 </button>
-                <button onClick={onMarkUnread} className="btn" title="Mark as unread">
+                <button onClick={() => onToggleIsReadStat(false)} className="btn" title="Mark as unread">
                     <i className="fa-regular fa-envelope"></i>
                 </button>
 

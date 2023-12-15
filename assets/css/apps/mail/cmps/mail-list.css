@@ -8,3 +8,8 @@
     justify-items: stretch;
     /* gap: 3px; */
 }
+
+.mail-list li {
+    position: relative;
+
+}

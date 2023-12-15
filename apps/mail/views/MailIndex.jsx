@@ -47,19 +47,17 @@ export function MailIndex() {
             .catch(err => console.log('err:', err))
     }
 
-    // function onRemoveMail(mailId) {
-    //     mailService.remove(mailId)
-    //         .then(() => {
-    //             // const newMails = mails.filter(mail => mail.id !== mailId)
-    //             // setMails(newMails)
-    //             setMails(prevMails => {
-    //                 return prevMails.filter(mail => mail.id !== mailId)
-    //             })
-    //             showSuccessMsg(`Mail successfully removed! ${mailId}`)
-    //         })
-    //         .catch(err => console.log('err:', err))
+    function onRemoveMail(mailId) {
+        mailService.remove(mailId)
+            .then(() => {
+                setMails(prevMails => {
+                    return prevMails.filter(mail => mail.id !== mailId)
+                })
+                showSuccessMsg(`Mail successfully removed! ${mailId}`)
+            })
+            .catch(err => console.log('err:', err))
 
-    // }
+    }
 
 
     // function onSetFilter(filterBy) {
@@ -70,13 +68,41 @@ export function MailIndex() {
 
     // const { txt, minSpeed, maxPrice } = filterBy
 
-    function onMarkAsRead(mailId) {
+    // function onToggleIsReadStat(mailId, isRead) {
+    //     console.log('mailId', mailId)
+    //     mailService.get(mailId)
+    //         .then(mail => {
+    //             mailService.save({ ...mail, isRead: isRead })
+    //             setMails(prevMails => prevMails.map(mail => ({ ...mail, timestamp: Date.now() })));
+
+    //         })
+    //         .catch(err => {
+    //             console.log('err:', err)
+    //             showErrorMsg('Error - can\'t find mail details ')
+    //         })
+    // }
+
+    function onToggleIsReadStat(mailId, isRead) {
         mailService.get(mailId)
-            .then(mail => mailService.save({ ...mail, isRead: true }))
-            // .then((UpdatedMail) => {
-            // console.log('UpdatedMail',UpdatedMail)
-            // throw new Error('test')
-            // })
+            .then(mailToUpdate => {
+                // Find the index of the mail in the current mails array
+                const mailIndex = mails.findIndex(mail => mail.id === mailId)
+
+                if (mailIndex !== -1) {
+                    // Update the isRead property of the mail in a new array
+                    const updatedMails = [...mails];
+                    updatedMails[mailIndex] = { ...mailToUpdate, isRead: isRead }
+
+                    // Set the new array in state
+                    setMails(updatedMails)
+                }
+
+                // Save the updated mail to the server
+                // showSuccessMsg(`Mail marked as ! ${mailId}`)
+                showSuccessMsg(`Mail marked as ${isRead ? 'read' : 'unread'}! ${mailId}`)
+
+                return mailService.save({ ...mailToUpdate, isRead: isRead })
+            })
             .catch(err => {
                 console.log('err:', err)
                 showErrorMsg('Error - can\'t find mail details ')
@@ -84,10 +110,11 @@ export function MailIndex() {
     }
 
 
+
     return (
         <section className="mail-index">
             {/* <MailFilter filterBy={{ txt, minSpeed }} onSetFilter={onSetFilter} /> */}
-            <MailList mails={mails} onMarkAsRead={onMarkAsRead} />
+            <MailList mails={mails} onToggleIsReadStat={onToggleIsReadStat} onRemoveMail={onRemoveMail} />
             {/* <MailList mails={mails} onRemoveMail={onRemoveMail} /> */}
         </section>
     )
