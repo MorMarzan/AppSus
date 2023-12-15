@@ -2,6 +2,7 @@
 // import { EditNote } from './apps/note/cmps/EditNote.jsx'
 import { DynamicHeader } from '../../../cmps/DynamicHeader.jsx'
 import { DynamicSidebar } from '../../../cmps/DynamicSidebar.jsx'
+import { EditNote } from '../cmps/EditNote.jsx'
 import { noteService } from '../services/note.service.js'
 
 const { Outlet, useSearchParams } = ReactRouterDOM
@@ -12,7 +13,7 @@ export function NoteApp() {
   const [searchValue, setSearchValue] = useState('')
   const [searchParams] = useSearchParams()
   const [filterBy, setFilterBy] = useState(noteService.getEmptyFilterBy())
-  const hasComposeParam = searchParams.has('compose')
+  const hasEditNoteParams = searchParams.has('edit-note')
   const [isSbOpen, setIsSbOpen] = useState(false)
 
   function onSetIsSbOpen() {
@@ -42,6 +43,7 @@ export function NoteApp() {
       <div>
         <Outlet />
       </div>
+      {hasEditNoteParams && <EditNote />}
     </section>
   )
 }

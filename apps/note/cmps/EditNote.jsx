@@ -1,4 +1,4 @@
-const { useNavigate, useParams, Link } = ReactRouterDOM
+const { useNavigate, useParams, useSearchParams } = ReactRouterDOM
 const { useState, useEffect } = React
 
 import { noteService } from '../services/note.service.js'
@@ -7,16 +7,17 @@ import { AddNote } from './AddNote.jsx'
 
 export function EditNote() {
   const [note, setNote] = useState(noteService.getEmptyNote())
-  const params = useParams()
+  const [searchParams] = useSearchParams()
+  const editNoteParam = searchParams.get('edit-note')
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (params.noteId) loadNote()
+    if (editNoteParam) loadNote()
   }, [])
 
   function loadNote() {
     noteService
-      .get(params.noteId)
+      .get(editNoteParam)
       .then(setNote)
       .catch((err) => console.log('err:', err))
   }
@@ -25,16 +26,12 @@ export function EditNote() {
     eventBusService.emit('load-notes', note.id)
   }
 
-  function onClose() {
-    navigate('/note')
-  }
-
   function onDeleteNote() {
     noteService
       .remove(note.id)
       .then(() => {
         onSaveNote()
-        onClose()
+        onCloseEdit()
       })
       .catch((err) => console.log('err', err))
   }
@@ -44,9 +41,13 @@ export function EditNote() {
       .save({ ...note, id: '' })
       .then(() => {
         onSaveNote()
-        onClose()
+        onCloseEdit()
       })
       .catch((err) => console.log('err', err))
+  }
+
+  function onCloseEdit() {
+    navigate('')
   }
 
   return (
@@ -57,7 +58,7 @@ export function EditNote() {
           onAdd={onSaveNote}
           noteToEdit={note}
           isOpen={true}
-          onClose={onClose}
+          onClose={onCloseEdit}
           onDeleteNote={onDeleteNote}
           onDuplicateNote={onDuplicateNote}
         />

@@ -3,15 +3,22 @@ import { NoteTodos } from './NoteTodos.jsx'
 import { NoteTxt } from './NoteTxt.jsx'
 import { NoteVideo } from './NoteVideo.jsx'
 
-const { Link } = ReactRouterDOM
 const { useState } = React
+const { Link, useNavigate } = ReactRouterDOM
 
 export function NotePreview({ note, onChangeNote }) {
+  const navigate = useNavigate()
+
+  function openEditNote(ev) {
+    ev.stopPropagation()
+    navigate({
+      search: `?edit-note=${note.id}`,
+    })
+  }
+
   return (
-    <article onClick={(ev) => ev.stopPropagation()} className="note-preview">
-      <Link to={`/note/edit/${note.id}`}>
-        <DynamicCmp note={note} onChangeNote={onChangeNote} />
-      </Link>
+    <article onClick={openEditNote} className="note-preview">
+      <DynamicCmp note={note} onChangeNote={onChangeNote} />
     </article>
   )
 }
