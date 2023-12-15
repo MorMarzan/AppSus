@@ -1,0 +1,29 @@
+.note-type-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 10px;
+  padding-block: 12px;
+}
+
+.note-type-bar img {
+  width: 20px;
+  cursor: pointer;
+}
+
+.note-type-bar img:hover {
+  filter: brightness(80%);
+}
+
+/* Tablet */
+@media (width >=768px) {
+  .note-type-bar img {
+    width: 22px;
+  }
+}
+
+/* desktop */
+@media (width >=992px) {
+}

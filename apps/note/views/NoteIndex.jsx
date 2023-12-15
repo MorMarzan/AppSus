@@ -59,6 +59,13 @@ export function NoteIndex() {
     setFilterBy((prevFilter) => ({ ...prevFilter, ...filter }))
   }
 
+  function onChangeNote(note) {
+    noteService
+      .save(note)
+      .then(loadNotes)
+      .catch((err) => console.log('err:', err))
+  }
+
   return (
     <section className="note-index ">
       <DynamicHeader
@@ -79,17 +86,17 @@ export function NoteIndex() {
                 <Fragment>
                   <p className="list-header">PINNED</p>
                   <NoteList
-                    onChangeNote={loadNotes}
+                    onChangeNote={onChangeNote}
                     notes={notes.filter((note) => note.isPinned)}
                   />
                   <p className="list-header">OTHERS</p>
                   <NoteList
-                    onChangeNote={loadNotes}
+                    onChangeNote={onChangeNote}
                     notes={notes.filter((note) => !note.isPinned)}
                   />
                 </Fragment>
               ) : (
-                <NoteList onChangeNote={loadNotes} notes={notes} />
+                <NoteList onChangeNote={onChangeNote} notes={notes} />
               )}
             </Fragment>
           )}

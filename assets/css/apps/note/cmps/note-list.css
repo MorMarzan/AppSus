@@ -1,18 +1,29 @@
 .note-list {
   column-count: 4;
   column-width: 250px;
-  column-gap: 5px;
+  column-gap: 10px;
   margin-block-end: 10px;
   width: 90%;
+  padding-block-end: 50px;
 }
 
 .note-list-item {
   position: relative;
   padding: 15px;
   border-radius: 10px;
-  border: 1px solid var(--grey-outline);
-  margin-block-end: 5px;
   padding-block-end: 40px;
+  margin-block-end: 10px;
   cursor: auto;
   break-inside: avoid;
+}
+
+.note-list-item.note-border {
+  border: 1px solid var(--grey-outline);
+}
+
+.note-list-item .pin-img {
+  position: absolute;
+  right: 15px;
+  width: 23px;
+  cursor: pointer;
 }

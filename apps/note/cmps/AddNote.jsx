@@ -1,17 +1,22 @@
 import { noteService } from '../services/note.service.js'
 import { ColorPicker } from './ColorPicker.jsx'
 import { EditBtns } from './EditBtns.jsx'
+import { NoteTypeBar } from './NoteTypeBar.jsx'
 const { useState, useEffect, useRef, Fragment } = React
 
-export function AddNote({ onAdd, noteToEdit, isOpen, onClose }) {
-  const [note, setNote] = useState(noteService.getEmptyNote())
+export function AddNote({
+  onAdd,
+  noteToEdit,
+  isOpen,
+  onClose,
+  onDeleteNote,
+  onDuplicateNote,
+}) {
+  const [note, setNote] = useState(noteService.getEmptyNote('NoteTxt', ''))
   const [isAddOpen, setIsAddOpen] = useState(isOpen)
   const [isColorOpen, setIsColorOpen] = useState(false)
+  const [newTodo, setNewTodo] = useState(noteService.getEmptyTodo())
   const addNoteRef = useRef()
-
-  // function closeColor(ev) {
-  //   setIsColorOpen(false)
-  // }
 
   useEffect(() => {
     window.addEventListener('click', onCloseAdd)
@@ -39,7 +44,7 @@ export function AddNote({ onAdd, noteToEdit, isOpen, onClose }) {
       return
     }
     setIsAddOpen(false)
-    setNote(noteService.getEmptyNote())
+    setNote(noteService.getEmptyNote('NoteTxt', ''))
   }
 
   function handleNoteChange({ target }) {
@@ -57,7 +62,7 @@ export function AddNote({ onAdd, noteToEdit, isOpen, onClose }) {
         break
     }
 
-    if (field === 'txt' || field === 'title') {
+    if (field === 'txt' || field === 'title' || field === 'url') {
       handleInfoChange(field, value)
       return
     }
@@ -96,6 +101,30 @@ export function AddNote({ onAdd, noteToEdit, isOpen, onClose }) {
     setIsColorOpen((colorOpen) => !colorOpen)
   }
 
+  function changeNoteType(type) {
+    setNote((prevNote) => noteService.getEmptyNote(type, prevNote.title))
+  }
+
+  function onAddTodo() {
+    var todos = note.info.todos
+    todos.push(newTodo)
+    onAdd()
+    setNewTodo(noteService.getEmptyTodo())
+  }
+
+  function onChangeNewTodo(ev) {
+    setNewTodo((prevTodo) => ({ ...prevTodo, txt: ev.target.value }))
+  }
+
+  function onTodoClick(todoId) {
+    var newTodos = note.info.todos
+    const todoIdx = newTodos.findIndex((todo) => todo.id === todoId)
+    const todo = newTodos[todoIdx]
+    todo.doneAt = todo.doneAt ? null : Date.now()
+    const newNote = { ...note, info: { ...note.info, todos: newTodos } }
+    setNote(newNote)
+  }
+
   return (
     <section
       style={
@@ -131,14 +160,80 @@ export function AddNote({ onAdd, noteToEdit, isOpen, onClose }) {
               />
             </Fragment>
           )}
-          <input
-            value={note.info.txt}
-            onChange={handleNoteChange}
-            onClick={onOpenAdd}
-            name="txt"
-            type="text"
-            placeholder="Take a note..."
-          />
+          <div className="note-content">
+            {note.type === 'NoteTxt' && (
+              <input
+                value={note.info.txt}
+                onChange={handleNoteChange}
+                onClick={onOpenAdd}
+                name="txt"
+                type="text"
+                placeholder="Take a note..."
+              />
+            )}
+            {note.type === 'NoteImg' && (
+              <input
+                value={note.info.url}
+                onChange={handleNoteChange}
+                onClick={onOpenAdd}
+                name="url"
+                type="url"
+                placeholder="Enter image URL..."
+              />
+            )}
+            {note.type === 'NoteVideo' && (
+              <input
+                value={note.info.url}
+                onChange={handleNoteChange}
+                onClick={onOpenAdd}
+                name="url"
+                type="url"
+                placeholder="Enter video URL..."
+              />
+            )}
+            {note.type === 'NoteTodos' && (
+              <Fragment>
+                {isAddOpen && (
+                  <ul className="note-todos-list">
+                    {note.info.todos.map((todo) => {
+                      console.log('note.info.todos', note.info.todos)
+                      return (
+                        <li
+                          key={todo.id}
+                          className={`todo ${todo.doneAt && 'checked'}`}
+                        >
+                          <label>
+                            <input
+                              onChange={() => onTodoClick(todo.id)}
+                              type="checkbox"
+                              checked={todo.doneAt ? true : false}
+                            />
+                            {todo.txt}
+                          </label>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                )}
+                <div className="add-todo">
+                  <input
+                    onChange={onChangeNewTodo}
+                    value={newTodo.txt}
+                    type="text"
+                    placeholder="Add a todo"
+                    onClick={onOpenAdd}
+                  />
+                  {isAddOpen && (
+                    <img onClick={onAddTodo} src="./assets/img/add.svg" />
+                  )}
+                </div>
+              </Fragment>
+            )}
+
+            {!isAddOpen && (
+              <NoteTypeBar noteType={note.type} onChangeType={changeNoteType} />
+            )}
+          </div>
           {isAddOpen && (
             <div className="tool-bar">
               <EditBtns
@@ -146,10 +241,18 @@ export function AddNote({ onAdd, noteToEdit, isOpen, onClose }) {
                 isColorOpen={isColorOpen}
                 note={note}
                 onPalletteClick={onPalletteClick}
+                onDeleteNote={onDeleteNote}
+                onDuplicateNote={onDuplicateNote}
               />
+              <div className="note-type-container">
+                <NoteTypeBar
+                  noteType={note.type}
+                  onChangeType={changeNoteType}
+                />
+              </div>
               <button
                 className="add-btn"
-                disabled={!note.info.txt}
+                disabled={!note.info}
                 onClick={onAddNote}
               >
                 Add

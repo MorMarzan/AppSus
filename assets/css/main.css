@@ -41,8 +41,10 @@
 @import './apps/note/cmps/note-todos.css';
 @import './apps/note/cmps/color-picker.css';
 @import './apps/note/cmps/note-txt.css';
+@import './apps/note/cmps/note-video.css';
 @import './apps/note/cmps/edit-note.css';
 @import './apps/note/cmps/edit-btns.css';
+@import './apps/note/cmps/note-type-bar.css';
 
 /* Mail Cmps */
 @import './apps/mail/cmps/mail-list.css';

@@ -1,31 +1,34 @@
 .flex {
-    display: flex;
+  display: flex;
 }
 
 .column {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 .justify-center {
-    justify-content: center;
+  justify-content: center;
 }
 
 .align-center {
-    align-items: center;
+  align-items: center;
 }
 
 .space-between {
-    justify-content: space-between;
+  justify-content: space-between;
 }
 
 .grid {
-    display: grid;
+  display: grid;
 }
 
 .text-overflow-ellipsis {
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hide {
+  display: none;
+}
