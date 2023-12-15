@@ -1,4 +1,5 @@
 const { Link, NavLink, useLocation, useParams } = ReactRouterDOM
+const { useState, useEffect, Fragment } = React
 
 export function MailHeader() {
 
@@ -14,10 +15,15 @@ export function MailHeader() {
         <header className="mail-header full main-layout">
             <section>
                 {hasMailId &&
-                    <Link className="btn"
-                        to={'/mail/inbox'}>
-                        <i className="fa-solid fa-arrow-left"></i>
-                    </Link>
+                    <Fragment>
+                        <Link className="btn"
+                            to={'/mail/inbox'}>
+                            <i className="fa-solid fa-arrow-left"></i>
+                        </Link>
+                        <button className="btn">
+                            <i className="fa-solid fa-trash"></i>
+                        </button>
+                    </Fragment>
                 }
                 {/* <nav className="app-nav">
                     <NavLink to="/" >Home</NavLink>
