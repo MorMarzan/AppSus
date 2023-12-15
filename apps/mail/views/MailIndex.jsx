@@ -89,7 +89,7 @@ export function MailIndex() {
         <section className="mail-index page main-layout full">
             <DynamicHeader onSetIsSbOpen={onSetIsSbOpen} />
             {/* {isSbOpen && <MailSidebar isSbOpen={isSbOpen}/>} */}
-            <DynamicSidebar isSbOpen={isSbOpen} />
+            <DynamicSidebar isSbOpen={isSbOpen} onSetIsSbOpen={onSetIsSbOpen}/>
             <div>
                 <MailHeader />
                 {/* <div>Mister Email</div> */}

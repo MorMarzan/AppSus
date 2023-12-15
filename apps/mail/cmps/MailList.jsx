@@ -11,6 +11,7 @@ export function MailList({ mails }) {
     // }
 
     if (!mails) return <div>Loading...</div>
+    if (!mails.length) return <div>No mails match this search</div>
     return (
         <ul className="mail-list">
 
