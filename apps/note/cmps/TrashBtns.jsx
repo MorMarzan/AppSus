@@ -1,4 +1,4 @@
-export function TrashBtns() {
+export function TrashBtns({ noteId, onDeleteForever }) {
   return (
     <div
       className="trash-btns edit-btns"
@@ -9,7 +9,10 @@ export function TrashBtns() {
         className="edit-btn-container"
         onClick={(ev) => ev.stopPropagation()}
       >
-        <div className="btn-display-container">
+        <div
+          onClick={() => onDeleteForever(noteId)}
+          className="btn-display-container"
+        >
           <img src="./assets/img/delete-forever.svg" />
         </div>
       </div>

@@ -34,6 +34,13 @@ export function NoteList({ notes, onChangeNote }) {
       .catch((err) => console.log('err', err))
   }
 
+  function onDeleteForever(noteId) {
+    noteService
+      .remove(noteId, true)
+      .then(onChangeNote)
+      .catch((err) => console.log('err', err))
+  }
+
   function onDuplicateNote(note) {
     noteService
       .save({ ...note, id: '' })
@@ -94,7 +101,9 @@ export function NoteList({ notes, onChangeNote }) {
               />
             )}
 
-            {noteHoverId === note.id && pageLoc === 'bin' && <TrashBtns />}
+            {noteHoverId === note.id && pageLoc === 'bin' && (
+              <TrashBtns noteId={note.id} onDeleteForever={onDeleteForever} />
+            )}
           </article>
         )
       })}

@@ -92,8 +92,9 @@ function save(note) {
   }
 }
 
-function remove(noteId) {
-  return storageService.remove(NOTES_KEY, noteId)
+function remove(noteId, isDeleted = false) {
+  const key = isDeleted ? DELETED_NOTES_KEY : NOTES_KEY
+  return storageService.remove(key, noteId)
 }
 
 function moveToBin(note) {
