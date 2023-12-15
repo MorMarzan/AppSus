@@ -47,7 +47,7 @@ export function EditBtns({
             onClick={(ev) => ev.stopPropagation()}
           >
             <div
-              onClick={() => onDeleteNote(note.id)}
+              onClick={() => onDeleteNote(note)}
               className="btn-display-container"
             >
               <i className="fa-solid fa-trash" aria-hidden="true"></i>

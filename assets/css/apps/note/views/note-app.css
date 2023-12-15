@@ -1,0 +1,13 @@
+.note-app {
+  /* background-color: var(--clrPrimaryBase); */
+  position: relative;
+}
+
+/* Tablet */
+@media (width >=768px) {
+  .note-app {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 20px;
+  }
+}

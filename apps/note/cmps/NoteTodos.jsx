@@ -9,7 +9,7 @@ export function NoteTodos({ note, onChangeNote }) {
   }
 
   return (
-    <article className="note-todos" onClick={(ev) => ev.stopPropagation()}>
+    <article className="note-todos">
       {note.info.title && <p className="note-title">{note.info.title}</p>}
 
       <ul className="note-todos-list note-content">
