@@ -30,6 +30,13 @@ export function NoteList({ notes, onChangeNote }) {
       .catch((err) => console.log('err', err))
   }
 
+  function onDuplicateNote(note) {
+    noteService
+      .save({ ...note, id: '' })
+      .then(onChangeNote)
+      .catch((err) => console.log('err', err))
+  }
+
   if (!notes) return <h2 className="loading-msg">Loading...</h2>
 
   if (!notes.length) return <h2 className="loading-msg">No notes to display</h2>
@@ -59,6 +66,7 @@ export function NoteList({ notes, onChangeNote }) {
                 isColorOpen={isColorOpen}
                 onPalletteClick={onPalletteClick}
                 onDeleteNote={onDeleteNote}
+                onDuplicateNote={onDuplicateNote}
               />
             )}
           </article>

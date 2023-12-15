@@ -53,7 +53,7 @@
 }
 
 .dynamic-header .fa-filter {
-  color: var(--clr-font-Primary1);
+  color: var(--action-btn);
   cursor: pointer;
   transition: 0.2s;
 }
