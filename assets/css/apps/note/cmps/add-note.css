@@ -80,13 +80,19 @@
 
 .note-type-container .note-type-bar {
   top: -22px;
-  left: -15px;
+  left: -60px;
 }
 
 .add-todo {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.add-todo .new-todo-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
 .add-todo img {
