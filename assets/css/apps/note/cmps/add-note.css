@@ -89,6 +89,11 @@
   justify-content: space-between;
 }
 
+.add-todo .new-todo-container {
+  display: flex;
+  align-items: center;
+}
+
 .add-todo img {
   width: 25px;
   cursor: pointer;

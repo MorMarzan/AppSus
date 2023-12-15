@@ -3,10 +3,26 @@
   padding: 0;
 }
 
-.note-todos .todo {
+.todo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block-end: 10px;
+}
+
+.todo label {
   cursor: pointer;
 }
 
 .todo.checked {
   text-decoration: line-through;
+}
+
+.todo img {
+  width: 20px;
+  cursor: pointer;
+}
+
+.todo img:hover {
+  filter: brightness(80%);
 }

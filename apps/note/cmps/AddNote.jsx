@@ -126,6 +126,14 @@ export function AddNote({
     setNote(newNote)
   }
 
+  function onDeleteTodo(todoId) {
+    var newTodos = note.info.todos
+    const todoIdx = newTodos.findIndex((todo) => todo.id === todoId)
+    const newNote = { ...note }
+    newNote.info.todos.splice(todoIdx, 1)
+    setNote(newNote)
+  }
+
   return (
     <section
       style={
@@ -210,19 +218,39 @@ export function AddNote({
                             />
                             {todo.txt}
                           </label>
+                          <img
+                            onClick={() => onDeleteTodo(todo.id)}
+                            src="./assets/img/close.svg"
+                          />
                         </li>
                       )
                     })}
                   </ul>
                 )}
                 <div className="add-todo">
-                  <input
-                    onChange={onChangeNewTodo}
-                    value={newTodo.txt}
-                    type="text"
-                    placeholder="Add a todo"
-                    onClick={onOpenAdd}
-                  />
+                  <div className="new-todo-container">
+                    {!isAddOpen && <input type="checkbox" />}
+                    {isAddOpen && (
+                      <input
+                        onChange={() => {
+                          setNewTodo((prevTodo) => ({
+                            ...prevTodo,
+                            doneAt: prevTodo.doneAt ? null : Date.now(),
+                          }))
+                        }}
+                        type="checkbox"
+                        checked={newTodo.doneAt ? true : false}
+                      />
+                    )}
+                    <input
+                      className={`todo ${newTodo.doneAt && 'checked'}`}
+                      onChange={onChangeNewTodo}
+                      value={newTodo.txt}
+                      type="text"
+                      placeholder="Add a todo"
+                      onClick={onOpenAdd}
+                    />
+                  </div>
                   {isAddOpen && (
                     <img onClick={onAddTodo} src="./assets/img/add.svg" />
                   )}
