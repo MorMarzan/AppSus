@@ -4,7 +4,7 @@ const { Link, NavLink, useLocation } = ReactRouterDOM
 const { useState, useEffect } = React
 
 export function DynamicHeader({
-  onSetIsSbFull,
+  onSetIsSbOpen,
   searchValue,
   onSearch,
   filter,
@@ -18,7 +18,7 @@ export function DynamicHeader({
   return (
     <header className="dynamic-header">
       <div className="logo-menu-wrapper">
-        <button className="btn btn-menu" onClick={onSetIsSbFull}>
+        <button className="btn btn-menu" onClick={onSetIsSbOpen}>
           <i className="fa-solid fa-bars"></i>
         </button>
         <h1>{headerType}</h1>

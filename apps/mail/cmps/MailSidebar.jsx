@@ -1,36 +1,36 @@
 const { Link, NavLink } = ReactRouterDOM
 const { useState, useEffect } = React
 
-export function MailSidebar({ isSbFull: isFull }) {
-
-    // const [isFull, setIsfull] = useState(false)
+export function MailSidebar({ isMobileSbOpen, isDesktopSbOpen }) {
+    
+    const dynClass = isMobileSbOpen ? 'open' : ''
 
     return (
         // <section className="mail-sidebar">
-        <section className="sidebar">
+        <section className={dynClass + " sidebar"}>
             <Link className="btn" to="/mail/edit">
                 <i className="fa-solid fa-pencil"></i>
-                {isFull && <span>Compose</span>}
+                {isDesktopSbOpen && <span>Compose</span>}
             </Link>
             <button className="btn">
                 <i className="fa-solid fa-inbox"></i>
-                {isFull && <span>Inbox</span>}
+                {isDesktopSbOpen && <span>Inbox</span>}
             </button>
             <button className="btn">
                 <i className="fa-regular fa-star"></i>
-                {isFull && <span>Stared</span>}
+                {isDesktopSbOpen && <span>Stared</span>}
             </button>
             <button className="btn">
                 <i className="fa-regular fa-paper-plane"></i>
-                {isFull && <span>Sent</span>}
+                {isDesktopSbOpen && <span>Sent</span>}
             </button>
             <button className="btn">
                 <i className="fa-regular fa-pen-to-square"></i>
-                {isFull && <span>Draft</span>}
+                {isDesktopSbOpen && <span>Draft</span>}
             </button>
             <button className="btn">
                 <i className="fa-solid fa-trash"></i>
-                {isFull && <span>Trash</span>}
+                {isDesktopSbOpen && <span>Trash</span>}
             </button>
 
             {/* <nav className="app-nav">
