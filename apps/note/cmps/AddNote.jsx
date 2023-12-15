@@ -3,7 +3,14 @@ import { ColorPicker } from './ColorPicker.jsx'
 import { EditBtns } from './EditBtns.jsx'
 const { useState, useEffect, useRef, Fragment } = React
 
-export function AddNote({ onAdd, noteToEdit, isOpen, onClose }) {
+export function AddNote({
+  onAdd,
+  noteToEdit,
+  isOpen,
+  onClose,
+  onDeleteNote,
+  onDuplicateNote,
+}) {
   const [note, setNote] = useState(noteService.getEmptyNote())
   const [isAddOpen, setIsAddOpen] = useState(isOpen)
   const [isColorOpen, setIsColorOpen] = useState(false)
@@ -85,7 +92,6 @@ export function AddNote({ onAdd, noteToEdit, isOpen, onClose }) {
   }
 
   function onAddNote(ev) {
-    console.log('heree')
     ev.preventDefault()
     noteService.save(note).then((note) => {
       onCloseAdd()
@@ -159,6 +165,8 @@ export function AddNote({ onAdd, noteToEdit, isOpen, onClose }) {
                 isColorOpen={isColorOpen}
                 note={note}
                 onPalletteClick={onPalletteClick}
+                onDeleteNote={onDeleteNote}
+                onDuplicateNote={onDuplicateNote}
               />
               <button
                 className="add-btn"
