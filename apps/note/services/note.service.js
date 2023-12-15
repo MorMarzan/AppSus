@@ -10,6 +10,7 @@ export const noteService = {
   getEmptyNote,
   getEmptyFilterBy,
   getEmptyTodo,
+  moveToBin,
 }
 
 const NOTES_KEY = 'notesDB'
@@ -57,6 +58,7 @@ const dummyNotes = [
 ]
 
 _initNotes()
+_initDeletedNotes()
 
 function query(filterBy, isDeleted = false) {
   const key = isDeleted ? DELETED_NOTES_KEY : NOTES_KEY
@@ -92,6 +94,10 @@ function save(note) {
 
 function remove(noteId) {
   return storageService.remove(NOTES_KEY, noteId)
+}
+
+function moveToBin(note) {
+  return remove(note.id).then(storageService.post(DELETED_NOTES_KEY, note))
 }
 
 function getEmptyNote(type, title = '') {
@@ -137,4 +143,10 @@ function _initNotes() {
   const notes = JSON.parse(localStorage.getItem(NOTES_KEY))
   if (notes && notes.length) return
   localStorage.setItem(NOTES_KEY, JSON.stringify(dummyNotes))
+}
+
+function _initDeletedNotes() {
+  const notes = JSON.parse(localStorage.getItem(DELETED_NOTES_KEY))
+  if (notes && notes.length) return
+  localStorage.setItem(DELETED_NOTES_KEY, JSON.stringify([]))
 }

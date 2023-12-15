@@ -1,3 +1,4 @@
+import { NoteList } from '../cmps/NoteList.jsx'
 import { noteService } from '../services/note.service.js'
 const { useState, useEffect, Fragment } = React
 
@@ -16,9 +17,22 @@ export function NoteBin() {
       .catch((err) => console.log('err:', err))
   }
 
+  function onChangeNote(note) {
+    if (!note) {
+      loadNotes()
+      return
+    }
+    noteService
+      .save(note)
+      .then(loadNotes)
+      .catch((err) => console.log('err:', err))
+  }
+
   return (
     <section className="note-bin">
-      <div className="page-content">BIN</div>
+      <div className="page-content">
+        <NoteList notes={notes} onChangeNote={onChangeNote} />
+      </div>
     </section>
   )
 }

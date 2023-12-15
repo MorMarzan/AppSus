@@ -23,9 +23,9 @@ export function NoteList({ notes, onChangeNote }) {
     setIsColorOpen((colorOpen) => !colorOpen)
   }
 
-  function onDeleteNote(noteId) {
+  function onDeleteNote(note) {
     noteService
-      .remove(noteId)
+      .moveToBin(note)
       .then(onChangeNote)
       .catch((err) => console.log('err', err))
   }
