@@ -196,7 +196,6 @@ export function AddNote({
                 {isAddOpen && (
                   <ul className="note-todos-list">
                     {note.info.todos.map((todo) => {
-                      console.log('note.info.todos', note.info.todos)
                       return (
                         <li
                           key={todo.id}
