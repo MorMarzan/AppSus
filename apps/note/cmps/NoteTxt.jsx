@@ -23,7 +23,7 @@ export function NoteTxt({ note, onChangeNote }) {
   return (
     <article className="note-txt">
       {note.info.title && <p className="note-title">{note.info.title}</p>}
-      <p className="note-content">{note.info.txt}</p>
+      <p className="note-content">{note.info.txt || 'EMPTY NOTE'}</p>
     </article>
   )
 }

@@ -57,7 +57,7 @@ export function AddNote({ onAdd, noteToEdit, isOpen, onClose }) {
         break
     }
 
-    if (field === 'txt' || field === 'title') {
+    if (field === 'txt' || field === 'title' || field === 'url') {
       handleInfoChange(field, value)
       return
     }
@@ -85,6 +85,7 @@ export function AddNote({ onAdd, noteToEdit, isOpen, onClose }) {
   }
 
   function onAddNote(ev) {
+    console.log('heree')
     ev.preventDefault()
     noteService.save(note).then((note) => {
       onCloseAdd()
@@ -131,14 +132,26 @@ export function AddNote({ onAdd, noteToEdit, isOpen, onClose }) {
               />
             </Fragment>
           )}
-          <input
-            value={note.info.txt}
-            onChange={handleNoteChange}
-            onClick={onOpenAdd}
-            name="txt"
-            type="text"
-            placeholder="Take a note..."
-          />
+          {note.type === 'NoteTxt' && (
+            <input
+              value={note.info.txt}
+              onChange={handleNoteChange}
+              onClick={onOpenAdd}
+              name="txt"
+              type="text"
+              placeholder="Take a note..."
+            />
+          )}
+          {note.type === 'NoteImg' && (
+            <input
+              value={note.info.url}
+              onChange={handleNoteChange}
+              onClick={onOpenAdd}
+              name="url"
+              type="url"
+              placeholder="Enter image URL..."
+            />
+          )}
           {isAddOpen && (
             <div className="tool-bar">
               <EditBtns
@@ -149,7 +162,7 @@ export function AddNote({ onAdd, noteToEdit, isOpen, onClose }) {
               />
               <button
                 className="add-btn"
-                disabled={!note.info.txt}
+                disabled={!note.info}
                 onClick={onAddNote}
               >
                 Add
