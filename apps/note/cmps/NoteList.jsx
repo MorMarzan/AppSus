@@ -2,6 +2,7 @@ const { useState, Fragment } = React
 import { EditBtns } from './EditBtns.jsx'
 import { NotePreview } from './NotePreview.jsx'
 import { noteService } from '../services/note.service.js'
+import { TrashBtns } from './TrashBtns.jsx'
 const { useLocation } = ReactRouterDOM
 
 export function NoteList({ notes, onChangeNote }) {
@@ -92,6 +93,8 @@ export function NoteList({ notes, onChangeNote }) {
                 onDuplicateNote={onDuplicateNote}
               />
             )}
+
+            {noteHoverId === note.id && pageLoc === 'bin' && <TrashBtns />}
           </article>
         )
       })}
