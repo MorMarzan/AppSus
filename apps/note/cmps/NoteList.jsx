@@ -46,9 +46,13 @@ export function NoteList({ notes, onChangeNote }) {
       {notes.map((note) => {
         return (
           <article
-            className="note-list-item"
+            className={`note-list-item ${
+              note.style &&
+              note.style.backgroundColor === 'white' &&
+              'note-border'
+            }`}
             style={
-              note.style ? { backgroundColor: note.style.backgroundColor } : {}
+              note.style && { backgroundColor: note.style.backgroundColor }
             }
             onMouseEnter={() => setNoteHoverId(note.id)}
             onMouseLeave={() => {

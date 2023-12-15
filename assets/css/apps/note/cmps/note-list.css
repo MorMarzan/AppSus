@@ -1,7 +1,7 @@
 .note-list {
   column-count: 4;
   column-width: 250px;
-  column-gap: 8px;
+  column-gap: 10px;
   margin-block-end: 10px;
   width: 90%;
 }
@@ -10,9 +10,12 @@
   position: relative;
   padding: 15px;
   border-radius: 10px;
-  border: 1px solid var(--grey-outline);
-  margin-block-end: 5px;
+  margin-block-end: 10px;
   padding-block-end: 40px;
   cursor: auto;
   break-inside: avoid;
+}
+
+.note-list-item.note-border {
+  border: 1px solid var(--grey-outline);
 }

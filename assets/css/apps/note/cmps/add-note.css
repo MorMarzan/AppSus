@@ -59,7 +59,7 @@
 .add-note .add-note-form .add-btn {
   position: absolute;
   right: 0;
-  padding: 10px 15px;
+  padding: 5px 12px;
   border-radius: 10px;
   transition: 0.2s;
 }

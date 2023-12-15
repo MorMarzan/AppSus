@@ -9,7 +9,7 @@
 }
 
 .note-type-bar img {
-  width: 22px;
+  width: 20px;
   cursor: pointer;
 }
 
@@ -20,7 +20,7 @@
 /* Tablet */
 @media (width >=768px) {
   .note-type-bar img {
-    width: 25px;
+    width: 22px;
   }
 }
 
