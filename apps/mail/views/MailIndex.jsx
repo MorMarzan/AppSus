@@ -46,13 +46,9 @@ export function MailIndex() {
         }
     },[])
 
-
-
     function onSetIsSbOpen() {
-        console.log('click!')
         setIsSbOpen(isSbOpen => !isSbOpen)
     }
-    console.log('isSbOpen',isSbOpen)
 
     function loadMails() {
         mailService.query()
