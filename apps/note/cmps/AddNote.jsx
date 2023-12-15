@@ -103,6 +103,7 @@ export function AddNote({
 
   function changeNoteType(type) {
     setNote((prevNote) => noteService.getEmptyNote(type, prevNote.title))
+    setNewTodo(noteService.getEmptyTodo())
   }
 
   function onAddTodo() {
