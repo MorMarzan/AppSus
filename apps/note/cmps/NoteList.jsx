@@ -35,9 +35,20 @@ export function NoteList({ notes, onChangeNote }) {
   }
 
   function onDeleteForever(noteId) {
-    noteService
+    console.log('noteId', noteId)
+    return noteService
       .remove(noteId, true)
       .then(onChangeNote)
+      .catch((err) => console.log('err', err))
+  }
+
+  function onRestoreNote(note) {
+    return noteService
+      .remove(note.id, true)
+      .then(() => {
+        console.log('note', note)
+        noteService.save(note, true).then(onChangeNote)
+      })
       .catch((err) => console.log('err', err))
   }
 
@@ -102,7 +113,11 @@ export function NoteList({ notes, onChangeNote }) {
             )}
 
             {noteHoverId === note.id && pageLoc === 'bin' && (
-              <TrashBtns noteId={note.id} onDeleteForever={onDeleteForever} />
+              <TrashBtns
+                note={note}
+                onDeleteForever={onDeleteForever}
+                onRestoreNote={onRestoreNote}
+              />
             )}
           </article>
         )
