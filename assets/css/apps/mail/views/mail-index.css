@@ -1,23 +1,18 @@
-/* mobile only */
-/* @media (max-width: 768px) { */
-.mail-index {
+  
+/* .mail-index {
   background-color: var(--clrPrimaryBase);
   position: relative;
-}
-
-/* .mail-index > div {
-  margin-inline: 20px;
 } */
 
 /* Tablet */
-@media (width >=768px) {
+/* @media (width >=768px) {
   .mail-index {
     display: grid;
     grid-template-columns: auto 1fr;
     column-gap: 20px;
   }
-}
+} */
 
 /* desktop */
-@media (width >=992px) {
-}
+/* @media (width >=992px) {
+} */

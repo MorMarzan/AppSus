@@ -35,8 +35,7 @@ export function MailDetails() {
     const { subject, from, to, sentAt, body } = mail
     return (
         <Fragment>
-            <DynamicHeader />
-            <section className="mail-details page">
+            <section className="mail-details">
                 <h1>{subject}</h1>
                 <div className="info">
                     <p>{from}</p>

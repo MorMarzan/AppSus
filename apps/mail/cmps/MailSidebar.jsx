@@ -1,17 +1,29 @@
-const { Link, NavLink } = ReactRouterDOM
+const { Link, NavLink, useNavigate } = ReactRouterDOM
 const { useState, useEffect } = React
 
 export function MailSidebar({ isMobileSbOpen, isDesktopSbOpen }) {
-    
+
+    const navigate = useNavigate()
+
+    function openNewCompose() {
+        navigate({
+            search: `?compose=true`,
+          })
+    }
+
     const dynClass = isMobileSbOpen ? 'open' : ''
 
     return (
         // <section className="mail-sidebar">
         <section className={dynClass + " sidebar"}>
-            <Link className="btn" to="/mail/edit">
+            <div onClick={openNewCompose} className="btn">
                 <i className="fa-solid fa-pencil"></i>
                 {isDesktopSbOpen && <span>Compose</span>}
-            </Link>
+            </div>
+            {/* <Link className="btn" to="/mail/edit">
+                <i className="fa-solid fa-pencil"></i>
+                {isDesktopSbOpen && <span>Compose</span>}
+            </Link> */}
             <button className="btn">
                 <i className="fa-solid fa-inbox"></i>
                 {isDesktopSbOpen && <span>Inbox</span>}

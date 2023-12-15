@@ -1,14 +1,8 @@
-const { Fragment, useState } = React
 const { Link } = ReactRouterDOM
 
 import { MailPreview } from "../cmps/MailPreview.jsx";
 // export function MailList({ mails, onRemoveMail }) {
 export function MailList({ mails }) {
-
-    // const ulProps = {
-    //     className: "mail-list",
-    //     title:'CARLISTTTTTTTTTTTT'
-    // }
 
     if (!mails) return <div>Loading...</div>
     if (!mails.length) return <div>No mails match this search</div>
@@ -17,7 +11,8 @@ export function MailList({ mails }) {
 
             {mails.map(mail =>
                 <li key={mail.id}>
-                    <Link to={`/mail/${mail.id}`}>
+                    <Link
+                        to={`/mail/inbox/${mail.id}`}>
                         <MailPreview mail={mail} />
                     </Link>
                 </li>

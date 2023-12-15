@@ -2,12 +2,14 @@ import { mailService } from "../../mail/services/mail.service.js"
 // import { showSuccessMsg } from "../../../services/event-bus.service.js"
 import { eventBusService } from '../../../services/event-bus.service.js'
 
-const { useNavigate, Link, useParams } = ReactRouterDOM
+const { useNavigate, Link, useParams, useSearchParams } = ReactRouterDOM
 const { useState, useEffect } = React
 
 export function MailEdit() {
     const [mailToEdit, setMailToEdit] = useState(mailService.getEmptyMail())
     const navigate = useNavigate()
+    const [searchParams] = useSearchParams()
+
     // const params = useParams()
 
     // useEffect(() => {
@@ -61,13 +63,26 @@ export function MailEdit() {
             })
     }
 
+    function onCloseCompose() {
+        // Remove the "compose" parameter from the search parameters
+        const updatedSearchParams = new URLSearchParams(searchParams)
+        updatedSearchParams.delete('compose')
+
+        // Construct the new URL with updated search parameters
+        const newUrl = `${window.location.pathname}?${updatedSearchParams.toString()}`
+
+        // Navigate to the new URL
+        navigate(newUrl)
+    }
+
     const { to, subject, body } = mailToEdit
     return (
         <section className="mail-edit mail-edit-layout">
             <header className="mail-edit-header mail-edit-layout full">
                 <div>
                     <h4>New Messege</h4>
-                    <Link className="btn" to="/mail">X</Link>
+                    <Link onClick={onCloseCompose} className="btn" to="#">X</Link>
+                    {/* <Link className="btn" to="/mail">X</Link> */}
                 </div>
             </header>
             {/* <form > */}

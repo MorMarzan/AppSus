@@ -1,15 +1,10 @@
-const { Outlet, Link, useSearchParams } = ReactRouterDOM
-
 // import { MailFilter } from "../cmps/MailFilter.jsx"
 import { MailList } from "../cmps/MailList.jsx"
 import { mailService } from "../../mail/services/mail.service.js"
-import { MailHeader } from "../cmps/MailHeader.jsx"
-import { MailFooter } from "../cmps/MailFooter.jsx"
-import { DynamicHeader } from "../../../cmps/DynamicHeader.jsx"
-import { DynamicSidebar } from "../../../cmps/DynamicSidebar.jsx"
 import { eventBusService } from '../../../services/event-bus.service.js'
 
 const { useState, useEffect, useRef } = React
+const { useSearchParams } = ReactRouterDOM
 
 export function MailIndex() {
 
@@ -17,7 +12,6 @@ export function MailIndex() {
     let intervalIdRef = useRef()
 
     
-    const [isSbOpen, setIsSbOpen] = useState(false) 
     // const [searchParams, setSearchParams] = useSearchParams()
     // const [filterBy, setFilterBy] = useState(mailService.getFilterFromQueryString(searchParams))
 
@@ -45,10 +39,6 @@ export function MailIndex() {
             clearInterval(intervalIdRef.current)
         }
     },[])
-
-    function onSetIsSbOpen() {
-        setIsSbOpen(isSbOpen => !isSbOpen)
-    }
 
     function loadMails() {
         mailService.query()
@@ -80,22 +70,12 @@ export function MailIndex() {
 
     // const { txt, minSpeed, maxPrice } = filterBy
 
-    // if (!mails) return <div>Loading...</div>
+    
     return (
-        <section className="mail-index page main-layout full">
-            <DynamicHeader onSetIsSbOpen={onSetIsSbOpen} />
-            {/* {isSbOpen && <MailSidebar isSbOpen={isSbOpen}/>} */}
-            <DynamicSidebar isSbOpen={isSbOpen} onSetIsSbOpen={onSetIsSbOpen}/>
-            <div>
-                <MailHeader />
-                {/* <div>Mister Email</div> */}
+        <section className="mail-index">
                 {/* <MailFilter filterBy={{ txt, minSpeed }} onSetFilter={onSetFilter} /> */}
                 <MailList mails={mails} />
                 {/* <MailList mails={mails} onRemoveMail={onRemoveMail} /> */}
-                {/* <DataTable mails={mails}/> */}
-                <MailFooter />
-            </div>
-            <Outlet /> {/*  <MailEdit />  */}
         </section>
     )
 }
