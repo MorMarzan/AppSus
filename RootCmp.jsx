@@ -12,6 +12,7 @@ import { UserMsg } from './cmps/UserMsg.jsx'
 import { MailDetails } from './apps/mail/views/MailDetails.jsx'
 import { MailApp } from './apps/mail/views/MailApp.jsx'
 import { NoteApp } from './apps/note/views/NoteApp.jsx'
+import { NoteBin } from './apps/note/views/NoteBin.jsx'
 
 export function App() {
   return (
@@ -37,6 +38,7 @@ export function App() {
             <Route index element={<Navigate to="/note/notes" />} />
             <Route path="/note/notes/" element={<NoteIndex />} />
             <Route path="/note/edit/:noteId" element={<EditNote />} />
+            <Route path="/note/bin" element={<NoteBin />} />
           </Route>
         </Routes>
 

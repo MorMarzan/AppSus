@@ -13,6 +13,7 @@ export const noteService = {
 }
 
 const NOTES_KEY = 'notesDB'
+const DELETED_NOTES_KEY = 'deletedNotesDB'
 const dummyNotes = [
   {
     id: 'n101',
@@ -57,8 +58,9 @@ const dummyNotes = [
 
 _initNotes()
 
-function query(filterBy) {
-  return storageService.query(NOTES_KEY).then((notes) => {
+function query(filterBy, isDeleted = false) {
+  const key = isDeleted ? DELETED_NOTES_KEY : NOTES_KEY
+  return storageService.query(key).then((notes) => {
     if (filterBy.type && filterBy.type.length) {
       notes = notes.filter((note) => note.type === filterBy.type)
     }

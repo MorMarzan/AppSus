@@ -1,20 +1,23 @@
-// import { NoteIndex } from './apps/note/views/NoteIndex.jsx'
-// import { EditNote } from './apps/note/cmps/EditNote.jsx'
 import { DynamicHeader } from '../../../cmps/DynamicHeader.jsx'
 import { DynamicSidebar } from '../../../cmps/DynamicSidebar.jsx'
 import { EditNote } from '../cmps/EditNote.jsx'
 import { noteService } from '../services/note.service.js'
+import { eventBusService } from '../../../services/event-bus.service.js'
 
 const { Outlet, useSearchParams } = ReactRouterDOM
 
-const { useState } = React
+const { useState, useEffect } = React
 
 export function NoteApp() {
-  const [searchValue, setSearchValue] = useState('')
   const [searchParams] = useSearchParams()
+  const [searchValue, setSearchValue] = useState('')
   const [filterBy, setFilterBy] = useState(noteService.getEmptyFilterBy())
   const hasEditNoteParams = searchParams.has('edit-note')
   const [isSbOpen, setIsSbOpen] = useState(false)
+
+  useEffect(() => {
+    eventBusService.emit('filter-notes', filterBy)
+  }, [filterBy])
 
   function onSetIsSbOpen() {
     setIsSbOpen((isSbOpen) => !isSbOpen)
