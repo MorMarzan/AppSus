@@ -1,5 +1,5 @@
 export function NoteTypeBar({ noteType, onChangeType }) {
-  const types = ['NoteTxt', 'NoteImg']
+  const types = ['NoteTxt', 'NoteImg', 'NoteVideo']
 
   return (
     <div className="note-type-bar">

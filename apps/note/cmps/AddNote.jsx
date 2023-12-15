@@ -160,11 +160,23 @@ export function AddNote({
                 placeholder="Enter image URL..."
               />
             )}
+            {note.type === 'NoteVideo' && (
+              <input
+                value={note.info.url}
+                onChange={handleNoteChange}
+                onClick={onOpenAdd}
+                name="url"
+                type="url"
+                placeholder="Enter video URL..."
+              />
+            )}
 
-            <NoteTypeBar
-              noteType={note.type}
-              onChangeType={(type) => refactorNote('type', type)}
-            />
+            {!isAddOpen && (
+              <NoteTypeBar
+                noteType={note.type}
+                onChangeType={(type) => refactorNote('type', type)}
+              />
+            )}
           </div>
           {isAddOpen && (
             <div className="tool-bar">
@@ -176,6 +188,12 @@ export function AddNote({
                 onDeleteNote={onDeleteNote}
                 onDuplicateNote={onDuplicateNote}
               />
+              <div className="note-type-container">
+                <NoteTypeBar
+                  noteType={note.type}
+                  onChangeType={(type) => refactorNote('type', type)}
+                />
+              </div>
               <button
                 className="add-btn"
                 disabled={!note.info}

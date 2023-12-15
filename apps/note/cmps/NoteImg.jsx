@@ -1,10 +1,18 @@
+const { useState, useEffect } = React
+import { eventBusService } from '../../../services/event-bus.service.js'
+
 export function NoteImg({ note }) {
-  function isValidUrl(url) {
-    // Regular expression to check if it's a valid file path or URL with an image extension
-    const fileExtensionRegex = /\.(jpeg|jpg|gif|png|bmp)$/i
-    const isUrl = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/.test(url)
-    return isUrl || fileExtensionRegex.test(url)
-  }
+  const [isImgLoaded, setIsImgLoaded] = useState(false)
+
+  useEffect(() => {
+    const unsubscribe = eventBusService.on('load-notes', (noteId) => {
+      if (noteId === note.id) setIsImgLoaded(false)
+    })
+
+    return () => {
+      unsubscribe()
+    }
+  }, [])
 
   return (
     <article
@@ -12,13 +20,19 @@ export function NoteImg({ note }) {
       style={{ backgroundColor: note.style.backgroundColor }}
     >
       {note.info.title && <p className="note-title">{note.info.title}</p>}
+
       <img
-        className="note-content"
-        src={
-          isValidUrl(note.info.url) ? note.info.url : './assets/img/keep.svg'
-        }
-        alt="Note Image"
+        className={`note-content ${!isImgLoaded && 'hide'}`}
+        onLoad={() => setIsImgLoaded(true)}
+        src={note.info.url}
+        alt=""
       />
+      {!isImgLoaded && (
+        <img
+          className="note-content note-alt-img"
+          src="./assets/img/keep.svg"
+        />
+      )}
     </article>
   )
 }

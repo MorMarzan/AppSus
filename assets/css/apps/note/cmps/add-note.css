@@ -71,3 +71,21 @@
 .note-content {
   position: relative;
 }
+
+.note-type-container {
+  position: relative;
+  margin: auto;
+}
+
+.note-type-container .note-type-bar {
+  top: -22px;
+  left: -15px;
+}
+
+/* Tablet */
+@media (width >=768px) {
+}
+
+/* desktop */
+@media (width >=992px) {
+}

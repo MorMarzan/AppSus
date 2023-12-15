@@ -25,3 +25,7 @@
 .edit-btns img {
   width: 20px;
 }
+
+.note-list-item .edit-btns {
+  bottom: 5px;
+}

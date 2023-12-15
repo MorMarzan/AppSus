@@ -22,7 +22,7 @@ export function EditNote() {
   }
 
   function onSaveNote() {
-    eventBusService.emit('load-notes')
+    eventBusService.emit('load-notes', note.id)
   }
 
   function onClose() {

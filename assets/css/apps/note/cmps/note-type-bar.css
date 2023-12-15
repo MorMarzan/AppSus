@@ -9,10 +9,21 @@
 }
 
 .note-type-bar img {
-  width: 25px;
+  width: 22px;
   cursor: pointer;
 }
 
 .note-type-bar img:hover {
   filter: brightness(80%);
+}
+
+/* Tablet */
+@media (width >=768px) {
+  .note-type-bar img {
+    width: 25px;
+  }
+}
+
+/* desktop */
+@media (width >=992px) {
 }

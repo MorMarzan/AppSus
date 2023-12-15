@@ -3,7 +3,6 @@
   right: 5px;
   top: 70px;
   background-color: white;
-  padding: 10px 20px 20px 20px;
   border-radius: 8px;
   border: 1px solid var(--grey-outline);
   user-select: none;
@@ -16,7 +15,7 @@
   border-block-end: 1px solid var(--grey-outline);
   cursor: pointer;
   transition: 0.2s;
-  padding-block: 10px;
+  padding: 10px;
 }
 
 .note-filter p:not(:first-child) {
