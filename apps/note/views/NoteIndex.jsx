@@ -68,41 +68,41 @@ export function NoteIndex() {
 
   return (
     <section className="note-index ">
-      <DynamicHeader
+      {/* <DynamicHeader
         onSetIsSbFull={onSetIsSbFull}
         searchValue={searchValue}
         onSearch={onSearch}
         filter={filterBy}
         onSetFilter={onSetFilter}
-      />
+      /> */}
 
-      <div className="page-layout page">
-        <DynamicSidebar isSbFull={isSbFull} />
-        <div className="page-content">
-          <AddNote onAdd={loadNotes} />
-          {notes && (
-            <Fragment>
-              {notes.some((note) => note.isPinned) ? (
-                <Fragment>
-                  <p className="list-header">PINNED</p>
-                  <NoteList
-                    onChangeNote={onChangeNote}
-                    notes={notes.filter((note) => note.isPinned)}
-                  />
-                  <p className="list-header">OTHERS</p>
-                  <NoteList
-                    onChangeNote={onChangeNote}
-                    notes={notes.filter((note) => !note.isPinned)}
-                  />
-                </Fragment>
-              ) : (
-                <NoteList onChangeNote={onChangeNote} notes={notes} />
-              )}
-            </Fragment>
-          )}
-          <Outlet />
-        </div>
+      {/* <div className="page-layout"> */}
+      {/* <DynamicSidebar isSbFull={isSbFull} /> */}
+      <div className="page-content">
+        <AddNote onAdd={loadNotes} />
+        {notes && (
+          <Fragment>
+            {notes.some((note) => note.isPinned) ? (
+              <Fragment>
+                <p className="list-header">PINNED</p>
+                <NoteList
+                  onChangeNote={onChangeNote}
+                  notes={notes.filter((note) => note.isPinned)}
+                />
+                <p className="list-header">OTHERS</p>
+                <NoteList
+                  onChangeNote={onChangeNote}
+                  notes={notes.filter((note) => !note.isPinned)}
+                />
+              </Fragment>
+            ) : (
+              <NoteList onChangeNote={onChangeNote} notes={notes} />
+            )}
+          </Fragment>
+        )}
+        <Outlet />
       </div>
+      {/* </div> */}
     </section>
   )
 }
