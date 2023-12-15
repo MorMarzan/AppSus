@@ -35,6 +35,7 @@
   border: unset;
   padding-block: 5px;
   background-color: transparent;
+  width: 80%;
 }
 
 .add-note .add-note-form input:focus-visible {
@@ -65,4 +66,8 @@
 
 .add-note .add-note-form .add-btn:hover {
   background-color: #dcdcdc72;
+}
+
+.note-content {
+  position: relative;
 }

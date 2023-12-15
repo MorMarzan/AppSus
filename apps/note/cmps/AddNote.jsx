@@ -1,6 +1,7 @@
 import { noteService } from '../services/note.service.js'
 import { ColorPicker } from './ColorPicker.jsx'
 import { EditBtns } from './EditBtns.jsx'
+import { NoteTypeBar } from './NoteTypeBar.jsx'
 const { useState, useEffect, useRef, Fragment } = React
 
 export function AddNote({
@@ -138,26 +139,33 @@ export function AddNote({
               />
             </Fragment>
           )}
-          {note.type === 'NoteTxt' && (
-            <input
-              value={note.info.txt}
-              onChange={handleNoteChange}
-              onClick={onOpenAdd}
-              name="txt"
-              type="text"
-              placeholder="Take a note..."
+          <div className="note-content">
+            {note.type === 'NoteTxt' && (
+              <input
+                value={note.info.txt}
+                onChange={handleNoteChange}
+                onClick={onOpenAdd}
+                name="txt"
+                type="text"
+                placeholder="Take a note..."
+              />
+            )}
+            {note.type === 'NoteImg' && (
+              <input
+                value={note.info.url}
+                onChange={handleNoteChange}
+                onClick={onOpenAdd}
+                name="url"
+                type="url"
+                placeholder="Enter image URL..."
+              />
+            )}
+
+            <NoteTypeBar
+              noteType={note.type}
+              onChangeType={(type) => refactorNote('type', type)}
             />
-          )}
-          {note.type === 'NoteImg' && (
-            <input
-              value={note.info.url}
-              onChange={handleNoteChange}
-              onClick={onOpenAdd}
-              name="url"
-              type="url"
-              placeholder="Enter image URL..."
-            />
-          )}
+          </div>
           {isAddOpen && (
             <div className="tool-bar">
               <EditBtns
