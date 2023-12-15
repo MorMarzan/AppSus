@@ -20,3 +20,10 @@
 .note-list-item.note-border {
   border: 1px solid var(--grey-outline);
 }
+
+.note-list-item .pin-img {
+  position: absolute;
+  right: 15px;
+  width: 23px;
+  cursor: pointer;
+}

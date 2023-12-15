@@ -18,10 +18,6 @@ export function AddNote({
   const [newTodo, setNewTodo] = useState(noteService.getEmptyTodo())
   const addNoteRef = useRef()
 
-  // function closeColor(ev) {
-  //   setIsColorOpen(false)
-  // }
-
   useEffect(() => {
     window.addEventListener('click', onCloseAdd)
     // addNoteRef.current.addEventListener('click', closeColor)
@@ -48,7 +44,7 @@ export function AddNote({
       return
     }
     setIsAddOpen(false)
-    setNote(noteService.getEmptyNote())
+    setNote(noteService.getEmptyNote('NoteTxt', ''))
   }
 
   function handleNoteChange({ target }) {
@@ -106,12 +102,7 @@ export function AddNote({
   }
 
   function changeNoteType(type) {
-    console.log(
-      'noteService.getEmptyNote(type, note.title)',
-      noteService.getEmptyNote(type, note.title)
-    )
     setNote((prevNote) => noteService.getEmptyNote(type, prevNote.title))
-    // refactorNote('type', type)
   }
 
   function onAddTodo() {
@@ -133,9 +124,6 @@ export function AddNote({
     const newNote = { ...note, info: { ...note.info, todos: newTodos } }
     setNote(newNote)
   }
-
-  console.log('note', note)
-  console.log('note.info.title', note.info.title)
 
   return (
     <section

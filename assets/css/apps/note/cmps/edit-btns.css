@@ -29,3 +29,7 @@
 .note-list-item .edit-btns {
   bottom: 5px;
 }
+
+.fa-trash {
+  color: var(--action-btn);
+}

@@ -37,6 +37,13 @@ export function NoteList({ notes, onChangeNote }) {
       .catch((err) => console.log('err', err))
   }
 
+  function handlePinClick(note) {
+    noteService
+      .save({ ...note, isPinned: !note.isPinned })
+      .then(onChangeNote)
+      .catch((err) => console.log('err', err))
+  }
+
   if (!notes) return <h2 className="loading-msg">Loading...</h2>
 
   if (!notes.length) return <h2 className="loading-msg">No notes to display</h2>
@@ -61,6 +68,15 @@ export function NoteList({ notes, onChangeNote }) {
             }}
             key={note.id}
           >
+            {noteHoverId === note.id && (
+              <img
+                onClick={() => handlePinClick(note)}
+                className="pin-img"
+                src={`./assets/img/${
+                  note.isPinned ? 'pinned' : 'unpinned'
+                }.svg`}
+              />
+            )}
             <NotePreview note={note} onChangeNote={onChangeNote} />
 
             {noteHoverId === note.id && (
