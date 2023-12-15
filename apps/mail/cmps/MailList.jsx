@@ -11,7 +11,7 @@ export function MailList({ mails }) {
 
             {mails.map(mail =>
                 <li key={mail.id}>
-                    <Link
+                    <Link className="btn"
                         to={`/mail/inbox/${mail.id}`}>
                         <MailPreview mail={mail} />
                     </Link>
