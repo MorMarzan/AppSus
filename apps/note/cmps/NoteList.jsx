@@ -76,7 +76,9 @@ export function NoteList({ notes, onChangeNote }) {
   function onSendMail(note) {
     navigate({
       pathname: '/mail/inbox',
-      search: `?compose=note&subject=${note.title}&body=${getNoteBody(note)}`,
+      search: `?compose=note&subject=${note.info.title}&body=${getNoteBody(
+        note
+      )}`,
     })
   }
 
@@ -90,7 +92,7 @@ export function NoteList({ notes, onChangeNote }) {
         return note.info.url
 
       case 'NoteTodos':
-        return JSON.stringify(note.info.todos)
+        return note.info.todos.map((todo) => todo.txt)
     }
   }
 

@@ -17,15 +17,12 @@ export function AddNote({
   const [isAddOpen, setIsAddOpen] = useState(isOpen)
   const [isColorOpen, setIsColorOpen] = useState(false)
   const [newTodo, setNewTodo] = useState(noteService.getEmptyTodo())
-  const addNoteRef = useRef()
 
   useEffect(() => {
     window.addEventListener('click', onCloseAdd)
-    // addNoteRef.current.addEventListener('click', closeColor)
 
     return () => {
       window.removeEventListener('click', onCloseAdd)
-      // addNoteRef.current.removeEventListener('click', closeColor)
     }
   }, [])
 
@@ -146,7 +143,7 @@ export function AddNote({
       }
       className="add-note"
     >
-      <section ref={addNoteRef} onClick={(ev) => ev.stopPropagation()}>
+      <section onClick={(ev) => ev.stopPropagation()}>
         {isAddOpen && (
           <img
             onClick={onCloseAdd}
@@ -256,7 +253,11 @@ export function AddNote({
                     />
                   </div>
                   {isAddOpen && (
-                    <img onClick={onAddTodo} src="./assets/img/add.svg" />
+                    <img
+                      className="add-todo-img"
+                      onClick={onAddTodo}
+                      src="./assets/img/add.svg"
+                    />
                   )}
                 </div>
               </Fragment>

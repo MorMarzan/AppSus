@@ -18,7 +18,18 @@ export function MailEdit() {
 
   useEffect(() => {
     if (draftId !== 'new') {
-      // if (params.mailId) {
+      if (draftId === 'note') {
+        var body = searchParams.get('body')
+        const subject = searchParams.get('subject')
+
+        setMailToEdit((prevMail) => ({
+          ...prevMail,
+          body,
+          subject,
+        }))
+        return
+      }
+
       loadMail()
     }
   }, [])
@@ -99,8 +110,9 @@ export function MailEdit() {
     updatedSearchParams.delete('compose')
 
     // Construct the new URL with updated search parameters
-    const newUrl = `${window.location.pathname
-      }?${updatedSearchParams.toString()}`
+    const newUrl = `${
+      window.location.pathname
+    }?${updatedSearchParams.toString()}`
 
     // Navigate to the new URL
     navigate(newUrl)
