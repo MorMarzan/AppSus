@@ -100,9 +100,8 @@ export function MailEdit() {
     updatedSearchParams.delete('compose')
 
     // Construct the new URL with updated search parameters
-    const newUrl = `${
-      window.location.pathname
-    }?${updatedSearchParams.toString()}`
+    const newUrl = `${window.location.pathname
+      }?${updatedSearchParams.toString()}`
 
     // Navigate to the new URL
     navigate(newUrl)

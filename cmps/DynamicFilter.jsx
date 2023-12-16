@@ -1,4 +1,5 @@
 import NoteFilter from '../apps/note/cmps/NoteFilter.jsx'
+import { MailFilter } from '../apps/mail/cmps/MailFilter.jsx'
 
 const { useLocation } = ReactRouterDOM
 
@@ -22,6 +23,10 @@ function DynamicCmp(props) {
     case 'note':
       return (
         <NoteFilter onSetFilter={props.onSetFilter} filter={props.filter} />
+      )
+    case 'mail':
+      return (
+        <MailFilter/>
       )
   }
 }
