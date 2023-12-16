@@ -1,0 +1,29 @@
+.book-add-list {
+  list-style-type: none;
+  max-width: 85%;
+  padding: 0;
+}
+
+.book-add-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 50px;
+}
+
+.book-add-list li:not(:last-child) {
+  border-bottom: 1px solid var(--dark-green);
+}
+
+.book-add-list li p {
+  margin: 0;
+}
+
+.book-add-list li img {
+  width: 25px;
+  cursor: pointer;
+}
+
+.book-add-list li img:hover {
+  filter: brightness(80%);
+}

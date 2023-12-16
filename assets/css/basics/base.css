@@ -85,3 +85,52 @@ input[type='checkbox'] {
 /* desktop */
 @media (width >=992px) {
 }
+
+.miss-books input[type='range']::-webkit-slider-thumb {
+  cursor: ew-resize;
+}
+
+.miss-books .no-info-msg {
+  text-align: center;
+  margin-block: 30px;
+}
+
+/* miss books */
+/* 
+.miss-books body {
+  margin: 0;
+  background-color: var(--off-white);
+  color: var(--dark-green);
+} */
+
+.miss-books h1,
+.miss-books h2,
+.miss-books h3,
+.miss-books h4,
+.miss-books h5,
+.miss-books h6 {
+  margin: 0.5em 0 0.5em;
+  font-family: 'Edu VIC WA NT Beginner', cursive;
+  text-align: center;
+}
+
+.miss-books h1 {
+  font-size: 1.5em;
+}
+
+.miss-books p {
+  margin: 0 0 1em;
+}
+
+.miss-books a {
+  text-decoration: none;
+  color: unset;
+}
+
+/* Dont stretch my Media */
+.miss-books img,
+.miss-books embed,
+.miss-books video,
+.miss-books object {
+  max-width: 100%;
+}

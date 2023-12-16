@@ -1,0 +1,27 @@
+.miss-books .user-msg {
+  background-color: lightgray;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  color: var(--off-white);
+  font-weight: bold;
+  border-radius: 2px;
+}
+
+.miss-books .user-msg p {
+  margin: 0;
+}
+
+.miss-books .user-msg.success {
+  background-color: var(--brown);
+}
+
+.miss-books .user-msg.error {
+  background-color: red;
+}
+
+.miss-books .user-msg button {
+  float: right;
+  margin: 1em;
+}

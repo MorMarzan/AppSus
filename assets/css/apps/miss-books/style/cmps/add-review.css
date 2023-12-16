@@ -1,0 +1,24 @@
+.add-review {
+  margin-block-end: 30px;
+  background-color: var(--brown);
+  color: var(--off-white);
+}
+
+.add-review h2 {
+  margin-block-end: 20px;
+  color: var(--dark-green);
+}
+
+.add-review form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-review form label {
+  margin-block-end: 15px;
+}
+
+.add-review form button:not(.star-rating button) {
+  background-color: var(--dark-green);
+}

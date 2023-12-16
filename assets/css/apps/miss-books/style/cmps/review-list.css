@@ -1,0 +1,29 @@
+.review-list {
+  margin-block-end: 30px;
+  text-align: center;
+}
+
+table.review-list {
+  background-color: var(--light-green);
+  color: var(--off-white);
+}
+
+.review-list thead td {
+  padding: 10px;
+  background-color: var(--dark-green);
+}
+
+.review-list tbody td {
+  padding: 5px 10px;
+  background-color: var(--light-green2);
+}
+
+.review-list img {
+  width: 30px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.review-list img:hover {
+  filter: brightness(80%);
+}

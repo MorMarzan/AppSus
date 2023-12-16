@@ -1,0 +1,42 @@
+.miss-books .main-layout {
+  display: grid;
+  grid-template-columns: 1.6rem 1fr 1.6rem;
+}
+
+.miss-books .main-layout > * {
+  grid-column: 2;
+}
+
+.miss-books .main-layout .full {
+  grid-column: 1/-1;
+}
+
+.miss-books .container {
+  max-width: 800px;
+  padding: 1em;
+  margin: auto;
+}
+
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+@media (min-width: 850px) {
+  .book-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1250px) {
+  .book-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1400px) {
+  .book-list {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

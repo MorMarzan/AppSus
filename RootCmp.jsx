@@ -16,7 +16,11 @@ import { NoteBin } from './apps/note/views/NoteBin.jsx'
 import { Loader } from './cmps/Loader.jsx'
 
 const { useState, useEffect } = React
-import { eventBusService } from '../../../services/event-bus.service.js'
+import { MissBooksApp } from './apps/missbooks/views/MissBooksApp.jsx'
+import { BookIndex } from './apps/missbooks/views/BookIndex.jsx'
+import { BookDetails } from './apps/missbooks/views/BookDetails.jsx'
+import { EditBook } from './apps/missbooks/views/EditBook.jsx'
+import { BookAdd } from './apps/missbooks/views/BookAdd.jsx'
 
 export function App() {
   return (
@@ -46,6 +50,16 @@ export function App() {
             <Route path="/note/notes/" element={<NoteIndex />} />
             <Route path="/note/edit/:noteId" element={<EditNote />} />
             <Route path="/note/bin" element={<NoteBin />} />
+          </Route>
+
+          {/* miss books */}
+          <Route path="/book" element={<MissBooksApp />}>
+            <Route index element={<Navigate to="/book/index" />} />
+            <Route path="/book/index" element={<BookIndex />} />
+            <Route path="/book/index/:bookId" element={<BookDetails />} />
+            <Route path="/book/index/edit/:bookId" element={<EditBook />} />
+            <Route path="/book/index/edit" element={<EditBook />} />
+            <Route path="/book/book-add" element={<BookAdd />} />
           </Route>
         </Routes>
 

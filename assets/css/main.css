@@ -57,3 +57,7 @@
 @import './apps/mail/cmps/mail-header.css';
 @import './apps/mail/cmps/mail-footer.css';
 @import './apps/mail/cmps/mail-edit-toolbar.css';
+
+/* miss books */
+
+@import '../css/apps/miss-books/style/main.css';

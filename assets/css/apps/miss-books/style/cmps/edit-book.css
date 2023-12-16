@@ -1,0 +1,27 @@
+.edit-book-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-book-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-book-container form input {
+  margin-block: 10px 20px;
+}
+
+.edit-book a {
+  width: 30px;
+  height: fit-content;
+  grid-column: 1;
+  grid-row: 1;
+  margin: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.edit-book a:hover {
+  filter: brightness(80%);
+}

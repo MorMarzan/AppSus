@@ -1,0 +1,26 @@
+.books-filter {
+  background-color: var(--brown);
+}
+
+.books-filter form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--off-white);
+}
+
+.books-filter form input {
+  margin-block: 5px 10px;
+}
+
+.books-filter .txt-input-container input {
+  width: 100px;
+}
+
+.books-filter .txt-input-container input:first-of-type {
+  margin-inline-end: 10px;
+}
+
+/* .books-filter form button {
+  background-color: var(--light-green);
+} */

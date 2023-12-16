@@ -1,0 +1,21 @@
+.miss-books .app-header {
+  background-color: var(--dark-green);
+  color: var(--off-white);
+  padding-block: 1em;
+  top: 4em;
+}
+
+.miss-books .app-header h1 {
+  margin: 0;
+}
+
+.miss-books .app-header section:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.miss-books .app-header .app-nav {
+  display: flex;
+  gap: 15px;
+}

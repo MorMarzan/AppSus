@@ -1,0 +1,9 @@
+.long-txt a {
+  color: var(--dark-green);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.long-txt a:hover {
+  filter: brightness(80%);
+}

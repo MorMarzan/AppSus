@@ -7,7 +7,7 @@
 .about h1,
 .about h1,
 .about h4,
-span {
+span:not(.miss-books span) {
   font-family: roboto-bold, Arial, sans-serif;
   color: var(--primary-txt-color);
 }
