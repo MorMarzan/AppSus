@@ -1,19 +1,17 @@
-  
 .mail-app {
-    background-color: var(--clrPrimaryBase);
-    position: relative;
+  background-color: var(--clrPrimaryBase);
+  position: relative;
+}
+
+/* Tablet */
+@media (width >=500px) {
+  .mail-app {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 20px;
   }
-  
-  /* Tablet */
-  @media (width >=768px) {
-    .mail-app {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      column-gap: 20px;
-    }
-  }
-  
-  /* desktop */
-  @media (width >=992px) {
-  }
-  
+}
+
+/* desktop */
+@media (width >=992px) {
+}

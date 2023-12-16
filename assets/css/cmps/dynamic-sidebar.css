@@ -1,8 +1,8 @@
 /* mobile only */
-@media (width <=768px) {
+@media (width <=500px) {
   .dynamic-sidebar .sidebar {
     position: fixed;
-    background-color: lightblue;
+    background-color: var(--clrPrimaryBase);
     z-index: 30;
     width: 80vw;
     top: 0;

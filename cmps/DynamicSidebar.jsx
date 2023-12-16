@@ -8,7 +8,7 @@ export function DynamicSidebar({ isSbOpen, onSetIsSbOpen }) {
   const { pathname } = useLocation()
   const sbType = pathname.includes('mail') ? 'mail' : 'note'
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 500)
   const [isMobileSbOpen, setIsMobileSbOpen] = useState(null)
   const [isDesktopSbOpen, setIsDesktopSbOpen] = useState(null)
 
@@ -31,7 +31,7 @@ export function DynamicSidebar({ isSbOpen, onSetIsSbOpen }) {
   }, [isSbOpen, isMobile])
 
   function handleResize() {
-    const currIsMobile = window.innerWidth <= 768
+    const currIsMobile = window.innerWidth <= 500
     setIsMobile(currIsMobile)
   }
 
