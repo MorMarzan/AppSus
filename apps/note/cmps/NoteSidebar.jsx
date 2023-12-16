@@ -12,7 +12,7 @@ export function NoteSidebar({ isMobileSbOpen, isDesktopSbOpen }) {
       </NavLink>
       <NavLink to="/note/bin">
         <button className="btn">
-          <i className="fa-solid fa-trash"></i>
+          <img src="./assets/img/trash.svg" />
           {isDesktopSbOpen && <span>Bin</span>}
         </button>
       </NavLink>
