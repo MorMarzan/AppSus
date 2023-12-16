@@ -44,10 +44,10 @@ export function MailSidebar({
             <i className="fa-solid fa-inbox"></i>
             {isDesktopSbOpen && <span>Inbox</span>}
           </NavLink>
-          <NavLink onClick={onNav} className="btn" to="/mail/starred">
+          {/* <NavLink onClick={onNav} className="btn" to="/mail/starred">
             <i className="fa-regular fa-star"></i>
             {isDesktopSbOpen && <span>Starred</span>}
-          </NavLink>
+          </NavLink> */}
           <NavLink onClick={onNav} className="btn" to="/mail/sent">
             <i className="fa-regular fa-paper-plane"></i>
             {isDesktopSbOpen && <span>Sent</span>}
@@ -56,10 +56,10 @@ export function MailSidebar({
             <i className="fa-regular fa-pen-to-square"></i>
             {isDesktopSbOpen && <span>Draft</span>}
           </NavLink>
-          <NavLink onClick={onNav} className="btn" to="/mail/bin">
+          {/* <NavLink onClick={onNav} className="btn" to="/mail/bin">
             <i className="fa-solid fa-trash"></i>
             {isDesktopSbOpen && <span>Bin</span>}
-          </NavLink>
+          </NavLink> */}
         </nav>
       </div>
     </section>

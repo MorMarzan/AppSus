@@ -16,10 +16,10 @@ export function MailFilterNotDynamic({ filterBy, onSetFilter }) {
     //     onSetSortBy(sortByToEdit)
     // }, [sortByToEdit])
 
-    function onSetFilterBy(ev) {
-        ev.preventDefault()
-        onSetFilter(filterByToEdit)
-    }
+    // function onSetFilterBy(ev) {
+    //     ev.preventDefault()
+    //     onSetFilter(filterByToEdit)
+    // }
 
     function handleChange({ target }) {
         const field = target.name
@@ -51,13 +51,17 @@ export function MailFilterNotDynamic({ filterBy, onSetFilter }) {
 
     const { txt, readStat } = filterByToEdit
     return (
-        <section className="mail-filter">
-            {/* <h2>Filter Our Mails</h2> */}
-            <form onSubmit={onSetFilterBy} >
-                <label htmlFor="txt">Text: </label>
-                <input value={txt} onChange={handleChange} type="text" id="txt" name="txt" />
+        <section className="mail-filter dynamic-header">
 
+            <form className="search-form" >
+                <button>
+                    <img className="search-img" src="./assets/img/search.svg" />
+                </button>
+                <input className="search-input" placeholder="Search" value={txt} onChange={handleChange} type="text" name="txt" />
 
+            </form>
+
+            <form>
                 <label>
                     <input
                         type="radio"
@@ -90,12 +94,12 @@ export function MailFilterNotDynamic({ filterBy, onSetFilter }) {
                     />
                     Unread
                 </label>
+            </form>
 
-                {/* <label htmlFor="subject">Subject sort: </label>
+            {/* <label htmlFor="subject">Subject sort: </label>
                 <input onChange={handleSort} type="checkbox" id="subject" name="subject" /> */}
 
-                {/* <button>Submit</button> */}
-            </form>
+            {/* <button>Submit</button> */}
         </section>
     )
 }

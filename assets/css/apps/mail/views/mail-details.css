@@ -1,14 +1,31 @@
 .mail-details {
     display: grid;
     grid-template-rows: auto auto 1fr;
+    gap: 20px;
+    background-color: white;
+    padding: 25px;
+    box-shadow: var(--box-shadow);
 }
 
 .mail-details .info {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
+    row-gap: 5px;
 }
 
 .mail-details .info p {
     margin: 0;
+}
+
+.mail-details .info p:nth-child(2) {
+    justify-self: end;
+}
+
+.mail-details .info p:last-child {
+    font-size: 13px;
+}
+
+.mail-details h1 {
+    font-size: 1.5rem;
 }
