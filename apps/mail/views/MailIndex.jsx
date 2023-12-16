@@ -2,6 +2,7 @@
 import { MailList } from "../cmps/MailList.jsx"
 import { mailService } from "../../mail/services/mail.service.js"
 import { showSuccessMsg, showErrorMsg, eventBusService } from "../../../services/event-bus.service.js"
+import { MailFilterNotDynamic } from "../cmps/MailFilterNotDynamic.jsx"
 
 const { useState, useEffect, useRef } = React
 const { useSearchParams, useLocation } = ReactRouterDOM
@@ -74,12 +75,23 @@ export function MailIndex() {
     function onSetFilter(dynamicHeaderFilter) {
         const pathSegments = location.pathname.split('/')
         const stautsVal = pathSegments[2] || ''
+        // console.log('pathSegments', pathSegments)
+        // console.log('dynamicHeaderFilter', dynamicHeaderFilter)
+
         let newStat = { status: stautsVal }
-        console.log('dynamicHeaderFilter', dynamicHeaderFilter)
-        console.log('filterBy of index', filterBy)
-        if (dynamicHeaderFilter) setFilterBy(() => ({ ...dynamicHeaderFilter, ...newStat }))
-        else setFilterBy(prevFilter => ({ ...prevFilter, ...newStat }))
-        console.log('filterBy after set', filterBy)
+
+        // console.log('dynamicHeaderFilter', dynamicHeaderFilter)
+        // console.log('filterBy of index', filterBy)
+        if (dynamicHeaderFilter) {
+            setFilterBy(() => ({ ...dynamicHeaderFilter, ...newStat }))
+            // console.log('newStat', newStat)
+            // console.log('dynamicHeaderFilter', { ...dynamicHeaderFilter, ...newStat })
+        }
+
+        else {
+            setFilterBy(prevFilter => ({ ...prevFilter, ...newStat }))
+            // console.log('filterBy', { ...filterBy, ...newStat })
+        }
     }
 
 
@@ -118,8 +130,15 @@ export function MailIndex() {
             })
     }
 
+    // function onSetSortBy(sortBy) {
+    //     mailService.setMailSort(sortBy)
+    //         .then(setMails)
+    //         .catch(err => console.log('err:', err))
+    // }
+
     return (
         <section className="mail-index">
+            <MailFilterNotDynamic onSetFilter={onSetFilter} filterBy={filterBy}/>
             {/* <MailFilter filterBy={{ txt, minSpeed }} onSetFilter={onSetFilter} /> */}
             <MailList mails={mails} onToggleIsReadStat={onToggleIsReadStat} onRemoveMail={onRemoveMail} />
             {/* <MailList mails={mails} onRemoveMail={onRemoveMail} /> */}

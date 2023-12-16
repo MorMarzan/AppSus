@@ -131,7 +131,8 @@ export const mailService = {
   save,
   getEmptyMail,
   getDefaultFilter,
-  getFilterFromQueryString
+  getFilterFromQueryString,
+  setMailSort
 }
 
 function query(filterBy) {
@@ -161,11 +162,9 @@ function query(filterBy) {
         const regExp = new RegExp(filterBy.txt, 'i')
         mails = mails.filter(mail => regExp.test(mail.subject) || regExp.test(mail.body))
       }
-      // if (filterBy.isRead !== null) {
       if (filterBy.readStat !== 'all') {
         if (filterBy.readStat === 'read') mails = mails.filter(mail => mail.isRead)
         if (filterBy.readStat === 'unread') mails = mails.filter(mail => !mail.isRead)
-        // mails = mails.filter(mail => filterBy.isRead === mail.isRead)
       }
       mails.sort((a, b) => b.sentAt - a.sentAt);
       return mails
@@ -227,6 +226,25 @@ function getFilterFromQueryString(searchParams) {
     labels
   }
 }
+
+function setMailSort(mails, sortBy = {}) {
+  if (sortBy.sentAt !== undefined) {
+      mails => mails.sort((m1, m2) => (m1.sentAt - m2.sentAt) * sortBy.sentAt)
+  } else if (sortBy.subject !== undefined) {
+      mails => mails.sort((m1, m2) => m1.subject.localeCompare(m2.subject) * sortBy.subject)
+
+  }
+}
+// function setMailSort(sortBy = {}) {
+//   if (sortBy.sentAt !== undefined) {
+//     return storageService.query(MAIL_KEY)
+//       .then(mails => mails.sort((m1, m2) => (m1.sentAt - m2.sentAt) * sortBy.sentAt))
+//   } else if (sortBy.subject !== undefined) {
+//     return  storageService.query(MAIL_KEY)
+//       .then(mails => mails.sort((m1, m2) => m1.subject.localeCompare(m2.subject) * sortBy.subject))
+
+//   }
+// }
 
 function _createMails() {
   let mails = localStorageService.loadFromStorage(MAIL_KEY)
