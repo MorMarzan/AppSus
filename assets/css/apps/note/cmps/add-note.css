@@ -68,7 +68,7 @@
   background-color: #dcdcdc72;
 }
 
-.note-content {
+.note-content:not(.hide) {
   display: flex;
   position: relative;
 }
