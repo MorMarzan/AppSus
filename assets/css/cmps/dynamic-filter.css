@@ -18,9 +18,6 @@
   padding: 10px;
 }
 
-.note-filter p:not(:first-child) {
-}
-
 .note-filter p:hover {
   filter: brightness(90%);
   background-color: #ffffff;
@@ -28,4 +25,18 @@
 
 .note-filter p.active {
   background-color: #feefc3;
+}
+
+.mail-read-filter {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mail-read-filter label {
+  margin-block-end: 10px;
+}
+
+.mail-read-filter input {
+  cursor: pointer;
 }
