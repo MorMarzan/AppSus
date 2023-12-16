@@ -8,7 +8,7 @@ export function MailSidebar({ isMobileSbOpen, isDesktopSbOpen, isMobile }) {
 
   function openNewCompose() {
     navigate({
-      search: `?compose=true`,
+      search: `?compose=new`,
     })
   }
 

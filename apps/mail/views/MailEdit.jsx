@@ -9,20 +9,24 @@ export function MailEdit() {
     const [mailToEdit, setMailToEdit] = useState(mailService.getEmptyMail())
     const navigate = useNavigate()
     const [searchParams] = useSearchParams()
+    const draftId = searchParams.get('compose');
 
-    // const params = useParams()
 
-    // useEffect(() => {
-    //     if (params.mailId) {
-    //         loadMail()
-    //     }
-    // }, [])
+    const params = useParams()
 
-    // function loadMail() {
-    //     mailService.get(params.mailId)
-    //         .then(setMailToEdit)
-    //         .catch(err=>console.log('err:', err))
-    // }
+    useEffect(() => {
+        if (draftId !== 'new') {
+            // if (params.mailId) {
+            loadMail()
+        }
+    }, [])
+
+    function loadMail() {
+        mailService.get(draftId)
+            // mailService.get(params.mailId)
+            .then(setMailToEdit)
+            .catch(err => console.log('err:', err))
+    }
 
     function handleChange({ target }) {
         const field = target.name
@@ -55,15 +59,34 @@ export function MailEdit() {
                 showSuccessMsg('Mail sent successfully')
                 eventBusService.emit('load-mails')
                 // console.log(savedMail)
-                navigate('/mail')
+                navigate('/mail/sent')
             })
             .catch(err => {
                 console.log('err:', err)
-                showErrorMsg('Error - mail not sent')
+                showErrorMsg('Error: Mail not sent')
+            })
+    }
+
+    function onSaveMailAsDraft() {
+        mailService.save(mailToEdit)
+            .then((savedMail) => {
+                // throw new Error('error')
+                showSuccessMsg('Mail saved as draft')
+                eventBusService.emit('load-mails')
+                // console.log(savedMail)
+                navigate('/mail/draft')
+            })
+            .catch(err => {
+                console.log('err:', err)
+                showErrorMsg('Error: Mail wasn\'t saved as draft')
             })
     }
 
     function onCloseCompose() {
+        // Save as draft only if there is data
+        const hasDataToSave = ['subject', 'body', 'to'].some(key => mailToEdit[key] !== '');
+        if (hasDataToSave) onSaveMailAsDraft()
+
         // Remove the "compose" parameter from the search parameters
         const updatedSearchParams = new URLSearchParams(searchParams)
         updatedSearchParams.delete('compose')
@@ -91,7 +114,7 @@ export function MailEdit() {
                 <input onChange={handleChange} placeholder="Subject" value={subject} type="text" name="subject" />
                 <textarea onChange={handleChange} value={body} type="text" name="body" />
 
-                <button className="submit" disabled={!to}>Save</button>
+                <button className="submit" disabled={!to}>Send</button>
             </form>
 
         </section>

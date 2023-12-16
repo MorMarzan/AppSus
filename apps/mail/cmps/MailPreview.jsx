@@ -8,15 +8,28 @@ export function MailPreview({ mail, mailHoverId, onToggleIsReadStat, onRemoveMai
     
     const location = useLocation()
     const isSentPage = location.pathname.includes('sent')
+    const isDraftPage = location.pathname.includes('draft')
 
+    
     const { subject, body, isRead, sentAt, from, to } = mail
     const readStat = !isRead ? 'unread' : ''
+    
+    let leftColContent
+    if (isSentPage) {
+        leftColContent = 'To: ' + to
+    } else if (isDraftPage) {
+        leftColContent = 'Draft'
+    } else {
+        leftColContent = from
+    }
+
+    let rightColContent = isDraftPage ? 'Not sent yet' : utilService.formatTimestamp(sentAt)
 
     return (
         <article className={readStat + ' mail-preview'}>
-            <div className="from text-overflow-ellipsis">{isSentPage ? 'To: ' + to : from}</div>
+            <div className="from text-overflow-ellipsis">{leftColContent}</div>
             <div className="mail-content text-overflow-ellipsis"><span className="subject">{subject}</span> - {body}</div>
-            {mailHoverId !== mail.id && <div className="date">{utilService.formatTimestamp(sentAt)}</div>}
+            {mailHoverId !== mail.id && <div className="date">{rightColContent}</div>}
             {mailHoverId === mail.id &&
                 // <div>
                 //     <button className="btn">

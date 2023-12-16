@@ -13,7 +13,8 @@ export function MailIndex() {
     const location = useLocation()
 
     // const isSentPage = location.pathname.includes('sent')
-    const [filterBy, setFilterBy] = useState(null)
+    const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
+    // const [filterBy, setFilterBy] = useState({...mailService.getDefaultFilter(), status: 'inbox'})
 
 
     // const [searchParams, setSearchParams] = useSearchParams()
@@ -70,8 +71,8 @@ export function MailIndex() {
     function onSetFilter() {
         const pathSegments = location.pathname.split('/')
         const stautsVal = pathSegments[2] || ''
-        const newFilter = { ...mailService.getDefaultFilter(), status: stautsVal }
-        setFilterBy(prevFilter => ({ ...prevFilter, ...newFilter }))
+        const newStat = { status: stautsVal }
+        setFilterBy(prevFilter => ({ ...prevFilter, ...newStat }))
 
     }
 

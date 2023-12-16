@@ -1,4 +1,4 @@
-const { Link, useNavigate } = ReactRouterDOM
+const { Link, useNavigate, useLocation } = ReactRouterDOM
 const { useState, Fragment } = React
 
 import { MailPreview } from "../cmps/MailPreview.jsx";
@@ -9,9 +9,18 @@ export function MailList({ mails, onToggleIsReadStat, onRemoveMail }) {
     const [mailHoverId, setMailHoverId] = useState(null)
     const navigate = useNavigate()
 
+    const location = useLocation()
+    const isDraftPage = location.pathname.includes('draft')
+
     function onMailPreviewClick(mailId) {
-        navigate(`/mail/inbox/${mailId}`)
-        onToggleIsReadStat(mailId, true)
+        if (!isDraftPage) {
+            navigate(`/mail/inbox/${mailId}`)
+            onToggleIsReadStat(mailId, true)
+        } else {
+            navigate({
+                search: `?compose=${mailId}`,
+            })
+        }
     }
 
     if (!mails) return <div>Loading...</div>
@@ -26,7 +35,7 @@ export function MailList({ mails, onToggleIsReadStat, onRemoveMail }) {
                     onMouseEnter={() => setMailHoverId(mail.id)}
                     onMouseLeave={() => setMailHoverId(null)}
                 >
-                    <MailPreview mail={mail} mailHoverId={mailHoverId} onToggleIsReadStat={onToggleIsReadStat} onRemoveMail={onRemoveMail}/>
+                    <MailPreview mail={mail} mailHoverId={mailHoverId} onToggleIsReadStat={onToggleIsReadStat} onRemoveMail={onRemoveMail} />
 
                 </li>
             )}
