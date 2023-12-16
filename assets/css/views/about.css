@@ -6,6 +6,7 @@
 
 .about h1,
 .about h1,
+.about h4,
 span {
   font-family: roboto-bold, Arial, sans-serif;
   color: var(--primary-txt-color);
@@ -21,4 +22,27 @@ span {
   width: 95%;
   max-width: 700px;
   line-height: 1.7em;
+}
+
+.about .about-content p {
+  margin-block-end: 120px;
+}
+
+.imgs-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgs-container .img-container {
+  margin-inline: 10px;
+  margin-block-end: 10px;
+  padding: 15px;
+  border-radius: 50%;
+  background-color: var(--brand-color);
+}
+
+.imgs-container .img-container img {
+  width: 110px;
+  border-radius: 50%;
 }
