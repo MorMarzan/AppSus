@@ -73,6 +73,10 @@
   position: relative;
 }
 
+.note-content:has(.add-todo-img) {
+  flex-direction: column;
+}
+
 .note-type-container {
   position: relative;
   margin: auto;
@@ -87,6 +91,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 80%;
+}
+
+.add-todo:has(.add-todo-img) {
+  width: 100%;
 }
 
 .add-todo .new-todo-container {
