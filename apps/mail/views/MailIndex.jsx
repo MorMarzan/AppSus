@@ -1,4 +1,3 @@
-// import { MailFilter } from "../cmps/MailFilter.jsx"
 import { MailList } from "../cmps/MailList.jsx"
 import { mailService } from "../../mail/services/mail.service.js"
 import { showSuccessMsg, showErrorMsg, eventBusService } from "../../../services/event-bus.service.js"
@@ -13,13 +12,7 @@ export function MailIndex() {
     let intervalIdRef = useRef()
     const location = useLocation()
 
-    // const isSentPage = location.pathname.includes('sent')
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
-    // const [filterBy, setFilterBy] = useState({...mailService.getDefaultFilter(), status: 'inbox'})
-
-
-    // const [searchParams, setSearchParams] = useSearchParams()
-    // const [filterBy, setFilterBy] = useState(mailService.getFilterFromQueryString(searchParams))
 
 
     //intial render && when filter changes
@@ -75,33 +68,17 @@ export function MailIndex() {
     function onSetFilter(dynamicHeaderFilter) {
         const pathSegments = location.pathname.split('/')
         const stautsVal = pathSegments[2] || ''
-        // console.log('pathSegments', pathSegments)
-        // console.log('dynamicHeaderFilter', dynamicHeaderFilter)
 
         let newStat = { status: stautsVal }
-
-        // console.log('dynamicHeaderFilter', dynamicHeaderFilter)
-        // console.log('filterBy of index', filterBy)
         if (dynamicHeaderFilter) {
             setFilterBy(() => ({ ...dynamicHeaderFilter, ...newStat }))
-            // console.log('newStat', newStat)
-            // console.log('dynamicHeaderFilter', { ...dynamicHeaderFilter, ...newStat })
         }
 
         else {
             setFilterBy(prevFilter => ({ ...prevFilter, ...newStat }))
-            // console.log('filterBy', { ...filterBy, ...newStat })
         }
     }
 
-
-    // function onSetFilter(filterBy) {
-    //     // setFilterBy(filterBy)
-    //     setFilterBy(prevFilter => ({ ...prevFilter, ...filterBy }))
-
-    // }
-
-    // const { txt, minSpeed, maxPrice } = filterBy
 
     function onToggleIsReadStat(mailId, isRead) {
         mailService.get(mailId)
@@ -126,22 +103,33 @@ export function MailIndex() {
             })
             .catch(err => {
                 console.log('err:', err)
-                showErrorMsg('Error - can\'t find mail details ')
+                showErrorMsg('Error - coudn\'t mark as read ')
             })
     }
 
-    // function onSetSortBy(sortBy) {
-    //     mailService.setMailSort(sortBy)
-    //         .then(setMails)
-    //         .catch(err => console.log('err:', err))
-    // }
+    function onToggleIsStarred(mailId, isStarred) {
+        mailService.get(mailId)
+            .then(mailToUpdate => {
+                const mailIndex = mails.findIndex(mail => mail.id === mailId)
+
+                if (mailIndex !== -1) {
+                    const updatedMails = [...mails];
+                    updatedMails[mailIndex] = { ...mailToUpdate, isStarred: isStarred }
+                    setMails(updatedMails)
+                }
+                showSuccessMsg(`Mail marked as ${isStarred ? 'starred' : 'unstarred'}! ${mailId}`)
+                return mailService.save({ ...mailToUpdate, isStarred: isStarred })
+            })
+            .catch(err => {
+                console.log('err:', err)
+                showErrorMsg('Error - coudn\'t mark as starred')
+            })
+    }
 
     return (
         <section className="mail-index">
-            <MailFilterNotDynamic onSetFilter={onSetFilter} filterBy={filterBy}/>
-            {/* <MailFilter filterBy={{ txt, minSpeed }} onSetFilter={onSetFilter} /> */}
-            <MailList mails={mails} onToggleIsReadStat={onToggleIsReadStat} onRemoveMail={onRemoveMail} />
-            {/* <MailList mails={mails} onRemoveMail={onRemoveMail} /> */}
+            <MailFilterNotDynamic onSetFilter={onSetFilter} filterBy={filterBy} />
+            <MailList mails={mails} onToggleIsReadStat={onToggleIsReadStat} onRemoveMail={onRemoveMail} onToggleIsStarred={onToggleIsStarred}/>
         </section>
     )
 }
