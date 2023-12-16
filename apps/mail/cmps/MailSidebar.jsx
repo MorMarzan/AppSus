@@ -41,9 +41,9 @@ export function MailSidebar({ isMobileSbOpen, isDesktopSbOpen, isMobile }) {
             <i className="fa-regular fa-pen-to-square"></i>
             {isDesktopSbOpen && <span>Draft</span>}
           </NavLink>
-          <NavLink className="btn" to="/mail/draft">
+          <NavLink className="btn" to="/mail/bin">
             <i className="fa-solid fa-trash"></i>
-            {isDesktopSbOpen && <span>Trash</span>}
+            {isDesktopSbOpen && <span>Bin</span>}
           </NavLink>
         </nav>
       </div>
