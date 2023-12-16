@@ -131,7 +131,7 @@ export const mailService = {
   save,
   getEmptyMail,
   getDefaultFilter,
-  // getFilterFromQueryString
+  getFilterFromQueryString
 }
 
 function query(filterBy) {
@@ -161,8 +161,11 @@ function query(filterBy) {
         const regExp = new RegExp(filterBy.txt, 'i')
         mails = mails.filter(mail => regExp.test(mail.subject) || regExp.test(mail.body))
       }
-      if (filterBy.isRead !== null) {
-        mails = mails.filter(mail => filterBy.isRead === mail.isRead)
+      // if (filterBy.isRead !== null) {
+      if (filterBy.readStat !== 'all') {
+        if (filterBy.readStat === 'read') mails = mails.filter(mail => mail.isRead)
+        if (filterBy.readStat === 'unread') mails = mails.filter(mail => !mail.isRead)
+        // mails = mails.filter(mail => filterBy.isRead === mail.isRead)
       }
       mails.sort((a, b) => b.sentAt - a.sentAt);
       return mails
@@ -203,21 +206,26 @@ function getDefaultFilter() {
   return {
     status: '',
     txt: '',
-    isRead: null,
+    readStat: 'all',
+    // isRead: null,
     isStarred: '',
     labels: []
   }
 }
 
 function getFilterFromQueryString(searchParams) {
-  // const txt = searchParams.get('txt') || ''
-  // const minSpeed = searchParams.get('minSpeed') || ''
-  // const maxPrice = searchParams.get('maxPrice') || ''
-  // return {
-  //     txt,
-  //     minSpeed,
-  //     maxPrice
-  // }
+  const status = searchParams.get('status') || ''
+  const txt = searchParams.get('txt') || ''
+  const isRead = searchParams.get('isRead') || null
+  const isStarred = searchParams.get('isStarred') || ''
+  const labels = searchParams.get('labels') || []
+  return {
+    status,
+    txt,
+    isRead,
+    isStarred,
+    labels
+  }
 }
 
 function _createMails() {

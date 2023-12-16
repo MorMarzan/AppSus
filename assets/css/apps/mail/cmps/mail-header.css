@@ -14,3 +14,9 @@
     position: sticky;
     top: 111px;
 }
+
+.mail-header > section {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 20px;
+}

@@ -35,9 +35,11 @@ export function MailIndex() {
 
     //render after mail edit/add
     useEffect(() => {
-        const unsubscribe = eventBusService.on('load-mails', loadMails)
+        const unsubscribe1 = eventBusService.on('load-mails', loadMails)
+        const unsubscribe2 = eventBusService.on('on-set-filter', onSetFilter)
         return () => {
-            unsubscribe()
+            unsubscribe1()
+            unsubscribe2()
         }
     }, [])
 
@@ -51,7 +53,7 @@ export function MailIndex() {
     }, [])
 
     function loadMails() {
-        // mailService.query({status: 'draft', isRead: null, txt: 'va'})
+        // mailService.query({status: 'inbox', readStat: 'all', txt: ''})
         mailService.query(filterBy)
             .then(setMails)
             .catch(err => console.log('err:', err))
@@ -69,12 +71,15 @@ export function MailIndex() {
 
     }
 
-    function onSetFilter() {
+    function onSetFilter(dynamicHeaderFilter) {
         const pathSegments = location.pathname.split('/')
         const stautsVal = pathSegments[2] || ''
-        const newStat = { status: stautsVal }
-        setFilterBy(prevFilter => ({ ...prevFilter, ...newStat }))
-
+        let newStat = { status: stautsVal }
+        console.log('dynamicHeaderFilter', dynamicHeaderFilter)
+        console.log('filterBy of index', filterBy)
+        if (dynamicHeaderFilter) setFilterBy(() => ({ ...dynamicHeaderFilter, ...newStat }))
+        else setFilterBy(prevFilter => ({ ...prevFilter, ...newStat }))
+        console.log('filterBy after set', filterBy)
     }
 
 
@@ -85,20 +90,6 @@ export function MailIndex() {
     // }
 
     // const { txt, minSpeed, maxPrice } = filterBy
-
-    // function onToggleIsReadStat(mailId, isRead) {
-    //     console.log('mailId', mailId)
-    //     mailService.get(mailId)
-    //         .then(mail => {
-    //             mailService.save({ ...mail, isRead: isRead })
-    //             setMails(prevMails => prevMails.map(mail => ({ ...mail, timestamp: Date.now() })));
-
-    //         })
-    //         .catch(err => {
-    //             console.log('err:', err)
-    //             showErrorMsg('Error - can\'t find mail details ')
-    //         })
-    // }
 
     function onToggleIsReadStat(mailId, isRead) {
         mailService.get(mailId)
@@ -126,8 +117,6 @@ export function MailIndex() {
                 showErrorMsg('Error - can\'t find mail details ')
             })
     }
-
-
 
     return (
         <section className="mail-index">
