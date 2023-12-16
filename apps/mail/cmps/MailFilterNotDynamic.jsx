@@ -1,23 +1,12 @@
 const { useState, useEffect } = React
 
-// export function MailFilterNotDynamic() {
 export function MailFilterNotDynamic({ filterBy, onSetFilter }) {
   const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
-  const [sortByToEdit, setSortByToEdit] = useState({ sentAt: 1, subject: 1 })
   const [isFilterOpen, setIsFilterOpen] = useState(false)
 
   useEffect(() => {
     onSetFilter(filterByToEdit)
   }, [filterByToEdit])
-
-  // useEffect(() => {
-  //     onSetSortBy(sortByToEdit)
-  // }, [sortByToEdit])
-
-  // function onSetFilterBy(ev) {
-  //     ev.preventDefault()
-  //     onSetFilter(filterByToEdit)
-  // }
 
   function handleChange({ target }) {
     const field = target.name
@@ -40,16 +29,20 @@ export function MailFilterNotDynamic({ filterBy, onSetFilter }) {
     setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
   }
 
-  function handleSort({ target }) {
-    const field = target.name
-    let value = target.checked
-    setSortByToEdit((prevSort) => ({ ...prevSort, [field]: value }))
+  // function handleSort({ target }) {
+  //   const field = target.name
+  //   let value = target.checked
+  //   setSortByToEdit((prevSort) => ({ ...prevSort, [field]: value }))
+  // }
+
+  function onFormSubmit(ev) {
+    ev.preventDefault()
   }
 
   const { txt, readStat } = filterByToEdit
   return (
     <section className="mail-filter dynamic-header">
-      <form className="search-form">
+      <form onSubmit={onFormSubmit} className="search-form">
         <button>
           <img className="search-img" src="./assets/img/search.svg" />
         </button>
@@ -69,7 +62,7 @@ export function MailFilterNotDynamic({ filterBy, onSetFilter }) {
       ></i>
 
       {isFilterOpen && (
-        <form className="mail-read-filter dynamic-filter">
+        <form onSubmit={onFormSubmit} className="mail-read-filter dynamic-filter">
           <label>
             <input
               type="radio"
