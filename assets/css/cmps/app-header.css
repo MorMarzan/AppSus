@@ -1,4 +1,4 @@
-.app-header {
+.app-header:not(.miss-books .app-header) {
   box-sizing: border-box;
   background: var(--brand-color);
   display: flex;
@@ -35,4 +35,126 @@ nav a.active:not(.sidebar-btns nav a) {
   color: var(--primary-txt-color);
   font-family: roboto-bold, Arial, sans-serif;
   text-decoration: overline;
+}
+
+#menu {
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+}
+
+#menuToggle input {
+  display: none;
+}
+
+#menu li {
+  letter-spacing: 0.1rem;
+}
+
+#menuToggle a:not(li a) {
+  text-decoration: none;
+  color: var(--primary-txt-color);
+  transition: 0.1s;
+}
+
+#menuToggle a:hover {
+  filter: brightness(80%);
+}
+
+@media (max-width: 600px) {
+  #menuToggle {
+    position: relative;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  #menuToggle input {
+    display: block;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    top: -7px;
+    left: -5px;
+    margin: 0;
+
+    cursor: pointer;
+
+    opacity: 0;
+    z-index: 30;
+
+    -webkit-touch-callout: none;
+  }
+
+  #menuToggle span {
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    position: relative;
+
+    background: var(--primary-txt-color);
+    border-radius: 3px;
+
+    transform-origin: 4px 0px;
+
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+      background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+  }
+
+  #menuToggle span:first-child {
+    transform-origin: 0% 0%;
+  }
+
+  #menuToggle span:nth-last-child(2) {
+    transform-origin: 0% 100%;
+  }
+
+  #menuToggle input:checked ~ span {
+    opacity: 1;
+    transform: rotate(45deg) translate(-2px, -1px);
+    background: var(--primary-txt-color);
+    z-index: 20;
+  }
+
+  #menuToggle input:checked ~ span:nth-last-child(3) {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+  }
+
+  #menuToggle input:checked ~ span:nth-last-child(2) {
+    transform: rotate(-45deg) translate(0, -1px);
+  }
+
+  #menu {
+    display: block;
+    position: fixed;
+    right: 0;
+    overflow-y: auto;
+    margin: -100px 0 0 -50px;
+    padding: 20px;
+    padding-top: 100px;
+
+    background: white;
+    box-shadow: -3px 4px 7px 0px rgba(0, 0, 0, 0.54);
+    text-align: center;
+    text-wrap: nowrap;
+    border-radius: 10px;
+
+    transform: translate(120%, 0);
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  }
+
+  #menu li {
+    padding: 10px 0;
+    font-size: 22px;
+    color: var(--primary-txt-color);
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: var(--dark-color1);
+    /* z-index: 1000; */
+  }
+
+  #menuToggle input:checked ~ ul {
+    transform: translate(0, 0);
+    overflow: hidden;
+  }
 }

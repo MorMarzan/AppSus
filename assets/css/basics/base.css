@@ -134,3 +134,29 @@ input[type='checkbox'] {
 .miss-books object {
   max-width: 100%;
 }
+
+.miss-books {
+  padding-block-start: 4em;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #ffd9d9 #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #ffd9d9;
+  border-radius: 10px;
+  border: 3px solid #ffffff;
+}

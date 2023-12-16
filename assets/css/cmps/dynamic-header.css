@@ -9,7 +9,7 @@
   padding: 8px 10px;
   background-color: white;
   border-bottom: 1px solid var(--grey-outline);
-  z-index: 20;
+  z-index: 15;
 }
 
 .logo-menu-wrapper {
