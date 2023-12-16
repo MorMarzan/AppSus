@@ -148,7 +148,7 @@ function query(filterBy) {
             mails = mails.filter(mail => mail.from === gLoggedinUser.email && mail.sentAt !== 0);
             break;
           case 'draft':
-            mails = mails.filter(mail => mail.from === gLoggedinUser.email && mail.sentAt === 0);
+            mails = mails.filter(mail => mail.from === gLoggedinUser.email && !mail.removedAt);
             break;
           case 'starred':
             mails = mails.filter(mail => mail.isStarred);

@@ -10,18 +10,12 @@ export function MailIndex() {
 
     const [mails, setMails] = useState(null)
     let intervalIdRef = useRef()
-
     const location = useLocation()
-    const pathSegments = location.pathname.split('/')
-    const initialStatusFilter = pathSegments[2] || ''
-    const intialFilter = { ...mailService.getDefaultFilter(), status: initialStatusFilter }
+
+    // const isSentPage = location.pathname.includes('sent')
+    const [filterBy, setFilterBy] = useState(null)
 
 
-
-    const isSentPage = location.pathname.includes('sent')
-    const [filterBy, setFilterBy] = useState()
-
-    
     // const [searchParams, setSearchParams] = useSearchParams()
     // const [filterBy, setFilterBy] = useState(mailService.getFilterFromQueryString(searchParams))
 
@@ -30,8 +24,13 @@ export function MailIndex() {
     useEffect(() => {
         loadMails()
         // setSearchParams(filterBy)
-    }, [])
-    // }, [filterBy])
+    }, [filterBy])
+
+    //set new filter when loaction changes
+    useEffect(() => {
+        onSetFilter()
+    }, [location])
+
 
     //render after mail edit/add
     useEffect(() => {
@@ -51,8 +50,7 @@ export function MailIndex() {
     }, [])
 
     function loadMails() {
-        mailService.query({status: '', txt: '',})
-            // mailService.query(filterBy)
+        mailService.query(filterBy)
             .then(setMails)
             .catch(err => console.log('err:', err))
     }
@@ -66,6 +64,14 @@ export function MailIndex() {
                 showSuccessMsg(`Mail successfully removed! ${mailId}`)
             })
             .catch(err => console.log('err:', err))
+
+    }
+
+    function onSetFilter() {
+        const pathSegments = location.pathname.split('/')
+        const stautsVal = pathSegments[2] || ''
+        const newFilter = { ...mailService.getDefaultFilter(), status: stautsVal }
+        setFilterBy(prevFilter => ({ ...prevFilter, ...newFilter }))
 
     }
 
