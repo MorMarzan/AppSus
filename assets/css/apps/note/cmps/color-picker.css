@@ -15,8 +15,8 @@
 }
 
 .color-picker * {
-  width: 25px;
-  height: 25px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   cursor: pointer;
   outline: 1px solid var(--grey-outline);
@@ -32,11 +32,6 @@
 
 /* Tablet */
 @media (width >= 768px) {
-  .color-picker * {
-    width: 30px;
-    height: 30px;
-  }
-
   .color-picker {
     left: 0;
   }

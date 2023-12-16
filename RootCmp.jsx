@@ -19,26 +19,6 @@ const { useState, useEffect } = React
 import { eventBusService } from '../../../services/event-bus.service.js'
 
 export function App() {
-  const [isShowLoader, setIsShowLoader] = useState(false)
-
-  useEffect(() => {
-    const unsubscribeShowLoader = eventBusService.on('show-loader', () => {
-      console.log('show')
-      setIsShowLoader(true)
-    })
-    const unsubscribeHideLoader = eventBusService.on('hide-loader', () => {
-      console.log('show')
-      setIsShowLoader(false)
-    })
-
-    console.log('starting')
-
-    return () => {
-      unsubscribeShowLoader()
-      unsubscribeHideLoader()
-    }
-  }, [])
-
   return (
     <Router>
       <section className="app">
