@@ -73,10 +73,12 @@
 .mail-sidebar .sidebar-btns .btn.active {
   background-color: #c5221f28;
   color: var(--clr-error);
+  min-width: 50px;
 }
 
 .note-sidebar .sidebar-btns .active {
   background-color: #feefc3;
+  min-width: 60px;
 }
 
 .sidebar-btns .btn:hover {
