@@ -37,25 +37,22 @@
   width: 24px;
 }
 
-.dynamic-logo {
-  display: flex;
-  align-items: center;
+.dynamic-sidebar .dynamic-logo {
   width: 100%;
   padding: 15px;
   padding-block-end: 10px;
   border-block-end: 1px solid var(--grey-outline);
 }
 
-.dynamic-logo img {
+.dynamic-sidebar .dynamic-logo img {
   width: 35px;
 }
 
-.dynamic-logo h2 {
-  margin: 0;
-  margin-inline-start: 5px;
+.dynamic-sidebar .dynamic-logo h2 {
+  font-size: 24px;
 }
 
-.sidebar-btns {
+.dynamic-sidebar .sidebar-btns {
   width: 100%;
 }
 
