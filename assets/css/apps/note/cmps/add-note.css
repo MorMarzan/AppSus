@@ -15,9 +15,9 @@
 
 .add-note .close-btn {
   position: absolute;
-  top: -7px;
-  left: -7px;
-  font-size: 20px;
+  top: -12px;
+  left: -12px;
+  width: 30px;
   color: var(--action-btn);
   cursor: pointer;
 }

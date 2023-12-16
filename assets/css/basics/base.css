@@ -77,7 +77,7 @@ input[type='checkbox'] {
 
 /* Tablet */
 @media (width >=768px) {
-  .page {
+  .page.mail-app {
     padding-inline-end: 20px;
   }
 }

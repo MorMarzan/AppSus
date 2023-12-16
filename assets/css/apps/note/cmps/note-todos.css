@@ -1,4 +1,5 @@
 .note-todos-list {
+  flex-direction: column;
   list-style-type: none;
   padding: 0;
 }
