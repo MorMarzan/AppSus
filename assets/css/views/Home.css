@@ -6,8 +6,9 @@
 }
 
 .home h1 {
-  font-size: 2.6em;
+  font-size: 2em;
   margin-block-end: 20px;
+  color: var(--primary-txt-color);
 }
 
 .home .img-container {
@@ -17,5 +18,17 @@
 }
 
 .home img {
-  width: 170px;
+  width: 140px;
+}
+
+/* Tablet */
+@media (width >=768px) {
+  .home h1 {
+    font-size: 2.6em;
+    margin-block-end: 20px;
+  }
+
+  .home img {
+    width: 170px;
+  }
 }

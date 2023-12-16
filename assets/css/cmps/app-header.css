@@ -15,6 +15,7 @@
 .app-header .logo-container {
   display: flex;
   align-items: center;
+  color: var(--primary-txt-color);
 }
 
 .app-header .app-logo {
@@ -31,7 +32,7 @@ nav a:active:not(.sidebar-btns nav a) {
 }
 
 nav a.active:not(.sidebar-btns nav a) {
-  color: #4a2d2d;
-  font-weight: bold;
+  color: var(--primary-txt-color);
+  font-family: roboto-bold, Arial, sans-serif;
   text-decoration: overline;
 }

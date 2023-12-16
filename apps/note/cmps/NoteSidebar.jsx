@@ -3,9 +3,12 @@ import { DynamicLogo } from '../../../cmps/DynamicLogo.jsx'
 const { Link, NavLink } = ReactRouterDOM
 
 export function NoteSidebar({ isMobileSbOpen, isDesktopSbOpen, isMobile }) {
-  const dynClass = isMobileSbOpen ? 'open' : ''
   return (
-    <section className={dynClass + ' sidebar note-sidebar'}>
+    <section
+      className={`sidebar note-sidebar ${isMobileSbOpen && 'open'} ${
+        isDesktopSbOpen && 'sidebar-shadow'
+      }`}
+    >
       {isMobile && <DynamicLogo page={'keep'} />}
 
       <div className="sidebar-btns">

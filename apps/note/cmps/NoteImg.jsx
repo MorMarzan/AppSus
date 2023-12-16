@@ -25,7 +25,6 @@ export function NoteImg({ note }) {
         className={`note-content ${!isImgLoaded && 'hide'}`}
         onLoad={() => setIsImgLoaded(true)}
         src={note.info.url}
-        alt=""
       />
       {!isImgLoaded && (
         <img
