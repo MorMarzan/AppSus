@@ -158,8 +158,11 @@ function query(filterBy) {
         }
       }
       if (filterBy.txt) {
-        // const regExp = new RegExp(filterBy.txt, 'i')
-        // mails = mails.filter(mail => regExp.test(mail.subject) || regExp.test(mail.body))
+        const regExp = new RegExp(filterBy.txt, 'i')
+        mails = mails.filter(mail => regExp.test(mail.subject) || regExp.test(mail.body))
+      }
+      if (filterBy.isRead !== null) {
+        mails = mails.filter(mail => filterBy.isRead === mail.isRead)
       }
       mails.sort((a, b) => b.sentAt - a.sentAt);
       return mails
@@ -200,7 +203,7 @@ function getDefaultFilter() {
   return {
     status: '',
     txt: '',
-    isRead: '',
+    isRead: null,
     isStarred: '',
     labels: []
   }

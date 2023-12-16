@@ -51,6 +51,7 @@ export function MailIndex() {
     }, [])
 
     function loadMails() {
+        // mailService.query({status: 'draft', isRead: null, txt: 'va'})
         mailService.query(filterBy)
             .then(setMails)
             .catch(err => console.log('err:', err))
