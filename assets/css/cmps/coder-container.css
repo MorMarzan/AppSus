@@ -1,0 +1,13 @@
+.coder-container h4 {
+  margin-block-end: 10px;
+}
+
+.coder-container .social-links img {
+  width: 30px;
+  margin-inline: 10px;
+  transition: 0.2s;
+}
+
+.coder-container .social-links img:hover {
+  filter: brightness(90%);
+}

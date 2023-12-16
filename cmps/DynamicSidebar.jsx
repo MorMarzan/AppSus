@@ -54,12 +54,19 @@ export function DynamicSidebar({ isSbOpen, onSetIsSbOpen }) {
         isMobileSbOpen={isMobileSbOpen}
         isDesktopSbOpen={isDesktopSbOpen}
         isMobile={isMobile}
+        onSetIsSbOpen={onSetIsSbOpen}
       />
     </section>
   )
 }
 
-function DynamicCmp({ sbType, isMobileSbOpen, isDesktopSbOpen, isMobile }) {
+function DynamicCmp({
+  sbType,
+  isMobileSbOpen,
+  isDesktopSbOpen,
+  isMobile,
+  onSetIsSbOpen,
+}) {
   switch (sbType) {
     case 'mail':
       return (
@@ -67,6 +74,7 @@ function DynamicCmp({ sbType, isMobileSbOpen, isDesktopSbOpen, isMobile }) {
           isMobileSbOpen={isMobileSbOpen}
           isDesktopSbOpen={isDesktopSbOpen}
           isMobile={isMobile}
+          onSetIsSbOpen={onSetIsSbOpen}
         />
       )
 
@@ -76,6 +84,7 @@ function DynamicCmp({ sbType, isMobileSbOpen, isDesktopSbOpen, isMobile }) {
           isMobileSbOpen={isMobileSbOpen}
           isDesktopSbOpen={isDesktopSbOpen}
           isMobile={isMobile}
+          onSetIsSbOpen={onSetIsSbOpen}
         />
       )
   }

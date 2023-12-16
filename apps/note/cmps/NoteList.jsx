@@ -75,9 +75,23 @@ export function NoteList({ notes, onChangeNote }) {
 
   function onSendMail(note) {
     navigate({
-      pathname: '/mail',
-      search: '?compose=true',
+      pathname: '/mail/inbox',
+      search: `?compose=note&subject=${note.title}&body=${getNoteBody(note)}`,
     })
+  }
+
+  function getNoteBody(note) {
+    switch (note.type) {
+      case 'NoteTxt':
+        return note.info.txt
+
+      case 'NoteImg':
+      case 'NoteVideo':
+        return note.info.url
+
+      case 'NoteTodos':
+        return JSON.stringify(note.info.todos)
+    }
   }
 
   if (!notes) return <h2 className="loading-msg">Loading...</h2>
