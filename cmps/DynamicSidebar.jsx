@@ -50,22 +50,23 @@ export function DynamicSidebar({ isSbOpen, onSetIsSbOpen }) {
         <div className="main-screen" onClick={onSetIsSbOpen}></div>
       )}
       <DynamicCmp
-        isSbOpen={isSbOpen}
         sbType={sbType}
         isMobileSbOpen={isMobileSbOpen}
         isDesktopSbOpen={isDesktopSbOpen}
+        isMobile={isMobile}
       />
     </section>
   )
 }
 
-function DynamicCmp({ isSbOpen, sbType, isMobileSbOpen, isDesktopSbOpen }) {
+function DynamicCmp({ sbType, isMobileSbOpen, isDesktopSbOpen, isMobile }) {
   switch (sbType) {
     case 'mail':
       return (
         <MailSidebar
           isMobileSbOpen={isMobileSbOpen}
           isDesktopSbOpen={isDesktopSbOpen}
+          isMobile={isMobile}
         />
       )
 
@@ -74,6 +75,7 @@ function DynamicCmp({ isSbOpen, sbType, isMobileSbOpen, isDesktopSbOpen }) {
         <NoteSidebar
           isMobileSbOpen={isMobileSbOpen}
           isDesktopSbOpen={isDesktopSbOpen}
+          isMobile={isMobile}
         />
       )
   }
