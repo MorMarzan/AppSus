@@ -1,4 +1,4 @@
-import { DynamicLogo } from '../../../cmps/DynamicLogo'
+import { DynamicLogo } from '../../../cmps/DynamicLogo.jsx'
 
 const { Link, NavLink } = ReactRouterDOM
 
