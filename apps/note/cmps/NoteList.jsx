@@ -4,12 +4,13 @@ import { NotePreview } from './NotePreview.jsx'
 import { noteService } from '../services/note.service.js'
 import { TrashBtns } from './TrashBtns.jsx'
 import { eventBusService } from '../../../services/event-bus.service.js'
-const { useLocation } = ReactRouterDOM
+const { useLocation, useNavigate } = ReactRouterDOM
 
 export function NoteList({ notes, onChangeNote }) {
   const [noteHoverId, setNoteHoverId] = useState(null)
   const [isColorOpen, setIsColorOpen] = useState(false)
   const { pathname } = useLocation()
+  const navigate = useNavigate()
   const pageLoc = pathname.includes('notes') ? 'notes' : 'bin'
 
   function handleStyleChange(color, note) {
@@ -72,6 +73,13 @@ export function NoteList({ notes, onChangeNote }) {
       .catch((err) => console.log('err', err))
   }
 
+  function onSendMail(note) {
+    navigate({
+      pathname: '/mail',
+      search: '?compose=true',
+    })
+  }
+
   if (!notes) return <h2 className="loading-msg">Loading...</h2>
 
   if (!notes.length) return <h2 className="loading-msg">No notes to display</h2>
@@ -115,6 +123,7 @@ export function NoteList({ notes, onChangeNote }) {
                 onPalletteClick={onPalletteClick}
                 onDeleteNote={onDeleteNote}
                 onDuplicateNote={onDuplicateNote}
+                onSendMail={onSendMail}
               />
             )}
 

@@ -8,6 +8,7 @@ export function EditBtns({
   note,
   onDeleteNote,
   onDuplicateNote,
+  onSendMail,
 }) {
   return (
     <div className="edit-btns" onClick={(ev) => ev.stopPropagation()}>
@@ -51,6 +52,19 @@ export function EditBtns({
               className="btn-display-container"
             >
               <i className="fa-solid fa-trash" aria-hidden="true"></i>
+            </div>
+          </div>
+
+          <div
+            title="Send via Mail"
+            className="edit-btn-container"
+            onClick={(ev) => ev.stopPropagation()}
+          >
+            <div
+              onClick={() => onSendMail(note)}
+              className="btn-display-container"
+            >
+              <img src="./assets/img/send-mail.svg" />
             </div>
           </div>
         </Fragment>
