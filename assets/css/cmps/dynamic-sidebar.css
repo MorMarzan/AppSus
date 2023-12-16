@@ -23,6 +23,13 @@
   align-content: start;
   gap: 10px;
   justify-items: start;
+  padding-inline-end: 10px;
+  height: 100%;
+}
+
+.sidebar-shadow {
+  box-shadow: 0 16px 10px 0 rgba(0, 0, 0, 0.14),
+    0 11px 18px 0 rgba(0, 0, 0, 0.12), 0 13px 5px -1px rgba(0, 0, 0, 0.2);
 }
 
 .dynamic-sidebar .sidebar .btn,
@@ -53,13 +60,13 @@
 }
 
 .dynamic-sidebar .sidebar-btns {
+  margin-block-start: 10px;
   width: 100%;
 }
 
 .sidebar-btns .btn {
-  padding-block: 15px;
+  padding-block: 10px;
   padding-inline-start: 20px;
-  width: 95%;
   border-radius: 0 30px 30px 0;
 }
 

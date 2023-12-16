@@ -5,7 +5,6 @@
 body {
   margin: 0;
   box-sizing: border-box;
-  /* font-family: google-sans-regular, Arial, sans-serif; */
   font-family: roboto-regular, Arial, sans-serif;
 }
 
@@ -52,7 +51,7 @@ textarea {
 }
 
 .page {
-  padding-block: 136px 10px;
+  padding-block-start: 127px;
   min-height: 100dvh;
 }
 

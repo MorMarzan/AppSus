@@ -54,7 +54,6 @@
   display: flex;
   align-items: center;
   margin-block-start: 15px;
-  padding-block: 15px;
 }
 
 .add-note .add-note-form .add-btn {
@@ -70,6 +69,7 @@
 }
 
 .note-content {
+  display: flex;
   position: relative;
 }
 
@@ -102,6 +102,10 @@
 
 .add-todo img:hover {
   filter: brightness(80%);
+}
+
+.add-note .edit-btns {
+  position: relative;
 }
 
 /* Tablet */
