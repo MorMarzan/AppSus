@@ -8,7 +8,7 @@
 .dynamic-header {
   display: grid;
   grid-template-columns: 1fr auto;
-  width: 80%;
+  width: 90%;
   gap: 15px;
   align-items: center;
   position: fixed;
@@ -79,4 +79,28 @@
 }
 
 .mail-read-filter {
+}
+
+@media (max-width: 1430px) {
+  .dynamic-header {
+    width: 85%;
+  }
+}
+
+@media (max-width: 925px) {
+  .dynamic-header {
+    width: 80%;
+  }
+}
+
+@media (max-width: 695px) {
+  .dynamic-header {
+    width: 75%;
+  }
+}
+
+@media (max-width: 555px) {
+  .dynamic-header {
+    width: 70%;
+  }
 }
