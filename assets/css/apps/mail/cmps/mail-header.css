@@ -8,6 +8,7 @@
     padding: 10px 20px;
     justify-content: space-between;
     box-shadow: var(--box-shadow);
+    height: 40px;
 }
 
 .mail-header {

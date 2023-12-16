@@ -13,7 +13,7 @@ export function MailApp() {
   const { mailId } = useParams()
   const hasMailId = !!mailId
   const [isSbOpen, setIsSbOpen] = useState(false)
-  console.log('hasComposeParam', hasComposeParam)
+  // console.log('hasComposeParam', hasComposeParam)
 
   function onSetIsSbOpen() {
     setIsSbOpen((isSbOpen) => !isSbOpen)

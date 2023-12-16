@@ -2,7 +2,7 @@ import { DynamicFilter } from './DynamicFilter.jsx'
 import { DynamicLogo } from './DynamicLogo.jsx'
 
 const { Link, NavLink, useLocation } = ReactRouterDOM
-const { useState, useEffect } = React
+const { useState, useEffect, Fragment } = React
 
 export function DynamicHeader({
   onSetIsSbOpen,
@@ -24,6 +24,10 @@ export function DynamicHeader({
         </button>
         <DynamicLogo page={headerType} />
       </div>
+
+
+      {headerType ==='keep' && 
+      <Fragment>
       <form className="search-form" onSubmit={(ev) => ev.preventDefault()}>
         <button>
           <img className="search-img" src="./assets/img/search.svg" />
@@ -36,6 +40,7 @@ export function DynamicHeader({
           placeholder="Search"
         />
       </form>
+
       <i
         className="fa-solid fa-filter"
         onClick={() => setIsFilterOpen((filterOpen) => !filterOpen)}
@@ -43,6 +48,8 @@ export function DynamicHeader({
       {isFilterOpen && (
         <DynamicFilter onSetFilter={onSetFilter} filter={filter} />
       )}
+      </Fragment>
+      }
     </header>
   )
 }

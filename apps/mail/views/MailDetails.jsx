@@ -2,6 +2,7 @@ import { showSuccessMsg, showErrorMsg } from "../../../services/event-bus.servic
 import { MailDetailsHeader } from "../cmps/MailDetailsHeader.jsx"
 import { mailService } from "../services/mail.service.js"
 import { utilService } from "../../../services/util.service.js"
+import { MailFooter } from "../cmps/MailFooter.jsx"
 
 const { useParams, useNavigate, Link } = ReactRouterDOM
 const { useState, useEffect, Fragment } = React
@@ -81,7 +82,7 @@ export function MailDetails() {
                     <p>{from}</p>
                     <p>{utilService.tsToDateString(sentAt)}</p>
                     {/* <p>{sentAt}</p> */}
-                    <p>{to}</p>
+                    <p>To: {to}</p>
                 </div>
                 <p>{body}</p>
 
