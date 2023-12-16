@@ -1,3 +1,10 @@
+/* mobile only */
+@media (width <=500px) {
+  .mail-filter.dynamic-header {
+    display: none;
+  }
+}
+
 .dynamic-header {
   display: grid;
   grid-template-columns: auto 1fr auto;
