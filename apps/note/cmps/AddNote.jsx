@@ -148,10 +148,11 @@ export function AddNote({
     >
       <section ref={addNoteRef} onClick={(ev) => ev.stopPropagation()}>
         {isAddOpen && (
-          <i
+          <img
             onClick={onCloseAdd}
-            className="fa-solid fa-circle-xmark close-btn"
-          ></i>
+            className="close-btn"
+            src="./assets/img/big-close.svg"
+          />
         )}
         <form onSubmit={onAddNote} className="add-note-form">
           {isAddOpen && (
