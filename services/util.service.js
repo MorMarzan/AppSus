@@ -29,48 +29,55 @@ function makeId(length = 6) {
 }
 
 function makeLorem(size = 100) {
-  var words = [
-    'The sky',
-    'above',
-    'the port',
-    'was',
-    'the color of television',
-    'tuned',
-    'to',
-    'a dead channel',
-    '.',
-    'All',
-    'this happened',
-    'more or less',
-    '.',
-    'I',
-    'had',
-    'the story',
-    'bit by bit',
-    'from various people',
-    'and',
-    'as generally',
-    'happens',
-    'in such cases',
-    'each time',
-    'it',
-    'was',
-    'a different story',
-    '.',
-    'It',
-    'was',
-    'a pleasure',
-    'to',
-    'burn',
-  ]
-  var txt = ''
-  while (size > 0) {
-    size--
-    txt += words[Math.floor(Math.random() * words.length)] + ' '
+    var words = [
+      'The sky',
+      'above',
+      'the port',
+      'was',
+      'the color of television',
+      'tuned',
+      'to',
+      'a dead channel',
+      'all',
+      'this happened',
+      'more or less',
+      'I',
+      'heard the story',
+      'bit by bit',
+      'from various people',
+      'and',
+      'as generally',
+      'happens',
+      'in such cases',
+      'each time',
+      'it',
+      'was',
+      'a different story',
+      'it',
+      'was',
+      'a pleasure',
+      'to',
+      'burn',
+    ];
+  
+    var txt = '';
+    while (size > 0) {
+      size--;
+      const word = words[Math.floor(Math.random() * words.length)];
+  
+      // Capitalize the first word of the sentence
+      if (size === 0) {
+        txt += word.charAt(0).toUpperCase() + word.slice(1);
+      } else {
+        txt += word;
+      }
+  
+      txt += ' ';
+    }
+  
+    return txt.trim(); // Remove trailing space
   }
-  return txt
-}
-
+  
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min) + min)
 }
@@ -121,9 +128,10 @@ function getMonthName(date) {
 }
 
 function tsToDateString(timestamp) {
-  const date = new Date(timestamp)
-  const dateString = date.toLocaleString()
-  return dateString
+  const date = new Date(timestamp);
+  const options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+  const dateString = date.toLocaleString(undefined, options);
+  return dateString;
 }
 
 function formatTimestamp(timestamp) {
@@ -171,19 +179,33 @@ function formatTimestamp(timestamp) {
 }
 
 function generateRandomEmail() {
-  const domains = [
-    'gmail.com',
-    'yahoo.com',
-    'outlook.com',
-    'example.com',
-    'mail.com',
-  ]
-  const randomUsername = Math.random().toString(36).substring(7) // Generate a random username
-  const randomDomain = domains[Math.floor(Math.random() * domains.length)] // Pick a random domain
-
-  return `${randomUsername}@${randomDomain}`
-}
-
+    const commonUsernames = [
+      'john',
+      'mary',
+      'david',
+      'emily',
+      'alex',
+      'susan',
+      'brian',
+      'linda',
+      'peter',
+      'kate',
+    ];
+  
+    const commonDomains = [
+      'gmail.com',
+      'yahoo.com',
+      'outlook.com',
+      'hotmail.com',
+      'aol.com',
+    ];
+  
+    const randomUsername = commonUsernames[Math.floor(Math.random() * commonUsernames.length)];
+    const randomDomain = commonDomains[Math.floor(Math.random() * commonDomains.length)];
+  
+    return `${randomUsername}@${randomDomain}`;
+  }
+  
 function getRandomTimestamp() {
   const now = Date.now()
   const tenYearsAgo = now - 3 * 365 * 24 * 60 * 60 * 1000 // milliseconds in 3 years
