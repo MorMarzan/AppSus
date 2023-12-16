@@ -124,8 +124,6 @@ const gLoggedinUser = {
 
 _createMails()
 
-console.log('hi from mail service!')
-
 export const mailService = {
   query,
   get,
