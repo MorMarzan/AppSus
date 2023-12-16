@@ -61,7 +61,7 @@ nav a.active:not(.sidebar-btns nav a) {
   filter: brightness(80%);
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   #menuToggle {
     position: relative;
     -webkit-user-select: none;
