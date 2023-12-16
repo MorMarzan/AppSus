@@ -12,6 +12,16 @@
   z-index: 20;
 }
 
+.app-header .logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.app-header .app-logo {
+  width: 35px;
+  margin-inline-end: 5px;
+}
+
 nav a:not(.sidebar-btns nav a) {
   margin: 0.5em;
 }
