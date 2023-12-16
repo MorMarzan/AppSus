@@ -12,10 +12,16 @@ export function MailIndex() {
     let intervalIdRef = useRef()
 
     const location = useLocation()
+    const pathSegments = location.pathname.split('/')
+    const initialStatusFilter = pathSegments[2] || ''
+    const intialFilter = { ...mailService.getDefaultFilter(), status: initialStatusFilter }
+
+
+
     const isSentPage = location.pathname.includes('sent')
+    const [filterBy, setFilterBy] = useState()
 
-    // const [filterBy, setFilterBy] = useState(mailService.getFilterFromQueryString(searchParams))
-
+    
     // const [searchParams, setSearchParams] = useSearchParams()
     // const [filterBy, setFilterBy] = useState(mailService.getFilterFromQueryString(searchParams))
 
@@ -45,7 +51,7 @@ export function MailIndex() {
     }, [])
 
     function loadMails() {
-        mailService.query()
+        mailService.query({status: '', txt: '',})
             // mailService.query(filterBy)
             .then(setMails)
             .catch(err => console.log('err:', err))

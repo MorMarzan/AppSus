@@ -34,6 +34,9 @@ export function App() {
             <Route index element={<Navigate to="/mail/inbox" />} />
             <Route path="/mail/inbox" element={<MailIndex />} />
             <Route path="/mail/inbox/:mailId" element={<MailDetails />} />
+            <Route path="/mail/starred" element={<MailIndex />} />
+            <Route path="/mail/sent" element={<MailIndex />} />
+            <Route path="/mail/draft" element={<MailIndex />} />
           </Route>
 
           {/* note */}

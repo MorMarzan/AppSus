@@ -13,7 +13,7 @@ const gDemoMails = [
     sentAt: Date.now() - 86400000, // 24 hours ago
     removedAt: null,
     from: 'user1111111111111111@appsus.com',
-    to: 'momo@momo.com',
+    to: 'me@appsus.com',
   },
   {
     id: 'e102',
@@ -23,7 +23,7 @@ const gDemoMails = [
     sentAt: Date.now() - 3600000, // 1 hour ago
     removedAt: null,
     from: 'user2@appsus.com',
-    to: 'momo@momo.com',
+    to: 'me@appsus.com',
   },
   {
     id: 'e103',
@@ -132,20 +132,38 @@ export const mailService = {
   remove,
   save,
   getEmptyMail,
-  // getDefaultFilter,
+  getDefaultFilter,
   // getFilterFromQueryString
 }
 
 function query(filterBy) {
   return storageService.query(MAIL_KEY)
     .then(mails => {
-      // if (filterBy.txt) {
-      //     const regExp = new RegExp(filterBy.txt, 'i')
-      //     mails = mails.filter(mail => regExp.test(mail.vendor))
-      // }
-      // if (filterBy.minSpeed) {
-      //     mails = mails.filter(mail => mail.maxSpeed >= filterBy.minSpeed)
-      // }
+      if (filterBy.status) {
+        switch (filterBy.status) {
+          case 'inbox':
+            mails = mails.filter(mail => mail.to === gLoggedinUser.email);
+            break;
+          case 'sent':
+            mails = mails.filter(mail => mail.from === gLoggedinUser.email && mail.sentAt !== 0);
+            break;
+          case 'draft':
+            mails = mails.filter(mail => mail.from === gLoggedinUser.email && mail.sentAt === 0);
+            break;
+          case 'starred':
+            mails = mails.filter(mail => mail.isStarred);
+            break;
+          // Add more cases as needed
+          default:
+            // Handle unknown status
+            break;
+        }
+      }
+      if (filterBy.txt) {
+        // const regExp = new RegExp(filterBy.txt, 'i')
+        // mails = mails.filter(mail => regExp.test(mail.subject) || regExp.test(mail.body))
+      }
+      mails.sort((a, b) => b.sentAt - a.sentAt);
       return mails
     })
 }
@@ -169,18 +187,25 @@ function save(mail) {
 function getEmptyMail(subject = '', body = '', to = '') {
   return {
     id: '',
-    subject: '',
-    body: '',
-    isRead: false,
+    subject,
+    body,
+    isRead: true,
+    isStarred: false,
     sentAt: 0,
     removedAt: null,
     from: gLoggedinUser.email,
-    to: ''
+    to
   }
 }
 
 function getDefaultFilter() {
-  // return { txt: '', minSpeed: '', maxPrice: '' }
+  return {
+    status: '',
+    txt: '',
+    isRead: '',
+    isStarred: '',
+    labels: []
+  }
 }
 
 function getFilterFromQueryString(searchParams) {
@@ -197,24 +222,48 @@ function getFilterFromQueryString(searchParams) {
 function _createMails() {
   let mails = localStorageService.loadFromStorage(MAIL_KEY)
   if (!mails || !mails.length) {
-    localStorageService.saveToStorage(MAIL_KEY, gDemoMails)
+    _createDemoMails()
+    // localStorageService.saveToStorage(MAIL_KEY, gDemoMails)
   }
 }
 
-// function _createMails() {
-//     let mails = localStorageService.loadFromStorage(MAIL_KEY)
-//     if (!mails || !mails.length) {
-//         mails = []
-//         mails.push(_createMail('audu', 300))
-//         mails.push(_createMail('fiak', 120))
-//         mails.push(_createMail('subali', 50))
-//         mails.push(_createMail('mitsu', 150))
-//         localStorageService.saveToStorage(MAIL_KEY, mails)
-//     }
-// }
+function _createDemoMails() {
+  const mailSubjects = [
+    'Meeting Tomorrow',
+    'Project Update',
+    'Vacation Plans',
+    'Urgent: Action Required',
+    'Feedback Needed',
+    'Weekly Report',
+    'Conference Call Agenda',
+    'Important Announcement',
+    'Travel Itinerary',
+    'Review Meeting Notes',
+    'Invoice Attached',
+    'Product Launch Details',
+    'New Feature Proposal',
+    'Appointment Confirmation',
+    'Thank You for Your Purchase'
+  ]
 
-// function _createMail(vendor, maxSpeed = 250) {
-//     const mail = getEmptyMail(vendor, maxSpeed)
-//     mail.id = utilService.makeId()
-//     return mail
-// }
+  const mails = mailSubjects.map((mailSubject) => {
+    const to = Math.random() < 0.5 ? utilService.generateRandomEmail() : gLoggedinUser.email;
+    const body = utilService.makeLorem(15)
+    const mail = _createMail(mailSubject, body, to)
+    if (to === gLoggedinUser.email) mail.isRead = Math.random() < 0.5
+    mail.isStarred = Math.random() < 0.5
+    mail.sentAt = utilService.getRandomTimestamp()
+    mail.removedAt = Math.random() < 0.5 ? utilService.getRandomTimestamp() : null
+    mail.from = (to === gLoggedinUser.email) ? utilService.generateRandomEmail() : gLoggedinUser.email
+    return mail
+  })
+  // return mails
+  localStorageService.saveToStorage(MAIL_KEY, mails)
+}
+
+
+function _createMail(subject, body, to) {
+  const mail = getEmptyMail(subject, body, to)
+  mail.id = utilService.makeId()
+  return mail
+}

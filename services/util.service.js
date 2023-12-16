@@ -7,7 +7,9 @@ export const utilService = {
     getDayName,
     getMonthName,
     tsToDateString,
-    formatTimestamp
+    formatTimestamp,
+    generateRandomEmail,
+    getRandomTimestamp
 }
 
 function makeId(length = 6) {
@@ -111,4 +113,19 @@ function formatTimestamp(timestamp) {
     // If it was more than a year ago, display the year only
     const year = date.getFullYear().toString();
     return year;
+}
+
+function generateRandomEmail() {
+    const domains = ['gmail.com', 'yahoo.com', 'outlook.com', 'example.com', 'mail.com'];
+    const randomUsername = Math.random().toString(36).substring(7); // Generate a random username
+    const randomDomain = domains[Math.floor(Math.random() * domains.length)]; // Pick a random domain
+
+    return `${randomUsername}@${randomDomain}`;
+}
+
+function getRandomTimestamp() {
+    const now = Date.now();
+    const tenYearsAgo = now - 3 * 365 * 24 * 60 * 60 * 1000; // milliseconds in 3 years
+    const randomTimestamp = Math.floor(Math.random() * (now - tenYearsAgo + 1)) + tenYearsAgo;
+    return randomTimestamp;
 }
