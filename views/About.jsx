@@ -1,3 +1,5 @@
+import { CoderPreview } from '../cmps/CoderPreview.jsx'
+
 export function About() {
   return (
     <section className="about page">
@@ -12,19 +14,18 @@ export function About() {
         </p>
 
         <div className="imgs-container">
-          <div className="coder-container">
-            <div className="img-container">
-              <img src="./assets/img/mor.png" />
-            </div>
-            <h4>Mor Marzan</h4>
-          </div>
-
-          <div className="coder-container">
-            <div className="img-container">
-              <img src="./assets/img/eden.png" />
-            </div>
-            <h4>Eden Rize</h4>
-          </div>
+          <CoderPreview
+            fullName={'Mor Marzan'}
+            name={'mor'}
+            mail={'mormarzan@gmail.com'}
+            github={'https://github.com/MorMarzan'}
+          />
+          <CoderPreview
+            fullName={'Eden Rize'}
+            name={'eden'}
+            mail={'edenrize@gmail.com'}
+            github={'https://github.com/EdenRize'}
+          />
         </div>
       </div>
     </section>
