@@ -82,6 +82,13 @@ export function MailEdit() {
       })
   }
 
+  function onAddAsNote() {
+    navigate({
+      pathname: '/note/notes',
+      search: `?subject=${mailToEdit.subject}&body=${mailToEdit.body}`,
+    })
+  }
+
   function onSaveMailAsDraft() {
     mailService
       .save(mailToEdit)
@@ -153,9 +160,12 @@ export function MailEdit() {
           name="body"
         />
 
-        <button className="submit" disabled={!to}>
-          Send
-        </button>
+        <div className="mail-btns-container">
+          <button className="submit" disabled={!to}>
+            Send
+          </button>
+          <img onClick={onAddAsNote} src="./assets/img/keep.svg" />
+        </div>
       </form>
     </section>
   )

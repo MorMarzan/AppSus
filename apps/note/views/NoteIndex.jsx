@@ -3,16 +3,24 @@ import { AddNote } from '../cmps/AddNote.jsx'
 import { NoteList } from '../cmps/NoteList.jsx'
 import { noteService } from '../services/note.service.js'
 
-const { Outlet } = ReactRouterDOM
+const { Outlet, useSearchParams } = ReactRouterDOM
 const { useState, useEffect, Fragment } = React
 
 export function NoteIndex() {
   const [notes, setNotes] = useState(null)
   const [filterBy, setFilterBy] = useState(noteService.getEmptyFilterBy())
+  const [searchParams] = useSearchParams()
 
   useEffect(() => {
     const unsubscribeLoad = eventBusService.on('load-notes', loadNotes)
     const unsubscribeFilter = eventBusService.on('filter-notes', setFilterBy)
+
+    const body = searchParams.get('body')
+    const subject = searchParams.get('subject')
+
+    const newNote = noteService.getEmptyNote('NoteTxt', subject)
+    newNote.info.txt = body
+    noteService.save(newNote).then(loadNotes)
 
     return () => {
       unsubscribeLoad()
