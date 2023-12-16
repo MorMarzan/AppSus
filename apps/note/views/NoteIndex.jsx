@@ -25,9 +25,13 @@ export function NoteIndex() {
   }, [filterBy])
 
   function loadNotes() {
+    eventBusService.emit('show-loader')
     noteService
       .query(filterBy)
-      .then(setNotes)
+      .then((notes) => {
+        setNotes(notes)
+        eventBusService.emit('hide-loader')
+      })
       .catch((err) => console.log('err:', err))
   }
 
@@ -36,9 +40,12 @@ export function NoteIndex() {
       loadNotes()
       return
     }
+    // eventBusService.emit('show-loader')
     noteService
       .save(note)
-      .then(loadNotes)
+      .then(() => {
+        loadNotes()
+      })
       .catch((err) => console.log('err:', err))
   }
 

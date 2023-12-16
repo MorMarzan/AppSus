@@ -3,6 +3,7 @@ import { DynamicSidebar } from '../../../cmps/DynamicSidebar.jsx'
 import { EditNote } from '../cmps/EditNote.jsx'
 import { noteService } from '../services/note.service.js'
 import { eventBusService } from '../../../services/event-bus.service.js'
+import { Loader } from '../../../cmps/Loader.jsx'
 
 const { Outlet, useSearchParams } = ReactRouterDOM
 
@@ -14,10 +15,25 @@ export function NoteApp() {
   const [filterBy, setFilterBy] = useState(noteService.getEmptyFilterBy())
   const hasEditNoteParams = searchParams.has('edit-note')
   const [isSbOpen, setIsSbOpen] = useState(false)
+  const [isShowLoader, setIsShowLoader] = useState(false)
 
   useEffect(() => {
     eventBusService.emit('filter-notes', filterBy)
   }, [filterBy])
+
+  useEffect(() => {
+    const unsubscribeShowLoader = eventBusService.on('show-loader', () =>
+      setIsShowLoader(true)
+    )
+    const unsubscribeHideLoader = eventBusService.on('hide-loader', () =>
+      setIsShowLoader(false)
+    )
+
+    return () => {
+      unsubscribeShowLoader()
+      unsubscribeHideLoader()
+    }
+  }, [])
 
   function onSetIsSbOpen() {
     setIsSbOpen((isSbOpen) => !isSbOpen)
@@ -47,6 +63,7 @@ export function NoteApp() {
         <Outlet />
       </div>
       {hasEditNoteParams && <EditNote />}
+      {isShowLoader && <Loader />}
     </section>
   )
 }

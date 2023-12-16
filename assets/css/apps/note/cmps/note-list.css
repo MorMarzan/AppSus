@@ -23,7 +23,8 @@
 
 .note-list-item .pin-img {
   position: absolute;
-  right: 15px;
+  right: 20px;
   width: 23px;
   cursor: pointer;
+  z-index: 10;
 }

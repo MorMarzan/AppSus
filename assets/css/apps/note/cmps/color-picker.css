@@ -8,6 +8,12 @@
   box-shadow: 1px 1px 7px 1px rgb(0 0 0 / 19%);
 }
 
+.note-list .color-picker {
+  bottom: 0;
+  left: 35px;
+  z-index: 15;
+}
+
 .color-picker * {
   width: 25px;
   height: 25px;

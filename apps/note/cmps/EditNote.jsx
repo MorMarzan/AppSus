@@ -12,6 +12,8 @@ export function EditNote() {
   const navigate = useNavigate()
 
   useEffect(() => {
+    eventBusService.emit('show-loader')
+
     if (editNoteParam) loadNote()
   }, [])
 

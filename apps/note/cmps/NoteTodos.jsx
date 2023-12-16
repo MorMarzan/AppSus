@@ -1,5 +1,8 @@
+import { eventBusService } from '../../../services/event-bus.service.js'
+
 export function NoteTodos({ note, onChangeNote }) {
   function onTodoClick(todoId) {
+    eventBusService.emit('show-loader')
     var newTodos = note.info.todos
     const todoIdx = newTodos.findIndex((todo) => todo.id === todoId)
     const todo = newTodos[todoIdx]
@@ -12,7 +15,10 @@ export function NoteTodos({ note, onChangeNote }) {
     <article className="note-todos">
       {note.info.title && <p className="note-title">{note.info.title}</p>}
 
-      <ul className="note-todos-list note-content">
+      <ul
+        onClick={(ev) => ev.stopPropagation()}
+        className="note-todos-list note-content"
+      >
         {note.info.todos.map((todo) => {
           return (
             <li key={todo.id} className={`todo ${todo.doneAt && 'checked'}`}>

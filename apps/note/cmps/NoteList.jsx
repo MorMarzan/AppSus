@@ -3,6 +3,7 @@ import { EditBtns } from './EditBtns.jsx'
 import { NotePreview } from './NotePreview.jsx'
 import { noteService } from '../services/note.service.js'
 import { TrashBtns } from './TrashBtns.jsx'
+import { eventBusService } from '../../../services/event-bus.service.js'
 const { useLocation } = ReactRouterDOM
 
 export function NoteList({ notes, onChangeNote }) {
@@ -12,6 +13,7 @@ export function NoteList({ notes, onChangeNote }) {
   const pageLoc = pathname.includes('notes') ? 'notes' : 'bin'
 
   function handleStyleChange(color, note) {
+    eventBusService.emit('show-loader')
     const newNote = {
       ...note,
       style: { ...note.style, backgroundColor: color },
@@ -28,6 +30,7 @@ export function NoteList({ notes, onChangeNote }) {
   }
 
   function onDeleteNote(note) {
+    eventBusService.emit('show-loader')
     noteService
       .moveToBin(note)
       .then(onChangeNote)
@@ -35,7 +38,7 @@ export function NoteList({ notes, onChangeNote }) {
   }
 
   function onDeleteForever(noteId) {
-    console.log('noteId', noteId)
+    eventBusService.emit('show-loader')
     return noteService
       .remove(noteId, true)
       .then(onChangeNote)
@@ -43,23 +46,26 @@ export function NoteList({ notes, onChangeNote }) {
   }
 
   function onRestoreNote(note) {
+    eventBusService.emit('show-loader')
     return noteService
       .remove(note.id, true)
       .then(() => {
-        console.log('note', note)
         noteService.save(note, true).then(onChangeNote)
       })
       .catch((err) => console.log('err', err))
   }
 
   function onDuplicateNote(note) {
+    eventBusService.emit('show-loader')
     noteService
       .save({ ...note, id: '' })
       .then(onChangeNote)
       .catch((err) => console.log('err', err))
   }
 
-  function handlePinClick(note) {
+  function handlePinClick(note, ev) {
+    eventBusService.emit('show-loader')
+    ev.stopPropagation()
     noteService
       .save({ ...note, isPinned: !note.isPinned })
       .then(onChangeNote)
@@ -92,7 +98,7 @@ export function NoteList({ notes, onChangeNote }) {
           >
             {noteHoverId === note.id && pageLoc === 'notes' && (
               <img
-                onClick={() => handlePinClick(note)}
+                onClick={(ev) => handlePinClick(note, ev)}
                 className="pin-img"
                 src={`./assets/img/${
                   note.isPinned ? 'pinned' : 'unpinned'

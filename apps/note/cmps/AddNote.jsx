@@ -1,3 +1,4 @@
+import { eventBusService } from '../../../services/event-bus.service.js'
 import { noteService } from '../services/note.service.js'
 import { ColorPicker } from './ColorPicker.jsx'
 import { EditBtns } from './EditBtns.jsx'
@@ -32,6 +33,7 @@ export function AddNote({
     if (noteToEdit) {
       setNote(noteToEdit)
     }
+    eventBusService.emit('hide-loader')
   }, [noteToEdit])
 
   function onOpenAdd() {

@@ -1,3 +1,4 @@
+import { eventBusService } from '../../../services/event-bus.service.js'
 import { NoteList } from '../cmps/NoteList.jsx'
 import { noteService } from '../services/note.service.js'
 const { useState, useEffect, Fragment } = React
@@ -13,19 +14,21 @@ export function NoteBin() {
   function loadNotes() {
     noteService
       .query(filterBy, true)
-      .then(setNotes)
+      .then((notes) => {
+        setNotes(notes)
+        eventBusService.emit('hide-loader')
+      })
       .catch((err) => console.log('err:', err))
   }
 
   function onChangeNote(note) {
-    console.log('note', note)
     if (!note) {
       loadNotes()
       return
     }
     noteService
       .save(note)
-      .then(loadNotes)
+      .then(() => loadNotes())
       .catch((err) => console.log('err:', err))
   }
 
