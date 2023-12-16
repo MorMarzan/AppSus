@@ -1,22 +1,28 @@
 /* mobile only */
-@media (width <=500px) {
+/* @media (width <=500px) {
   .mail-filter.dynamic-header {
     display: none;
   }
-}
+} */
 
 .dynamic-header {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 1fr auto;
+  width: 90%;
   gap: 15px;
   align-items: center;
   position: fixed;
   top: 4em;
-  width: 100%;
   padding: 8px 10px;
+  right: 0;
   background-color: white;
   border-bottom: 1px solid var(--grey-outline);
   z-index: 15;
+}
+
+.dynamic-header:not(.mail-filter) {
+  grid-template-columns: auto 1fr auto;
+  width: 100%;
 }
 
 .logo-menu-wrapper {
@@ -66,4 +72,11 @@
 
 .dynamic-header .fa-filter:hover {
   filter: brightness(80%);
+}
+
+.mail-filter .fa-filter {
+  cursor: pointer;
+}
+
+.mail-read-filter {
 }

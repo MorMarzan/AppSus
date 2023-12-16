@@ -18,9 +18,11 @@ export function NoteIndex() {
     const body = searchParams.get('body')
     const subject = searchParams.get('subject')
 
-    const newNote = noteService.getEmptyNote('NoteTxt', subject)
-    newNote.info.txt = body
-    noteService.save(newNote).then(loadNotes)
+    if (body || subject) {
+      const newNote = noteService.getEmptyNote('NoteTxt', subject)
+      newNote.info.txt = body
+      noteService.save(newNote).then(loadNotes)
+    }
 
     return () => {
       unsubscribeLoad()
