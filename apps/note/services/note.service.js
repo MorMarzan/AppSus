@@ -52,7 +52,7 @@ const dummyNotes = [
       ],
     },
     style: {
-      backgroundColor: '#faafa8',
+      backgroundColor: 'white',
     },
   },
 ]
