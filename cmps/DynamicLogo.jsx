@@ -19,7 +19,7 @@ export function DynamicLogo({ page }) {
   return (
     <div className="dynamic-logo">
       <img src={`./assets/img/${page}.svg`} />
-      {!isMobile && <h2>{page === 'mail' ? 'Gmail' : 'Notes'}</h2>}
+      <h2>{page === 'mail' ? 'Gmail' : 'Notes'}</h2>
     </div>
   )
 }

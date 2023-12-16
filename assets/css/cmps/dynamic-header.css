@@ -78,9 +78,6 @@
   cursor: pointer;
 }
 
-.mail-read-filter {
-}
-
 @media (max-width: 1430px) {
   .dynamic-header {
     width: 85%;
@@ -102,5 +99,11 @@
 @media (max-width: 555px) {
   .dynamic-header {
     width: 70%;
+  }
+}
+
+@media (max-width: 500px) {
+  .dynamic-header h2 {
+    display: none;
   }
 }
