@@ -90,7 +90,7 @@ export function MailIndex() {
 
         else {
             setFilterBy(prevFilter => ({ ...prevFilter, ...newStat }))
-            console.log('filterBy', { ...filterBy, ...newStat })
+            // console.log('filterBy', { ...filterBy, ...newStat })
         }
     }
 

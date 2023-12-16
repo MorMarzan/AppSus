@@ -52,7 +52,7 @@ export function MailFilterNotDynamic({ filterBy, onSetFilter }) {
     const { txt, readStat } = filterByToEdit
     return (
         <section className="mail-filter">
-            <h2>Filter Our Mails</h2>
+            {/* <h2>Filter Our Mails</h2> */}
             <form onSubmit={onSetFilterBy} >
                 <label htmlFor="txt">Text: </label>
                 <input value={txt} onChange={handleChange} type="text" id="txt" name="txt" />
