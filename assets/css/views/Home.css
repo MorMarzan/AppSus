@@ -3,20 +3,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--clrPrimaryBase);
 }
 
 .home h1 {
-  font-size: 2em;
-  margin-block-end: 10px;
+  font-size: 2.6em;
+  margin-block-end: 20px;
 }
 
 .home .img-container {
   padding: 15px;
   border-radius: 50%;
-  background-color: #d9dfea;
+  background-color: var(--brand-color);
 }
 
 .home img {
-  width: 150px;
+  width: 170px;
 }

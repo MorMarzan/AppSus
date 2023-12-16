@@ -52,7 +52,7 @@ textarea {
 }
 
 .page {
-  padding-block: 120px 10px;
+  padding-block: 136px 10px;
   min-height: 100dvh;
 }
 
@@ -84,4 +84,5 @@ input[type='checkbox'] {
 }
 
 /* desktop */
-@media (width >=992px) {}
+@media (width >=992px) {
+}

@@ -1,10 +1,10 @@
 .app-header {
   box-sizing: border-box;
-  background: lightcyan;
+  background: var(--brand-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 3em;
+  height: 4em;
   padding-inline: 10px;
   position: fixed;
   top: 0;
@@ -31,7 +31,7 @@ nav a:active:not(.sidebar-btns nav a) {
 }
 
 nav a.active:not(.sidebar-btns nav a) {
-  color: darkblue;
+  color: #4a2d2d;
   font-weight: bold;
   text-decoration: overline;
 }

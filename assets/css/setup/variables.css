@@ -1,32 +1,32 @@
 :root {
-
-    /* shared */
-    /* --mq-m: 768px;
+  /* shared */
+  /* --mq-m: 768px;
     --mq-l: 992px; */
 
-    /* notes */
-    --grey-outline: #e0e0e0;
-    --action-btn: #202124;
+  /* notes */
+  --grey-outline: #e0e0e0;
+  --action-btn: #202124;
 
-     /* gmail */
-     --clr-font-Primary1: #5f6368; /* mail content */
-     --clr-font-PrimaryBase: #262627;/* all fonts */
- 
-     --clrPrimary3: #0957d0; /* send btn */
-     --clrPrimary2: #c2e7ff; /* add mail btn bg */
-     --clrPrimary1: #d3e3fd; /* side bar active */
-     --clrPrimaryBase: #f6f8fc;/*sidebar & header bg */
-     --clrPrimary-1: #f2f6fc; /* already read mail bg */
-     --clrPrimary-2: #eaf1fb;/* search box bg */
-     --clrPrimary-3: #ffffff; /* white */
+  /* gmail */
+  --clr-font-Primary1: #5f6368; /* mail content */
+  --clr-font-PrimaryBase: #262627; /* all fonts */
 
-     --clr-error: #c5221f;
-     
-     --border-radius: 20px;
-     --box-shadow: inset 0 -1px 0 0 rgba(100, 121, 143, 0.122);
+  --clrPrimary3: #0957d0; /* send btn */
+  --clrPrimary2: #c2e7ff; /* add mail btn bg */
+  --clrPrimary1: #d3e3fd; /* side bar active */
+  --clrPrimaryBase: #f6f8fc; /*sidebar & header bg */
+  --clrPrimary-1: #f2f6fc; /* already read mail bg */
+  --clrPrimary-2: #eaf1fb; /* search box bg */
+  --clrPrimary-3: #ffffff; /* white */
 
-     /* #f2f6fb edit header */
-     
+  --clr-error: #c5221f;
+
+  --brand-color: #ffd9d9;
+
+  --border-radius: 20px;
+  --box-shadow: inset 0 -1px 0 0 rgba(100, 121, 143, 0.122);
+
+  /* #f2f6fb edit header */
 }
 
 /* Tablet */
