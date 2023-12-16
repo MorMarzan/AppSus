@@ -34,6 +34,7 @@
 @import './cmps/dynamic-sidebar.css';
 @import './cmps/dynamic-filter.css';
 @import './cmps/loader.css';
+@import './cmps/dynamic-logo.css';
 
 /* Notes Cmps */
 @import './apps/note/cmps/note-list.css';
@@ -53,5 +54,4 @@
 @import './apps/mail/cmps/mail-preview.css';
 @import './apps/mail/cmps/mail-header.css';
 @import './apps/mail/cmps/mail-footer.css';
-@import './apps/mail/cmps/mail-sidebar.css';
 @import './apps/mail/cmps/mail-edit-toolbar.css';

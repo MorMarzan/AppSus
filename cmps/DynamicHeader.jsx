@@ -1,4 +1,5 @@
 import { DynamicFilter } from './DynamicFilter.jsx'
+import { DynamicLogo } from './DynamicLogo.jsx'
 
 const { Link, NavLink, useLocation } = ReactRouterDOM
 const { useState, useEffect } = React
@@ -13,7 +14,7 @@ export function DynamicHeader({
   const [isFilterOpen, setIsFilterOpen] = useState(false)
   const { pathname } = useLocation()
 
-  const headerType = pathname.includes('mail') ? 'mail' : 'note'
+  const headerType = pathname.includes('mail') ? 'mail' : 'keep'
 
   return (
     <header className="dynamic-header">
@@ -21,7 +22,7 @@ export function DynamicHeader({
         <button className="btn btn-menu" onClick={onSetIsSbOpen}>
           <i className="fa-solid fa-bars"></i>
         </button>
-        <h1>{headerType}</h1>
+        <DynamicLogo page={headerType} />
       </div>
       <form className="search-form" onSubmit={(ev) => ev.preventDefault()}>
         <button>

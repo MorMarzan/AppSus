@@ -12,15 +12,25 @@
   z-index: 20;
 }
 
-nav a {
+.app-header .logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.app-header .app-logo {
+  width: 35px;
+  margin-inline-end: 5px;
+}
+
+nav a:not(.sidebar-btns nav a) {
   margin: 0.5em;
 }
 
-nav a:active {
+nav a:active:not(.sidebar-btns nav a) {
   color: purple;
 }
 
-nav a.active {
+nav a.active:not(.sidebar-btns nav a) {
   color: darkblue;
   font-weight: bold;
   text-decoration: overline;

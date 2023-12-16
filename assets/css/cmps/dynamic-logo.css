@@ -1,0 +1,14 @@
+.dynamic-logo {
+  display: flex;
+  align-items: center;
+}
+
+.dynamic-logo img {
+  width: 25px;
+  margin-inline-end: 5px;
+}
+
+.dynamic-logo h2 {
+  margin: 0;
+  font-size: 20px;
+}

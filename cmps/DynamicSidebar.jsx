@@ -8,7 +8,7 @@ export function DynamicSidebar({ isSbOpen, onSetIsSbOpen }) {
   const { pathname } = useLocation()
   const sbType = pathname.includes('mail') ? 'mail' : 'note'
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 500)
   const [isMobileSbOpen, setIsMobileSbOpen] = useState(null)
   const [isDesktopSbOpen, setIsDesktopSbOpen] = useState(null)
 
@@ -31,7 +31,7 @@ export function DynamicSidebar({ isSbOpen, onSetIsSbOpen }) {
   }, [isSbOpen, isMobile])
 
   function handleResize() {
-    const currIsMobile = window.innerWidth <= 768
+    const currIsMobile = window.innerWidth <= 500
     setIsMobile(currIsMobile)
   }
 
@@ -50,22 +50,23 @@ export function DynamicSidebar({ isSbOpen, onSetIsSbOpen }) {
         <div className="main-screen" onClick={onSetIsSbOpen}></div>
       )}
       <DynamicCmp
-        isSbOpen={isSbOpen}
         sbType={sbType}
         isMobileSbOpen={isMobileSbOpen}
         isDesktopSbOpen={isDesktopSbOpen}
+        isMobile={isMobile}
       />
     </section>
   )
 }
 
-function DynamicCmp({ isSbOpen, sbType, isMobileSbOpen, isDesktopSbOpen }) {
+function DynamicCmp({ sbType, isMobileSbOpen, isDesktopSbOpen, isMobile }) {
   switch (sbType) {
     case 'mail':
       return (
         <MailSidebar
           isMobileSbOpen={isMobileSbOpen}
           isDesktopSbOpen={isDesktopSbOpen}
+          isMobile={isMobile}
         />
       )
 
@@ -74,6 +75,7 @@ function DynamicCmp({ isSbOpen, sbType, isMobileSbOpen, isDesktopSbOpen }) {
         <NoteSidebar
           isMobileSbOpen={isMobileSbOpen}
           isDesktopSbOpen={isDesktopSbOpen}
+          isMobile={isMobile}
         />
       )
   }
