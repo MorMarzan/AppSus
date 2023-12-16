@@ -4,13 +4,17 @@ import { mailService } from "../../mail/services/mail.service.js"
 import { showSuccessMsg, showErrorMsg, eventBusService } from "../../../services/event-bus.service.js"
 
 const { useState, useEffect, useRef } = React
-const { useSearchParams } = ReactRouterDOM
+const { useSearchParams, useLocation } = ReactRouterDOM
 
 export function MailIndex() {
 
     const [mails, setMails] = useState(null)
     let intervalIdRef = useRef()
 
+    const location = useLocation()
+    const isSentPage = location.pathname.includes('sent')
+
+    // const [filterBy, setFilterBy] = useState(mailService.getFilterFromQueryString(searchParams))
 
     // const [searchParams, setSearchParams] = useSearchParams()
     // const [filterBy, setFilterBy] = useState(mailService.getFilterFromQueryString(searchParams))

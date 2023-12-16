@@ -8,7 +8,7 @@ export function MailSidebar({ isMobileSbOpen, isDesktopSbOpen }) {
     function openNewCompose() {
         navigate({
             search: `?compose=true`,
-          })
+        })
     }
 
     const dynClass = isMobileSbOpen ? 'open' : ''
@@ -16,40 +16,33 @@ export function MailSidebar({ isMobileSbOpen, isDesktopSbOpen }) {
     return (
         // <section className="mail-sidebar">
         <section className={dynClass + " sidebar"}>
-            <div onClick={openNewCompose} className="btn">
+            <button onClick={openNewCompose} className="btn">
                 <i className="fa-solid fa-pencil"></i>
                 {isDesktopSbOpen && <span>Compose</span>}
-            </div>
-            {/* <Link className="btn" to="/mail/edit">
-                <i className="fa-solid fa-pencil"></i>
-                {isDesktopSbOpen && <span>Compose</span>}
-            </Link> */}
-            <button className="btn">
-                <i className="fa-solid fa-inbox"></i>
-                {isDesktopSbOpen && <span>Inbox</span>}
             </button>
-            <button className="btn">
-                <i className="fa-regular fa-star"></i>
-                {isDesktopSbOpen && <span>Stared</span>}
-            </button>
-            <button className="btn">
-                <i className="fa-regular fa-paper-plane"></i>
-                {isDesktopSbOpen && <span>Sent</span>}
-            </button>
-            <button className="btn">
-                <i className="fa-regular fa-pen-to-square"></i>
-                {isDesktopSbOpen && <span>Draft</span>}
-            </button>
-            <button className="btn">
-                <i className="fa-solid fa-trash"></i>
-                {isDesktopSbOpen && <span>Trash</span>}
-            </button>
-
-            {/* <nav className="app-nav">
-                    <NavLink to="/" >Home</NavLink>
-                    <NavLink to="/about" >About</NavLink>
-                    <NavLink to="/car" >Cars</NavLink>
-                </nav> */}
+    
+            <nav className="app-nav">
+                <NavLink className="btn" to="/mail/inbox">
+                    <i className="fa-solid fa-inbox"></i>
+                    {isDesktopSbOpen && <span>Inbox</span>}
+                </NavLink>
+                <NavLink className="btn" to="/mail/starred">
+                    <i className="fa-regular fa-star"></i>
+                    {isDesktopSbOpen && <span>Starred</span>}
+                </NavLink>
+                <NavLink className="btn" to="/mail/sent">
+                    <i className="fa-regular fa-paper-plane"></i>
+                    {isDesktopSbOpen && <span>Sent</span>}
+                </NavLink>
+                <NavLink className="btn" to="/mail/draft">
+                    <i className="fa-regular fa-pen-to-square"></i>
+                    {isDesktopSbOpen && <span>Draft</span>}
+                </NavLink>
+                <NavLink className="btn" to="/mail/draft">
+                    <i className="fa-solid fa-trash"></i>
+                    {isDesktopSbOpen && <span>Trash</span>}
+                </NavLink>
+            </nav>
         </section>
     )
 }
