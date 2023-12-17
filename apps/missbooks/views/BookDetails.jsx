@@ -111,8 +111,12 @@ export function BookDetails() {
       <AddReview addReview={onAddReview} />
 
       <nav className="book-nav">
-        {prevBookId && <Link to={`/book/${prevBookId}`}>← Prev Book</Link>}
-        {nextBookId && <Link to={`/book/${nextBookId}`}>Next Book →</Link>}
+        {prevBookId && (
+          <Link to={`/book/index/${prevBookId}`}>← Prev Book</Link>
+        )}
+        {nextBookId && (
+          <Link to={`/book/index/${nextBookId}`}>Next Book →</Link>
+        )}
       </nav>
 
       <img onClick={onBack} className="back-img" src="./assets/img/back.svg" />
