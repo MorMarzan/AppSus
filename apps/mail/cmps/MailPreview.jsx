@@ -4,16 +4,16 @@ import { MailEditToolbar } from "./MailEditToolbar.jsx"
 const { useLocation } = ReactRouterDOM
 
 
-export function MailPreview({ mail, mailHoverId, onToggleIsReadStat, onRemoveMail }) {
-    
+export function MailPreview({ mail, mailHoverId, onToggleIsReadStat, onRemoveMail, onToggleIsStarred }) {
+
     const location = useLocation()
     const isSentPage = location.pathname.includes('sent')
     const isDraftPage = location.pathname.includes('draft')
 
-    
-    const { subject, body, isRead, sentAt, from, to } = mail
+
+    const { subject, body, isRead, sentAt, from, to, isStarred } = mail
     const readStat = !isRead ? 'unread' : ''
-    
+
     let leftColContent
     if (isSentPage) {
         leftColContent = 'To: ' + to
@@ -31,12 +31,7 @@ export function MailPreview({ mail, mailHoverId, onToggleIsReadStat, onRemoveMai
             <div className="mail-content text-overflow-ellipsis"><span className="subject">{subject}</span> - {body}</div>
             {mailHoverId !== mail.id && <div className="date">{rightColContent}</div>}
             {mailHoverId === mail.id &&
-                // <div>
-                //     <button className="btn">
-                //         <i className="fa-solid fa-trash" aria-hidden="true"></i>
-                //     </button>
-                // </div>
-                <MailEditToolbar onToggleIsReadStat={onToggleIsReadStat}  mailId={mail.id} onRemoveMail={onRemoveMail} isRead={isRead}/>
+                <MailEditToolbar onToggleIsReadStat={onToggleIsReadStat} mailId={mail.id} onRemoveMail={onRemoveMail} isRead={isRead} onToggleIsStarred={onToggleIsStarred} isStarred={isStarred}/>
             }
         </article>
     )

@@ -44,10 +44,10 @@ export function MailSidebar({
             <i className="fa-solid fa-inbox"></i>
             {isDesktopSbOpen && <span>Inbox</span>}
           </NavLink>
-          {/* <NavLink onClick={onNav} className="btn" to="/mail/starred">
+          <NavLink onClick={onNav} className="btn" to="/mail/starred">
             <i className="fa-regular fa-star"></i>
             {isDesktopSbOpen && <span>Starred</span>}
-          </NavLink> */}
+          </NavLink>
           <NavLink onClick={onNav} className="btn" to="/mail/sent">
             <i className="fa-regular fa-paper-plane"></i>
             {isDesktopSbOpen && <span>Sent</span>}

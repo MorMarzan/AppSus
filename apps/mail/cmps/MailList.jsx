@@ -4,7 +4,7 @@ const { useState, Fragment } = React
 import { MailPreview } from "../cmps/MailPreview.jsx";
 import { MailEditToolbar } from "./MailEditToolbar.jsx";
 // export function MailList({ mails, onRemoveMail }) {
-export function MailList({ mails, onToggleIsReadStat, onRemoveMail }) {
+export function MailList({ mails, onToggleIsReadStat, onRemoveMail, onToggleIsStarred }) {
 
     const [mailHoverId, setMailHoverId] = useState(null)
     const navigate = useNavigate()
@@ -35,7 +35,7 @@ export function MailList({ mails, onToggleIsReadStat, onRemoveMail }) {
                     onMouseEnter={() => setMailHoverId(mail.id)}
                     onMouseLeave={() => setMailHoverId(null)}
                 >
-                    <MailPreview mail={mail} mailHoverId={mailHoverId} onToggleIsReadStat={onToggleIsReadStat} onRemoveMail={onRemoveMail} />
+                    <MailPreview mail={mail} mailHoverId={mailHoverId} onToggleIsReadStat={onToggleIsReadStat} onRemoveMail={onRemoveMail} onToggleIsStarred={onToggleIsStarred}/>
 
                 </li>
             )}
