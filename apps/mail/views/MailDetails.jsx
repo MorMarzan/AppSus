@@ -85,6 +85,8 @@ export function MailDetails() {
                     <p>To: {to}</p>
                 </div>
                 <p>{body}</p>
+                {/* Yaron said to do with pre - but needs max width or something */}
+                {/* <pre>{body}</pre> */} 
 
                 {/* <Link to={`/mail/u4QgwL`}>Next Mail</Link> */}
             </section>

@@ -17,6 +17,7 @@ export function MailDetailsHeader({ onRemoveMail, onToggleIsReadStat }) {
                 <button onClick={() => onToggleIsReadStat(false)} className="btn" title="Mark as unread">
                     <i className="fa-regular fa-envelope"></i>
                 </button>
+                {/* <MailEditToolbar onToggleIsReadStat={onToggleIsReadStat} mailId={mail.id} onRemoveMail={onRemoveMail} isRead={isRead} onToggleIsStarred={onToggleIsStarred} isStarred={isStarred}/> */}
 
             </section>
         </header>
